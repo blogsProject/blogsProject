@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.lzlz.dao.LogDAO;
 import com.lzlz.entiy.Log;
+import com.lzlz.util.CustomerUtil;
 import com.lzlz.util.DBConnection;
 
 public class LogDAOImpl implements LogDAO {
@@ -67,7 +68,7 @@ public class LogDAOImpl implements LogDAO {
 			String sql = "Select * from log limit ?,?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, (curpage * count) - count);
+			pstmt.setInt(1, CustomerUtil.limitFristParmaWithMyql(curpage, count));
 			pstmt.setInt(2, count);
 			ResultSet rs = pstmt.executeQuery();
 			List<Log> list = new ArrayList<>();
@@ -90,7 +91,7 @@ public class LogDAOImpl implements LogDAO {
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
-			pstmt.setInt(2, (curpage * count) - count);
+			pstmt.setInt(2, CustomerUtil.limitFristParmaWithMyql(curpage, count));
 			pstmt.setInt(3, count);
 			ResultSet rs = pstmt.executeQuery();
 			List<Log> list = new ArrayList<>();
@@ -144,17 +145,6 @@ public class LogDAOImpl implements LogDAO {
 
 	@Override
 	public int getPageByCount(int count) {
-		try {
-			String sql = "Select count(*) from log";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			int countAll = rs.getInt(1);
-			return countAll % count == 0 ? countAll / count : countAll / count + 1;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 1;
+		return CustomerUtil.getAllCount(new DBConnection().getConnection(), "log", count);
 	}
 }

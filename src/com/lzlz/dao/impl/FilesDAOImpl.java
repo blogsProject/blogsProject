@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.lzlz.dao.FilesDAO;
 import com.lzlz.entiy.Files;
+import com.lzlz.util.CustomerUtil;
 import com.lzlz.util.DBConnection;
 
 public class FilesDAOImpl implements FilesDAO {
@@ -45,18 +46,20 @@ public class FilesDAOImpl implements FilesDAO {
 	}
 
 	@Override
-	public List<Files> selectByUidWithType(int uid, boolean flag) {
+	public List<Files> selectByUidWithType(int uid, boolean flag, int curpage, int count) {
 		String type;
 		if (flag)
 			type = "Õº∆¨";
 		else
 			type = "“Ù¿÷";
 		try {
-			String sql = "select * from files where uid=? and flag=?";
+			String sql = "select * from files where uid=? and flag=? limit ?,?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
 			pstmt.setString(2, type);
+			pstmt.setInt(3, CustomerUtil.limitFristParmaWithMyql(curpage, count));
+			pstmt.setInt(4, count);
 			List<Files> list = new ArrayList<>();
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -80,13 +83,18 @@ public class FilesDAOImpl implements FilesDAO {
 			List<String> list = new ArrayList<>();
 			while (rs.next()) {
 				String path = rs.getString(1);
-				list.add(path.substring(path.indexOf("/")+1));
+				list.add(path.substring(path.indexOf("/") + 1));
 			}
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public int getAllPageByCount(int count) {
+		return CustomerUtil.getAllCount(new DBConnection().getConnection(), "files", count);
 	}
 
 }

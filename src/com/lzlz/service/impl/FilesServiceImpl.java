@@ -25,13 +25,18 @@ public class FilesServiceImpl implements FilesService {
 	}
 
 	@Override
-	public List<Files> selectByUidWithType(int uid, boolean flag) {
-		return fileDAO.selectByUidWithType(uid, flag);
+	public List<String> selectFileNameByUid(int uid) {
+		return fileDAO.selectFileNameByUid(uid);
 	}
 
 	@Override
-	public List<String> selectFileNameByUid(int uid) {
-		return fileDAO.selectFileNameByUid(uid);
+	public int getAllPageByCount(int count) {
+		return fileDAO.getAllPageByCount(count);
+	}
+
+	@Override
+	public List<Files> selectByUidWithType(int uid, boolean flag, int curpage, int count) {
+		return fileDAO.selectByUidWithType(uid, flag, curpage, count);
 	}
 
 }
