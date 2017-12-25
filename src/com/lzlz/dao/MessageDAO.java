@@ -10,4 +10,6 @@ public interface MessageDAO {
 	public int deleteByMid(int mid);
 	
 	public List<Message> selectByReceive(int receive,int curpage,int count);
+	
+	public int getPageByReceive(int count,int receive);
 }

@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.lzlz.dao.ReplyDAO;
 import com.lzlz.entiy.Reply;
+import com.lzlz.util.CustomerUtil;
 import com.lzlz.util.DBConnection;
 
 public class ReplyDAOImpl implements ReplyDAO {
@@ -30,12 +32,14 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 
 	@Override
-	public List<Reply> selectByLid(int lid) {
+	public List<Reply> selectByLid(int lid, int curpage, int count) {
 		try {
-			String sql = "Select * from reply where lid=?";
+			String sql = "Select * from reply where lid=? limit ?,?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, lid);
+			pstmt.setInt(2, CustomerUtil.limitFristParmaWithMyql(curpage, count));
+			pstmt.setInt(3, count);
 			ResultSet rs = pstmt.executeQuery();
 			List<Reply> list = new ArrayList<>();
 			while (rs.next()) {
@@ -47,6 +51,12 @@ public class ReplyDAOImpl implements ReplyDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public int getPageByLid(int count, int lid) {
+		return CustomerUtil.getPage(count,
+				CustomerUtil.getAllCount(new DBConnection().getConnection(), "reply", "lid=" + lid, count));
 	}
 
 }

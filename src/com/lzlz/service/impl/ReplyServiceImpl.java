@@ -21,8 +21,14 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<Reply> selectByLid(int lid) {
-		return replyDAO.selectByLid(lid);
+	public List<Reply> selectByLid(int lid, int curpage, int count) {
+		return replyDAO.selectByLid(lid, curpage, count);
 	}
+
+	@Override
+	public int getPageByLid(int count, int lid) {
+		return replyDAO.getPageByLid(count, lid);
+	}
+
 
 }

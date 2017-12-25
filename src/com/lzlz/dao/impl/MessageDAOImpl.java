@@ -68,4 +68,10 @@ public class MessageDAOImpl implements MessageDAO {
 		return null;
 	}
 
+	@Override
+	public int getPageByReceive(int count, int receive) {
+		return CustomerUtil.getPage(count,
+				CustomerUtil.getAllCount(new DBConnection().getConnection(), "message", "receive=?", count));
+	}
+
 }

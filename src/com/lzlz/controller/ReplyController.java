@@ -38,6 +38,6 @@ public class ReplyController extends HttpServlet {
 
 	protected void selectByLid(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().write("" + replyService.selectByLid(1));
+		response.getWriter().write("" + replyService.selectByLid(1, 1, 5));
 	}
 }

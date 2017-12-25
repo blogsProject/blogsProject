@@ -1,5 +1,7 @@
 package com.lzlz.service.impl;
 
+import java.util.List;
+
 import com.lzlz.dao.MessageDAO;
 import com.lzlz.entiy.Message;
 import com.lzlz.service.MessageService;
@@ -21,6 +23,16 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public int deleteByMid(int mid) {
 		return messageDAO.deleteByMid(mid);
+	}
+
+	@Override
+	public List<Message> selectByReceive(int receive, int curpage, int count) {
+		return messageDAO.selectByReceive(receive, curpage, count);
+	}
+
+	@Override
+	public int getPageByReceive(int count, int receive) {
+		return messageDAO.getPageByReceive(count, receive);
 	}
 
 }

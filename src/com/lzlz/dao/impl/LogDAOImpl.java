@@ -145,6 +145,7 @@ public class LogDAOImpl implements LogDAO {
 
 	@Override
 	public int getPageByCountWhithUid(int count, int uid) {
-		return CustomerUtil.getAllCount(new DBConnection().getConnection(), "log", "uid=" + uid, count);
+		return CustomerUtil.getPage(count,
+				CustomerUtil.getAllCount(new DBConnection().getConnection(), "log", "uid=" + uid, count));
 	}
 }
