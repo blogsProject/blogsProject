@@ -2,10 +2,14 @@ package com.lzlz.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.lzlz.dao.MessageDAO;
 import com.lzlz.entiy.Message;
+import com.lzlz.util.CustomerUtil;
 import com.lzlz.util.DBConnection;
 
 public class MessageDAOImpl implements MessageDAO {
@@ -37,6 +41,31 @@ public class MessageDAOImpl implements MessageDAO {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public List<Message> selectByReceive(int receive, int curpage, int count) {
+		try {
+			String sql = "select * from message where receive=? limit ?,?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, receive);
+			pstm.setInt(2, CustomerUtil.limitFristParmaWithMyql(curpage, count));
+			pstm.setInt(3, count);
+			ResultSet rs = pstm.executeQuery();
+			List<Message> list = new ArrayList<>();
+			while (rs.next()) {
+				list.add(new Message(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+			}
+			if (conn != null)
+				conn.close();
+			if (pstm != null)
+				pstm.close();
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

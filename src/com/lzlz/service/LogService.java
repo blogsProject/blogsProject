@@ -13,7 +13,7 @@ public interface LogService {
 
 	public Log getLogByLid(int lid);
 
-	public int getPageByCount(int count);
+	public int getPageByCountWhithUid(int count,int uid);
 
 	public List<Log> queryAll(int curpage, int count);
 

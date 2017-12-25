@@ -93,8 +93,8 @@ public class FilesDAOImpl implements FilesDAO {
 	}
 
 	@Override
-	public int getAllPageByCount(int count) {
-		return CustomerUtil.getAllCount(new DBConnection().getConnection(), "files", count);
+	public int getAllPageByCountWithUid(int count, int uid) {
+		return CustomerUtil.getAllCount(new DBConnection().getConnection(), "files", "uid=" + uid, count);
 	}
 
 }

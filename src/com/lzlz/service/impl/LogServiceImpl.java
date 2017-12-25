@@ -50,8 +50,8 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public int getPageByCount(int count) {
-		return logDAO.getPageByCount(count);
+	public int getPageByCountWhithUid(int count,int uid) {
+		return logDAO.getPageByCountWhithUid(count,uid);
 	}
 
 }

@@ -14,10 +14,15 @@ public class CustomerUtil {
 		return allCount % count == 0 ? allCount / count : allCount / count + 1;
 	}
 
-	public static int getAllCount(Connection conn, String tablename, int count) {
+	public static int getAllCount(Connection conn, String tablename, String where, int count) {
 		try {
-			String sql = "Select count(*) from " + tablename;
+			String tempWhere = "1=1";
+			if (where != null)
+				tempWhere = where;
+			String sql = "select count(*) from ? where ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, tablename);
+			pstmt.setString(2, tempWhere);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			int countAll = rs.getInt(1);

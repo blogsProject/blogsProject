@@ -30,8 +30,8 @@ public class FilesServiceImpl implements FilesService {
 	}
 
 	@Override
-	public int getAllPageByCount(int count) {
-		return fileDAO.getAllPageByCount(count);
+	public int getAllPageByCountWithUid(int count, int uid) {
+		return fileDAO.getAllPageByCountWithUid(count, uid);
 	}
 
 	@Override
