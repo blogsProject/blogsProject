@@ -13,3 +13,10 @@
 </form>
 </body>
 </html>
+<%
+session.setAttribute("user","user");
+String[] a = request.getParameterValues("num");
+for(String temp : a){
+	
+}
+%>
