@@ -6,12 +6,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lzlz.service.FriendService;
+import com.lzlz.util.DAOFactory;
+
 public class FriendController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private FriendService friendService;
 
 	public FriendController() {
-		super();
-
+		this.friendService = DAOFactory.getFriendService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -20,13 +23,8 @@ public class FriendController extends HttpServlet {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
