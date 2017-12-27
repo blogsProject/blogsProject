@@ -11,9 +11,13 @@ public interface LogService {
 
 	public int updateByLog(Log log);
 
+	public int updateByLidWhithReadNum(int lid);
+
 	public Log getLogByLid(int lid);
 
-	public int getPageByCountWhithUid(int count,int uid);
+	public int getAllCountByUid(int uid);
+
+	public int getPageByCountWhithUid(int count, int uid);
 
 	public List<Log> queryAll(int curpage, int count);
 

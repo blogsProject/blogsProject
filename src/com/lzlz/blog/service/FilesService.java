@@ -14,4 +14,6 @@ public interface FilesService {
 	public List<Files> selectByUidWithType(int uid, boolean flag,int curpage,int count);
 
 	public List<String> selectFileNameByUid(int uid);
+	
+	public int getAllCountByUid(int uid);
 }

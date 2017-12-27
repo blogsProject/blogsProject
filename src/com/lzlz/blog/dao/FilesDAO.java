@@ -10,8 +10,10 @@ public interface FilesDAO {
 	public int deleteByFid(int fid);
 	
 	public int getAllPageByCountWithUid(int count,int uid);
-
+	
 	public List<Files> selectByUidWithType(int uid, boolean flag,int curpage,int count);
 
 	public List<String> selectFileNameByUid(int uid);
+	
+	public int getAllCountByUid(int uid);
 }

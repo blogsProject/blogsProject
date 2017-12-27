@@ -16,7 +16,7 @@ import com.lzlz.blog.service.UserService;
 public class DAOFactory {
 	public static UserDAO getUserDAO() {
 		try {
-			UserDAO userDao = (UserDAO) Class.forName("com.zhangluping.dao.impl.UserDAOImpl").newInstance();
+			UserDAO userDao = (UserDAO) Class.forName("com.lzlz.blog.dao.impl.UserDAOImpl").newInstance();
 			return userDao;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -26,7 +26,7 @@ public class DAOFactory {
 
 	public static UserService getUserService() {
 		try {
-			UserService userService = (UserService) Class.forName("com.zhangluping.service.impl.UserServiceImpl")
+			UserService userService = (UserService) Class.forName("com.lzlz.blog.service.impl.UserServiceImpl")
 					.newInstance();
 			return userService;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -37,7 +37,7 @@ public class DAOFactory {
 
 	public static LogDAO getLogDAO() {
 		try {
-			LogDAO logDAO = (LogDAO) Class.forName("com.zhangluping.dao.impl.LogDAOImpl").newInstance();
+			LogDAO logDAO = (LogDAO) Class.forName("com.lzlz.blog.dao.impl.LogDAOImpl").newInstance();
 			return logDAO;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class DAOFactory {
 
 	public static LogService getLogService() {
 		try {
-			LogService logService = (LogService) Class.forName("com.zhangluping.service.impl.LogServiceImpl")
+			LogService logService = (LogService) Class.forName("com.lzlz.blog.service.impl.LogServiceImpl")
 					.newInstance();
 			return logService;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -58,7 +58,7 @@ public class DAOFactory {
 
 	public static ReplyDAO getReplyDAO() {
 		try {
-			ReplyDAO replyDAO = (ReplyDAO) Class.forName("com.zhangluping.dao.impl.ReplyDAOImpl").newInstance();
+			ReplyDAO replyDAO = (ReplyDAO) Class.forName("com.lzlz.blog.dao.impl.ReplyDAOImpl").newInstance();
 			return replyDAO;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -68,7 +68,7 @@ public class DAOFactory {
 
 	public static ReplyService getReplyService() {
 		try {
-			ReplyService replyService = (ReplyService) Class.forName("com.zhangluping.service.impl.ReplyServiceImpl")
+			ReplyService replyService = (ReplyService) Class.forName("com.lzlz.blog.service.impl.ReplyServiceImpl")
 					.newInstance();
 			return replyService;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -79,7 +79,7 @@ public class DAOFactory {
 
 	public static MessageDAO getMessageDAO() {
 		try {
-			MessageDAO messageDAO = (MessageDAO) Class.forName("com.zhangluping.dao.impl.MessageDAOImpl").newInstance();
+			MessageDAO messageDAO = (MessageDAO) Class.forName("com.lzlz.blog.dao.impl.MessageDAOImpl").newInstance();
 			return messageDAO;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class DAOFactory {
 	public static MessageService getMessageService() {
 		try {
 			MessageService messageService = (MessageService) Class
-					.forName("com.zhangluping.service.impl.MessageServiceImpl").newInstance();
+					.forName("com.lzlz.blog.service.impl.MessageServiceImpl").newInstance();
 			return messageService;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -100,7 +100,7 @@ public class DAOFactory {
 
 	public static FilesDAO getFilesDAO() {
 		try {
-			FilesDAO filesDAO = (FilesDAO) Class.forName("com.zhangluping.dao.impl.FilesDAOImpl").newInstance();
+			FilesDAO filesDAO = (FilesDAO) Class.forName("com.lzlz.blog.dao.impl.FilesDAOImpl").newInstance();
 			return filesDAO;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -110,7 +110,7 @@ public class DAOFactory {
 
 	public static FilesService getFilesService() {
 		try {
-			FilesService filesService = (FilesService) Class.forName("com.zhangluping.service.impl.FilesServiceImpl")
+			FilesService filesService = (FilesService) Class.forName("com.lzlz.blog.service.impl.FilesServiceImpl")
 					.newInstance();
 			return filesService;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -121,7 +121,7 @@ public class DAOFactory {
 
 	public static FriendDAO getFriendDAO() {
 		try {
-			FriendDAO friendDAO = (FriendDAO) Class.forName("com.zhangluping.dao.impl.FriendDAOImpl").newInstance();
+			FriendDAO friendDAO = (FriendDAO) Class.forName("com.lzlz.blog.dao.impl.FriendDAOImpl").newInstance();
 			return friendDAO;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -132,7 +132,7 @@ public class DAOFactory {
 	public static FriendService getFriendService() {
 		try {
 			FriendService friendService = (FriendService) Class
-					.forName("com.zhangluping.service.impl.FriendServiceImpl").newInstance();
+					.forName("com.lzlz.blog.service.impl.FriendServiceImpl").newInstance();
 			return friendService;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();

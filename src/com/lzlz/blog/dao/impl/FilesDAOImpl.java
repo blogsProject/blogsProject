@@ -1,4 +1,4 @@
-package com.lzlz.dao.blog.impl;
+package com.lzlz.blog.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -53,7 +53,7 @@ public class FilesDAOImpl implements FilesDAO {
 		else
 			type = "“Ù¿÷";
 		try {
-			String sql = "select * from files where uid=? and flag=? limit ?,?";
+			String sql = "select * from files where uid=? and ftype=? limit ?,?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
@@ -94,8 +94,23 @@ public class FilesDAOImpl implements FilesDAO {
 
 	@Override
 	public int getAllPageByCountWithUid(int count, int uid) {
-		return CustomerUtil.getPage(count,
-				CustomerUtil.getAllCount(new DBConnection().getConnection(), "files", "uid=" + uid, count));
+		return CustomerUtil.getPage(count, getAllCountByUid(uid));
+	}
+
+	@Override
+	public int getAllCountByUid(int uid) {
+		try {
+			String sql = "select count(*) from files where uid=?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uid);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

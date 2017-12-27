@@ -1,4 +1,4 @@
-package com.lzlz.dao.blog.impl;
+package com.lzlz.blog.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,12 +44,12 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 
 	@Override
-	public List<Message> selectByReceive(int receive, int curpage, int count) {
+	public List<Message> selectByReceiveId(int receiveid, int curpage, int count) {
 		try {
-			String sql = "select * from message where receive=? limit ?,?";
+			String sql = "select * from message where receiveid=? limit ?,?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, receive);
+			pstm.setInt(1, receiveid);
 			pstm.setInt(2, CustomerUtil.limitFristParmaWithMyql(curpage, count));
 			pstm.setInt(3, count);
 			ResultSet rs = pstm.executeQuery();
@@ -57,10 +57,6 @@ public class MessageDAOImpl implements MessageDAO {
 			while (rs.next()) {
 				list.add(new Message(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 			}
-			if (conn != null)
-				conn.close();
-			if (pstm != null)
-				pstm.close();
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,9 +65,36 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 
 	@Override
-	public int getPageByReceive(int count, int receive) {
-		return CustomerUtil.getPage(count,
-				CustomerUtil.getAllCount(new DBConnection().getConnection(), "message", "receive=?", count));
+	public int getPageByReceiveId(int count, int receiveid) {
+		return CustomerUtil.getPage(count, getAllCountByReceiveId(receiveid));
+	}
+
+	@Override
+	public int getAllCountByReceiveId(int receiveid) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		try {
+			String sql = "select count(*) from message where receiveid=?";
+			conn = new DBConnection().getConnection();
+			pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, receiveid);
+			ResultSet rs = pstm.executeQuery();
+			rs.next();
+			int ret = rs.getInt(1);
+			return ret;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null)
+					conn.close();
+				if (pstm != null)
+					pstm.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
 	}
 
 }

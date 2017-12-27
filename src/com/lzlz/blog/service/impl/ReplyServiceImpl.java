@@ -30,5 +30,10 @@ public class ReplyServiceImpl implements ReplyService {
 		return replyDAO.getPageByLid(count, lid);
 	}
 
+	@Override
+	public int getAllCountByLid(int lid) {
+		return replyDAO.getAllCountByLid(lid);
+	}
+
 
 }

@@ -26,13 +26,19 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public List<Message> selectByReceive(int receive, int curpage, int count) {
-		return messageDAO.selectByReceive(receive, curpage, count);
+	public List<Message> selectByReceiveId(int receiveid, int curpage, int count) {
+		return messageDAO.selectByReceiveId(receiveid, curpage, count);
 	}
 
 	@Override
-	public int getPageByReceive(int count, int receive) {
-		return messageDAO.getPageByReceive(count, receive);
+	public int getPageByReceiveId(int count, int receiveid) {
+		return messageDAO.getPageByReceiveId(count, receiveid);
+	}
+
+	@Override
+	public int getAllCountByReceiveId(int receiveid) {
+		// TODO Auto-generated method stub
+		return messageDAO.getAllCountByReceiveId(receiveid);
 	}
 
 }

@@ -1,10 +1,10 @@
 package com.lzlz.blog.entiy;
 
 public class Reply {
-	private int rid;
+	private int uid;
 	private int lid;
 	private String rcontent;
-	private String rdate;
+	private String rdatetime;
 
 	public Reply() {
 		super();
@@ -12,18 +12,18 @@ public class Reply {
 
 	public Reply(int rid, int lid, String rcontent, String rdate) {
 		super();
-		this.rid = rid;
+		this.uid = rid;
 		this.lid = lid;
 		this.rcontent = rcontent;
-		this.rdate = rdate;
+		this.rdatetime = rdate;
 	}
 
-	public int getRid() {
-		return rid;
+	public int getUid() {
+		return uid;
 	}
 
-	public void setRid(int rid) {
-		this.rid = rid;
+	public void setUid(int rid) {
+		this.uid = rid;
 	}
 
 	public int getLid() {
@@ -42,17 +42,17 @@ public class Reply {
 		this.rcontent = rcontent;
 	}
 
-	public String getRdate() {
-		return rdate;
+	public String getRdatetime() {
+		return rdatetime;
 	}
 
-	public void setRdate(String rdate) {
-		this.rdate = rdate;
+	public void setRdatetime(String rdate) {
+		this.rdatetime = rdate;
 	}
 
 	@Override
 	public String toString() {
-		return "Reply [rid=" + rid + ", lid=" + lid + ", rcontent=" + rcontent + ", rdate=" + rdate + "]";
+		return "Reply [uid=" + uid + ", lid=" + lid + ", rcontent=" + rcontent + ", rdatetime=" + rdatetime + "]";
 	}
 
 }

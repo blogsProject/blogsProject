@@ -1,4 +1,4 @@
-package com.lzlz.dao.blog.impl;
+package com.lzlz.blog.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,10 +17,10 @@ public class ReplyDAOImpl implements ReplyDAO {
 	@Override
 	public int insertByReply(Reply reply) {
 		try {
-			String sql = "insert reply(rid,lid,rcontent,rdate) value(?,?,?,now())";
+			String sql = "insert reply(uid,lid,rcontent,rdatetime) value(?,?,?,now())";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, reply.getRid());
+			pstmt.setInt(1, reply.getUid());
 			pstmt.setInt(2, reply.getLid());
 			pstmt.setString(3, reply.getRcontent());
 			return pstmt.executeUpdate();
@@ -54,8 +54,23 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public int getPageByLid(int count, int lid) {
-		return CustomerUtil.getPage(count,
-				CustomerUtil.getAllCount(new DBConnection().getConnection(), "reply", "lid=" + lid, count));
+		return CustomerUtil.getPage(count, getAllCountByLid(lid));
+	}
+
+	@Override
+	public int getAllCountByLid(int lid) {
+		try {
+			String sql = "Select count(*) from reply where lid=?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, lid);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

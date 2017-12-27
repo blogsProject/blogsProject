@@ -39,4 +39,10 @@ public class FilesServiceImpl implements FilesService {
 		return fileDAO.selectByUidWithType(uid, flag, curpage, count);
 	}
 
+	@Override
+	public int getAllCountByUid(int uid) {
+		// TODO Auto-generated method stub
+		return fileDAO.getAllCountByUid(uid);
+	}
+
 }

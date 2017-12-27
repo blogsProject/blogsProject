@@ -1,4 +1,4 @@
-package com.lzlz.dao.blog.impl;
+package com.lzlz.blog.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -145,7 +145,36 @@ public class LogDAOImpl implements LogDAO {
 
 	@Override
 	public int getPageByCountWhithUid(int count, int uid) {
-		return CustomerUtil.getPage(count,
-				CustomerUtil.getAllCount(new DBConnection().getConnection(), "log", "uid=" + uid, count));
+		return CustomerUtil.getPage(count, getAllCountByUid(uid));
+	}
+
+	@Override
+	public int getAllCountByUid(int uid) {
+		try {
+			String sql = "Select count(*) from log where uid=?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uid);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int updateByLidWhithReadNum(int lid) {
+		try {
+			String sql = "update log set readnum=readnum+1 where lid=?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, lid);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

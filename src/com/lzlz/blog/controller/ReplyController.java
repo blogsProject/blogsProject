@@ -23,7 +23,10 @@ public class ReplyController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		selectByLid(request, response);
+		StringBuffer sb = new StringBuffer();
+		for(Reply re : replyService.selectByLid(1, 2, 3))
+			sb.append(re.toString());
+		response.getWriter().write(""+sb);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

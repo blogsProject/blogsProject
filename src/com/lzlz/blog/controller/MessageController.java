@@ -23,7 +23,10 @@ public class MessageController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		deleteByMid(request, response);
+		StringBuilder sb = new StringBuilder();
+		for(Message mess :messageService.selectByReceiveId(2,1,5))
+				sb.append(mess.toString());
+		response.getWriter().write("" + sb);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
