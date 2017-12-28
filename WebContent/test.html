@@ -1,0 +1,38 @@
+<!DOCTYPE htm>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+var mplayer_song=[[]];
+$.ajax({
+	type:"get",
+	async:false, 
+	url:"FilesController",
+	data:{
+		
+	},success : function(data){
+		var datajsno = $.parseJSON(data); 
+		var content = datajsno.fileList;
+		var con_length = content.length;
+		var kaitou = {
+				"basic":true,
+				"name":"我的音乐"
+			};
+		mplayer_song[0].push(kaitou);
+		$.each(content,function(i){
+			var temp={};
+			temp.name=content[i].fname;
+			temp.src =content[i].fpath;
+			mplayer_song[0].push(temp);
+		});
+	}
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body id="parent">
+</body>
+</html>

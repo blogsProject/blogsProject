@@ -79,7 +79,7 @@ public class FileProcess {
 					} while (file.exists());
 					// –¥µΩ¥≈≈Ã…œ»•
 					item.write(file);
-					filesService.insertByFiles(new Files(0, dir + "/" + filename, flag ? "Õº∆¨" : "“Ù¿÷", uid));
+					filesService.insertByFiles(new Files(0, null, dir + "/" + filename, flag ? "Õº∆¨" : "“Ù¿÷", uid));
 					response.getWriter().write(filename);
 				}
 

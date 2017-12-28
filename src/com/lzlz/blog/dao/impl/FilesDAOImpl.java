@@ -20,7 +20,7 @@ public class FilesDAOImpl implements FilesDAO {
 			String sql = "insert files(fpath,ftype,uid) value(?,?,?)";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, files.getPath());
+			pstmt.setString(1, files.getFpath());
 			pstmt.setString(2, files.getFtype());
 			pstmt.setInt(3, files.getUid());
 			return pstmt.executeUpdate();
@@ -63,7 +63,10 @@ public class FilesDAOImpl implements FilesDAO {
 			List<Files> list = new ArrayList<>();
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				list.add(new Files(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+				String fpath = rs.getString(2);
+				String fnameIncludeExtern = fpath.substring(fpath.indexOf('/') + 1);
+				String fnameNoExtern = fnameIncludeExtern.substring(0, fnameIncludeExtern.lastIndexOf('.'));
+				list.add(new Files(rs.getInt(1), fnameNoExtern, fpath, rs.getString(3), rs.getInt(4)));
 			}
 			return list;
 		} catch (Exception e) {
