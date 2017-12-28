@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,9 +23,9 @@ public class FileProcess {
 	 * 文件上传
 	 * 
 	 * @param request
-	 *            servlet的HttpServtRequest 实例对象
+	 *            HttpServletRequest 实例对象
 	 * @param response
-	 *            HttpResponse 实例对象
+	 *            HttpServletResponse 实例对象
 	 * @param filesService
 	 *            FilesService 实例对象
 	 * @param flag
@@ -72,7 +71,7 @@ public class FileProcess {
 					int start = value.lastIndexOf("\\");
 					// 2,索引到最后一个反斜杠
 					String filename = value.substring(start + 1);// 3,
-																	// 截取(+1是去掉反斜杠)
+																 // 截取(+1是去掉反斜杠)
 					File file = null;
 					do {
 						// 生成文件名
@@ -82,7 +81,7 @@ public class FileProcess {
 						// start = filename.lastIndexOf("."); // 索引到最后一个点
 						// String expanded_name = filename.substring(start);
 						List<String> fileNamelist = filesService.selectFileNameByUid(uid);
-						filename = fileIsExist(filename, filename, fileNamelist, 1);
+						filename = filenameIsExist(filename, filename, fileNamelist, 1);
 						file = new File(path, filename);
 					} while (file.exists());
 					// 写到磁盘上去
@@ -99,9 +98,9 @@ public class FileProcess {
 	}
 
 	/**
-	 * 
-	 * @param request
-	 * @param response
+	 * 下载文件 通过文件路径
+	 * @param request  servlet的HttpServletRequest 实例对象
+	 * @param response HttpServletResponse 实例对象
 	 * @throws IOException
 	 */
 	public static void downloadProcess(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -138,14 +137,14 @@ public class FileProcess {
 	 *            需要判断的文件字符串集合
 	 * @param count
 	 *            数字从几开始 默认从1开始
-	 * @return 修改后的文件名或者未修改的文件名(假如这个文件不存在)
+	 * @return 修改后的文件名或者未修改的文件名(假如这个文件名不存在)
 	 */
-	public static String fileIsExist(String fileold, String filename, List<String> fileNamelist, int count) {
+	public static String filenameIsExist(String fileold, String filename, List<String> fileNamelist, int count) {
 		if (count <= 0)
 			count = 1;
 		if (!fileNamelist.contains(filename))
 			return filename;
-		return fileIsExist(fileold, fileold + "(" + count++ + ")", fileNamelist, count);
+		return filenameIsExist(fileold, fileold + "(" + count++ + ")", fileNamelist, count);
 	}
 
 }

@@ -27,4 +27,17 @@ public class CustomerUtil {
 		return (allCount % count == 0 ? allCount / count : allCount / count + 1);
 	}
 
+	/**
+	 * 判断传入进来的字符串是否有null值
+	 * 
+	 * @param str 多选参数
+	 * @return 有null返回true 没有返回false
+	 */
+	public static boolean isNullStringArr(String... str) {
+		for (int i = 0; i < str.length; i++) {
+			if (str[i] == null)
+				return true;
+		}
+		return false;
+	}
 }

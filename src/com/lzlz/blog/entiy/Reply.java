@@ -10,9 +10,9 @@ public class Reply {
 		super();
 	}
 
-	public Reply(int rid, int lid, String rcontent, String rdate) {
+	public Reply(int uid, int lid, String rcontent, String rdate) {
 		super();
-		this.uid = rid;
+		this.uid = uid;
 		this.lid = lid;
 		this.rcontent = rcontent;
 		this.rdatetime = rdate;

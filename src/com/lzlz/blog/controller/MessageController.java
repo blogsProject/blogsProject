@@ -5,8 +5,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lzlz.blog.entiy.Message;
+import com.lzlz.blog.entiy.User;
 import com.lzlz.blog.service.MessageService;
 import com.lzlz.blog.util.DAOFactory;
 
@@ -23,10 +25,13 @@ public class MessageController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StringBuilder sb = new StringBuilder();
-		for(Message mess :messageService.selectByReceiveId(2,1,5))
-				sb.append(mess.toString());
-		response.getWriter().write("" + sb);
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String flag = request.getParameter("flag");
+		if (flag == null)
+			response.sendRedirect("index.jsp");
+		if (flag.equals("insert"))
+			insertByMessage(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +41,14 @@ public class MessageController extends HttpServlet {
 
 	protected void insertByMessage(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().write("" + messageService.insertByMessage(new Message(0, 1, 2)));
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		String receiveid = request.getParameter("receiveid");
+		if (user == null || receiveid == null)
+			System.out.println("¥¶¿Ì”Ôæ‰");
+		int uid = user.getUid();
+		response.getWriter()
+				.write("" + messageService.insertByMessage(new Message(0, uid, Integer.valueOf(receiveid))));
 	}
 
 	protected void deleteByMid(HttpServletRequest request, HttpServletResponse response)

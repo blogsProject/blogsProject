@@ -31,9 +31,9 @@ public class FilesController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		if (request.getSession().getAttribute("user") == null)
-			response.sendRedirect("index.jsp");
 		String flag = request.getParameter("flag");
+		if (flag == null)
+			response.sendRedirect("index.jsp");
 		if (flag.equals("music"))
 			queryFileByUidWhithType(request, response);
 	}

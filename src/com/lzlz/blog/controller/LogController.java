@@ -25,6 +25,8 @@ public class LogController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String flag = request.getParameter("flag");
+		if (flag == null)
+			response.sendRedirect("index.jsp");
 		if (flag.equals("home") || flag == null) {
 			queryAll(request, response);
 		}
@@ -57,10 +59,7 @@ public class LogController extends HttpServlet {
 
 	protected void queryAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int curpage = Integer.valueOf(
-							request.getParameter("curpage") == null ?
-									"1" : request.getParameter("curpage")
-												);
+		int curpage = Integer.valueOf(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
 		int Allpage = logService.getPageWhithAll(5);
 		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));
 		request.setAttribute("page", new Page(curpage, Allpage));
@@ -73,7 +72,7 @@ public class LogController extends HttpServlet {
 		int Allpage = logService.getPageWhithAll(5);
 		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));
 		request.setAttribute("page", new Page(curpage, Allpage));
-		
+
 	}
 
 	protected void queryWithReadNum(HttpServletRequest request, HttpServletResponse response)
