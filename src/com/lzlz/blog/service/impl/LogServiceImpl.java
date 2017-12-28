@@ -64,4 +64,16 @@ public class LogServiceImpl implements LogService {
 		return logDAO.updateByLidWhithReadNum(lid);
 	}
 
+	@Override
+	public int getAllCount() {
+		// TODO Auto-generated method stub
+		return logDAO.getAllCount();
+	}
+
+	@Override
+	public int getPageWhithAll(int count) {
+		// TODO Auto-generated method stub
+		return logDAO.getPageWhithAll(count);
+	}
+
 }

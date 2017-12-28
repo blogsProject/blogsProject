@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lzlz.blog.entiy.Files;
 import com.lzlz.blog.service.FilesService;
 import com.lzlz.blog.util.DAOFactory;
 import com.lzlz.blog.util.FileProcess;

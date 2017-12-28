@@ -16,8 +16,8 @@ public interface FriendDAO {
 	/**
 	 * 通过好友的ID和主人的ID删除一条记录
 	 * 
-	 * @param first		second 
-	 *            主人ID 			好友ID
+	 * @param first
+	 *            second 主人ID 好友ID
 	 * @return 返回删除结果
 	 */
 	public int deleteBySecondId(int first, int second);
@@ -36,9 +36,17 @@ public interface FriendDAO {
 	/**
 	 * 通过first和count获取总页数
 	 * 
-	 * @param count	frist
-	 *      多少个一页    主人编号
+	 * @param count
+	 *            frist 多少个一页 主人编号
 	 * @return 总页数
 	 */
 	public int getAllPageByFristByCount(int frist, int count);
+
+	/**
+	 * 通过first获取总记录数
+	 * 
+	 * @param frist
+	 * @return 总的记录数
+	 */
+	public int getAllCountByFristByCount(int frist);
 }

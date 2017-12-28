@@ -27,4 +27,9 @@ public class FriendDAOImpl implements FriendDAO {
 		return 0;
 	}
 
+	@Override
+	public int getAllCountByFristByCount(int frist) {
+		return 0;
+	}
+
 }

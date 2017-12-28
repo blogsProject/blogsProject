@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lzlz.blog.entiy.Log;
+import com.lzlz.blog.entiy.Page;
 import com.lzlz.blog.service.LogService;
 import com.lzlz.blog.util.DAOFactory;
 
@@ -23,8 +24,9 @@ public class LogController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		response.getWriter().write("" + logService.updateByLidWhithReadNum(1));
-
+		if (request.getParameter("flag").equals("home")) {
+			queryAll(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,11 +56,11 @@ public class LogController extends HttpServlet {
 
 	protected void queryAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StringBuffer sb = new StringBuffer();
-		for (Log log : logService.queryAll(1, 5)) {
-			sb.append(log);
-		}
-		response.getWriter().write("" + sb.toString());
+		int curpage = Integer.valueOf(request.getParameter("curpage"));
+		int Allpage = logService.getPageWhithAll(5);
+		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));
+		request.setAttribute("page", new Page(curpage, Allpage));
+		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
 	protected void queryByUid(HttpServletRequest request, HttpServletResponse response)

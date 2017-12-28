@@ -177,4 +177,24 @@ public class LogDAOImpl implements LogDAO {
 		}
 		return 0;
 	}
+
+	@Override
+	public int getAllCount() {
+		try {
+			String sql = "Select count(*) from log";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int getPageWhithAll(int count) {
+		return CustomerUtil.getPage(count, getAllCount());
+	}
 }
