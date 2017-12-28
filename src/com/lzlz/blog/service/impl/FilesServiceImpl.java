@@ -41,8 +41,12 @@ public class FilesServiceImpl implements FilesService {
 
 	@Override
 	public int getAllCountByUid(int uid) {
-		// TODO Auto-generated method stub
 		return fileDAO.getAllCountByUid(uid);
+	}
+
+	@Override
+	public List<Files> selectByUidWithTypeNoFenye(int uid, boolean flag) {
+		return fileDAO.selectByUidWithTypeNoFenye(uid, flag);
 	}
 
 }

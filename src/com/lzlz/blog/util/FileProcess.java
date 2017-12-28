@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,20 @@ import com.lzlz.blog.entiy.Files;
 import com.lzlz.blog.service.FilesService;
 
 public class FileProcess {
+	/**
+	 * 文件上传
+	 * 
+	 * @param request
+	 *            servlet的HttpServtRequest 实例对象
+	 * @param response
+	 *            HttpResponse 实例对象
+	 * @param filesService
+	 *            FilesService 实例对象
+	 * @param flag
+	 *            文件类型 true 图片 false 音乐
+	 * @param uid
+	 *            用户id
+	 */
 	public static void uploadProcess(HttpServletRequest request, HttpServletResponse response,
 			FilesService filesService, boolean flag, int uid) {
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
@@ -67,14 +82,7 @@ public class FileProcess {
 						// start = filename.lastIndexOf("."); // 索引到最后一个点
 						// String expanded_name = filename.substring(start);
 						List<String> fileNamelist = filesService.selectFileNameByUid(uid);
-						int count = 1;
-						while (true) {
-							if (fileNamelist.contains(filename)) {
-								filename += "(" + count + ")";
-							} else {
-								break;
-							}
-						}
+						filename = fileIsExist(filename, filename, fileNamelist, 1);
 						file = new File(path, filename);
 					} while (file.exists());
 					// 写到磁盘上去
@@ -90,6 +98,12 @@ public class FileProcess {
 		}
 	}
 
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	public static void downloadProcess(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String filename = request.getRealPath("upload") + "/" + request.getParameter("filename");
 		System.out.println(filename);
@@ -112,4 +126,26 @@ public class FileProcess {
 		fis.close();
 		outs.close();
 	}
+
+	/**
+	 * 判断文件是否在数据库里存在 如果存在就加上 (数字) 参照window命名规则
+	 * 
+	 * @param fileold
+	 *            原来的文件名
+	 * @param filename
+	 *            更改后的文件名 注:调用这个方法的时候fileold和filename要一样
+	 * @param fileNamelist
+	 *            需要判断的文件字符串集合
+	 * @param count
+	 *            数字从几开始 默认从1开始
+	 * @return 修改后的文件名或者未修改的文件名(假如这个文件不存在)
+	 */
+	public static String fileIsExist(String fileold, String filename, List<String> fileNamelist, int count) {
+		if (count <= 0)
+			count = 1;
+		if (!fileNamelist.contains(filename))
+			return filename;
+		return fileIsExist(fileold, fileold + "(" + count++ + ")", fileNamelist, count);
+	}
+
 }

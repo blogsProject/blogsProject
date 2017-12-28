@@ -13,6 +13,8 @@ public interface FilesService {
 
 	public List<Files> selectByUidWithType(int uid, boolean flag,int curpage,int count);
 
+	public List<Files> selectByUidWithTypeNoFenye(int uid, boolean flag);
+	
 	public List<String> selectFileNameByUid(int uid);
 	
 	public int getAllCountByUid(int uid);

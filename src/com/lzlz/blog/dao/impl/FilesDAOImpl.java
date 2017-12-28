@@ -116,4 +116,32 @@ public class FilesDAOImpl implements FilesDAO {
 		return 0;
 	}
 
+	@Override
+	public List<Files> selectByUidWithTypeNoFenye(int uid, boolean flag) {
+		String type;
+		if (flag)
+			type = "Õº∆¨";
+		else
+			type = "“Ù¿÷";
+		try {
+			String sql = "select * from files where uid=? and ftype=?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uid);
+			pstmt.setString(2, type);
+			List<Files> list = new ArrayList<>();
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String fpath = rs.getString(2);
+				String fnameIncludeExtern = fpath.substring(fpath.indexOf('/') + 1);
+				String fnameNoExtern = fnameIncludeExtern.substring(0, fnameIncludeExtern.lastIndexOf('.'));
+				list.add(new Files(rs.getInt(1), fnameNoExtern, fpath, rs.getString(3), rs.getInt(4)));
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

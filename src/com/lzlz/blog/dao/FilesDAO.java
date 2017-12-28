@@ -48,7 +48,12 @@ public interface FilesDAO {
 	 * @return 文件集合
 	 */
 	public List<Files> selectByUidWithType(int uid, boolean flag, int curpage, int count);
-
+	/**
+	 * 不分页的查询
+	 * @param uid 用户编号
+	 * @return 文件集合
+	 */
+	public List<Files> selectByUidWithTypeNoFenye(int uid,boolean flag);
 	/**
 	 * 通过用户id查询文件名的集合
 	 * 
@@ -57,7 +62,7 @@ public interface FilesDAO {
 	 * @return 文件名集合
 	 */
 	public List<String> selectFileNameByUid(int uid);
-
+	
 	/**
 	 * 通过用户id获取所有文件的个数
 	 * 

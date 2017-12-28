@@ -57,11 +57,13 @@ public class LogController extends HttpServlet {
 
 	protected void queryAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int curpage = Integer.valueOf(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
+		int curpage = Integer.valueOf(
+							request.getParameter("curpage") == null ?
+									"1" : request.getParameter("curpage")
+												);
 		int Allpage = logService.getPageWhithAll(5);
 		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));
 		request.setAttribute("page", new Page(curpage, Allpage));
-		System.out.println(((Page)request.getAttribute("page")).toString());
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 

@@ -295,8 +295,11 @@ $.ajax({
 	async:false, 
 	url:"FilesController",
 	data:{
+		flag:"music",
 		type:false
 	},success : function(data){
+		if(data == 1)
+			location="index.jsp";
 		var datajsno = $.parseJSON(data); 
 		var content = datajsno.fileList;
 		var con_length = content.length;
