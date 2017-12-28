@@ -7,8 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script src="js/jquery-2.2.4.min.js"></script>
+<form name="hform" action="LogController" method="post">
+<input type="hidden" name="curpage" value="1" />
+<input type="hidden" name="flag" value="home" />
+</form>
 <script type="text/javascript">
-location="LogController?flag=home&curpage=1";
+document.hform.submit();
 </script>
 </body>
 </html>

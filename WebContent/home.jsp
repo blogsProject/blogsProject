@@ -30,7 +30,7 @@
 <link rel="stylesheet" type="text/css" href="css/pretty.min.css">
 <script type="text/javascript">
 <c:if test="${empty page}">
-localtion="index.jsp";
+location="index.jsp";
 </c:if>
 </script>
 <script type="text/javascript">

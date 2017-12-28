@@ -24,7 +24,8 @@ public class LogController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		if (request.getParameter("flag").equals("home")) {
+		String flag = request.getParameter("flag");
+		if (flag.equals("home") || flag == null) {
 			queryAll(request, response);
 		}
 	}
@@ -56,20 +57,21 @@ public class LogController extends HttpServlet {
 
 	protected void queryAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int curpage = Integer.valueOf(request.getParameter("curpage"));
+		int curpage = Integer.valueOf(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
 		int Allpage = logService.getPageWhithAll(5);
 		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));
 		request.setAttribute("page", new Page(curpage, Allpage));
+		System.out.println(((Page)request.getAttribute("page")).toString());
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
 	protected void queryByUid(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StringBuffer sb = new StringBuffer();
-		for (Log log : logService.queryByUid(1, 1, 5)) {
-			sb.append(log);
-		}
-		response.getWriter().write("" + sb.toString());
+		int curpage = Integer.valueOf(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
+		int Allpage = logService.getPageWhithAll(5);
+		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));
+		request.setAttribute("page", new Page(curpage, Allpage));
+		
 	}
 
 	protected void queryWithReadNum(HttpServletRequest request, HttpServletResponse response)
