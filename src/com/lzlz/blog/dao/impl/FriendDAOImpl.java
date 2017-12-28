@@ -6,7 +6,7 @@ import com.lzlz.blog.dao.FriendDAO;
 import com.lzlz.blog.entiy.Friend;
 
 public class FriendDAOImpl implements FriendDAO {
-	
+
 	@Override
 	public int insertByFriend(Friend friend) {
 		return 0;

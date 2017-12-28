@@ -87,9 +87,12 @@ public interface LogDAO {
 	public int getPageWhithAll(int count);
 
 	/**
-	 * 查询所有的日志集合 
-	 * @param curpage 当前页
-	 * @param count 一页多少个数
+	 * 查询所有的日志集合
+	 * 
+	 * @param curpage
+	 *            当前页
+	 * @param count
+	 *            一页多少个数
 	 * @return 所有日志的集合
 	 */
 	public List<Log> queryAll(int curpage, int count);

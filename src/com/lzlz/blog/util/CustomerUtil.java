@@ -30,7 +30,8 @@ public class CustomerUtil {
 	/**
 	 * 判断传入进来的字符串是否有null值
 	 * 
-	 * @param str 多选参数
+	 * @param str
+	 *            多选参数
 	 * @return 有null返回true 没有返回false
 	 */
 	public static boolean isNullStringArr(String... str) {

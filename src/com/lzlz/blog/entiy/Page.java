@@ -6,7 +6,6 @@ public class Page {
 
 	public Page() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Page(int curpage, int allPage) {

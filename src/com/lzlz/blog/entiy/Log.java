@@ -10,7 +10,6 @@ public class Log {
 
 	public Log() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Log(int lid, String ltitle, String lcontent, String ltime, int uid, int readnum) {

@@ -71,7 +71,7 @@ public class FileProcess {
 					int start = value.lastIndexOf("\\");
 					// 2,索引到最后一个反斜杠
 					String filename = value.substring(start + 1);// 3,
-																 // 截取(+1是去掉反斜杠)
+																	// 截取(+1是去掉反斜杠)
 					File file = null;
 					do {
 						// 生成文件名
@@ -99,8 +99,11 @@ public class FileProcess {
 
 	/**
 	 * 下载文件 通过文件路径
-	 * @param request  servlet的HttpServletRequest 实例对象
-	 * @param response HttpServletResponse 实例对象
+	 * 
+	 * @param request
+	 *            servlet的HttpServletRequest 实例对象
+	 * @param response
+	 *            HttpServletResponse 实例对象
 	 * @throws IOException
 	 */
 	public static void downloadProcess(HttpServletRequest request, HttpServletResponse response) throws IOException {

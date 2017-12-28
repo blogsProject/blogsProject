@@ -35,5 +35,4 @@ public class ReplyServiceImpl implements ReplyService {
 		return replyDAO.getAllCountByLid(lid);
 	}
 
-
 }

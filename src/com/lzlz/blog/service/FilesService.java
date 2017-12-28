@@ -8,14 +8,14 @@ public interface FilesService {
 	public int insertByFiles(Files files);
 
 	public int deleteByFid(int fid);
-	
-	public int getAllPageByCountWithUid(int count,int uid);
 
-	public List<Files> selectByUidWithType(int uid, boolean flag,int curpage,int count);
+	public int getAllPageByCountWithUid(int count, int uid);
+
+	public List<Files> selectByUidWithType(int uid, boolean flag, int curpage, int count);
 
 	public List<Files> selectByUidWithTypeNoFenye(int uid, boolean flag);
-	
+
 	public List<String> selectFileNameByUid(int uid);
-	
+
 	public int getAllCountByUid(int uid);
 }

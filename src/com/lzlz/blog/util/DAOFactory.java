@@ -131,8 +131,8 @@ public class DAOFactory {
 
 	public static FriendService getFriendService() {
 		try {
-			FriendService friendService = (FriendService) Class
-					.forName("com.lzlz.blog.service.impl.FriendServiceImpl").newInstance();
+			FriendService friendService = (FriendService) Class.forName("com.lzlz.blog.service.impl.FriendServiceImpl")
+					.newInstance();
 			return friendService;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();

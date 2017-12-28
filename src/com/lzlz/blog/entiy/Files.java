@@ -2,16 +2,13 @@ package com.lzlz.blog.entiy;
 
 public class Files {
 	private int fid;
-	// 不在数据库里建表 只是单纯的储存文件名(不包括扩展名)
-	private String fname;
+	private String fname;// 注:不在数据库里建列 只是单纯的储存文件名(不包括扩展名)
 	private String fpath;
 	private String ftype;
 	private int uid;
 
-	// -----
 	public Files() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Files(int fid, String fname, String path, String ftype, int uid) {
@@ -65,7 +62,8 @@ public class Files {
 
 	@Override
 	public String toString() {
-		return "Files [fid=" + fid + ", fname=" + fname + ", fpath=" + fpath + ", ftype=" + ftype + ", uid=" + uid + "]";
+		return "Files [fid=" + fid + ", fname=" + fname + ", fpath=" + fpath + ", ftype=" + ftype + ", uid=" + uid
+				+ "]";
 	}
 
 }
