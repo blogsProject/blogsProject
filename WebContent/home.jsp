@@ -146,8 +146,8 @@ input>submit {
 	.rizhi{
 		height: 100%;
 		width: 800px;	
-	margin-left: 750px;
-		margin-top: 250px;
+margin:0 auto;
+text-align:left;
 		padding-left: 90px;
 		padding-top: 30px;
 		padding-bottom: 40px;
@@ -157,6 +157,10 @@ input>submit {
 	}
 	.rizhi1{
 		margin-top: 20px;
+		padding: 20px;
+	}
+	.news{
+	margin-bottom: 20px;
 	}
 </style>
 </head>
@@ -232,10 +236,10 @@ input>submit {
 <header class="">
   <div class="logo">
     <hr class="line-1">
-    <a href="#">Blogs</a> <span>Write your life！</span>
+    <a >Blogs</a> <span>Write your life！</span>
     <hr class="line-1">
   </div>
-<!--
+<!--  
   <div id="owl-slide" class="owl-carousel">
     <div class="item"> <img src="images/1.jpg" /> </div>
     <div class="item"> <img src="images/2.jpg" /> </div>
@@ -249,25 +253,24 @@ input>submit {
 <!-- 日志 -->
 <div class="rizhi">
 <div class="rizhi1">
-<a href="#"><h3>标题</h3></a>
-作者：李安鑫	阅读数：666666发表时间：1456
-6657984156468
+<a href="#"><h3 class="news" >标题</h3></a>
+作者:阅读数:发表时间:
 </div>
 <div class="rizhi1">
-<a href="#"><h3>标题</h3></a>
-作者：阅读数：发表时间：
+<a href="#"><h3 class="news" >标题</h3></a>
+作者:阅读数:发表时间:
 </div>
 <div class="rizhi1">
-<a href="#"><h3>标题</h3></a>
-作者：阅读数：发表时间：
+<a href="#"><h3 class="news" >标题</h3></a>
+作者:阅读数:发表时间:
 </div>
 <div class="rizhi1">
-<a href="#"><h3>标题</h3></a>
-作者：阅读数：发表时间：
+<a href="#"><h3 class="news" >标题</h3></a>
+作者:阅读数:发表时间:
 </div>
 <div class="rizhi1">
-<a href="#"><h3>标题</h3></a>
-作者：阅读数：发表时间：
+<a href="#"><h3 class="news" >标题</h3></a>
+作者:阅读数:发表时间:
 </div>
 </div>
 

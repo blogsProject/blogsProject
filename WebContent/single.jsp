@@ -166,6 +166,21 @@ border: 1px solid #d1d1d1;
 border-radius: 10px;
 
 }
+.div2{
+text-align:left;
+position:absolute;
+	height: 600px;
+	width: 400px;
+	background: #fff;
+	z-index: 999999999999;
+margin: 300px 100px;
+padding-left:90px;
+padding-top:60px;
+border: 1px solid #d1d1d1;
+border-radius: 10px;
+overflow: scroll;
+
+}
 .input1{
 text-align: center;
 border:1px solid #d1d1d1;
@@ -173,19 +188,69 @@ border-radius:10px;
 margin-top: 50px;
 }
 
+.friend{
+		height: 100%;
+		width: 800px;	
+		margin:0 auto;
+		text-align:left;
+		padding-left: 90px;
+		padding-top: 30px;
+		padding-bottom: 40px;
+		border: 1px solid #d1d1d1;
+		border-radius: 10px;
+		
+	}
+	.fridend1{
+		margin-top: 20px;
+		padding: 20px;
+	}
+	.massage{
+	height: 190px;
+	width: 400px;
+text-align:left;
+position:absolute;
+	background: #fff;
+	z-index: 999999999999;
+margin: 100px 100px;
+padding-top:30px;
+text-align:center;
+border: 1px solid #d1d1d1;
+border-radius: 10px;
 
+	
+	}
+	.news{
+	margin: 20px;
+	}
+
+.myblogs{
+position:absolute;
+background:#fff;
+		height: 600px;
+		width: 300px;	
+		margin-top:100px;
+		margin-left:1500px;
+		text-align:left;
+		padding-left: 90px;
+		padding-top: 30px;
+		padding-bottom: 40px;
+		border: 1px solid #d1d1d1;
+		border-radius: 10px;
+		
+	}
+	
 </style>
 </head>
 
 <body>
 <div class="wrap-body">
-<div style="position:fixed ;width: 100%" id='cssmenu' class="align-center">
+<div style=" position:absolute;   width: 100%" id='cssmenu' class="align-center">
   <ul>
     <li class="active"><a href='index.jsp'><span>主页</span></a></li>
     <li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
-    <li class=' last'><a href='single.html'><span>文件柜</span></a></li>
+    <li class=' last'><a href='File.jsp'><span>文件柜</span></a></li>
     <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
-    <li class='last'><a href='contact.html'><span>个人资料</span></a></li>
+    <li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
     <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showtext" onClick="showdiv('contentid','showtext')"><span>登录</span></a></li>
     <li class='last' style="margin-right: 50px;"><a id="showtext" onClick="showdiv('contentid2','showtext')"><span>注册</span></a></li>
   </ul>
@@ -249,24 +314,150 @@ margin-top: 50px;
 <br>
 真实姓名：<input class="input1" type="text" readonly="readonly">
 <br>
-<p style="margin-top: 60px">
-性别：</p><div style="margin-right: 400px;margin-top: 0px;">
-<section>
 
-        <div class="pretty circle">
-          <input type="radio" name="radio1">
-          <label><i class="default"></i>男</label>
-        </div>
-        <div class="pretty circle">
-          <input type="radio" name="radio1">
-          <label><i class="default"></i>女</label>
-        </div>
-      </section>
-      </div>
-      <br>
+性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input class="input1" type="text" readonly="readonly">
+      <br><br><br>
 个人简介：  <textarea  class="bootstrap-frm3" readonly="readonly"></textarea>
 <input class="bootstrap-frm2" type="submit" value="修改资料">
 </div>
+<div class="massage">
+<p>你没有任何消息</p>
+</div>
+<div  class="div2">
+<h2 style="margin-bottom: 30px;">好友列表</h2>
+
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >好友</h3></a>
+
+
+</div>
+</div>
+<div class="myblogs">
+<h2 style="margin-bottom: 30px;">我的博客</h2>
+<div class="friend1">
+<a href="#"><h3 class="news" >博客</h3></a>
+
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >博客</h3></a>
+
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >博客</h3></a>
+
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >博客</h3></a>
+
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >博客</h3></a>
+
+
+</div>
+<div class="friend1">
+<a href="#"><h3 class="news" >博客</h3></a>
+
+
+</div>
+</div>
+
 <script src="owl-carousel/owl.carousel.js"></script> 
   <script>
 		$(document).ready(function() {

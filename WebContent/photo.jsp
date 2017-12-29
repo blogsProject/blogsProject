@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html class="no-js">
 <head>
@@ -29,6 +30,11 @@
 <link rel="stylesheet" href="css/salvattore.css">
 <link rel="stylesheet" href="css/photostyle.css">
 <script src="js/modernizr-2.6.2.min.js"></script>
+<script type="text/javascript">
+<c:if test="${empty page}">
+location="index.jsp";
+</c:if>
+</script>
 <script type="text/javascript">
 function showdiv(targetid,objN){  
       var target=document.getElementById(targetid);
@@ -148,10 +154,10 @@ input>submit {
 <div style="position:fixed ;width: 100%" id='cssmenu' class="align-center">
   <ul>
     <li class="active"><a href='index.html'><span>主页</span></a></li>
-    <li class=' last'><a href='#'><span>相册</span></a></li>
-    <li><a href='single.html'><span>文件柜</span></a></li>
-    <li class='last'><a href='contact.html'><span>音乐</span></a></li>
-    <li class='last'><a href='contact.html'><span>个人资料</span></a></li>
+    <li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
+    <li class=' last'><a href='File.jsp'><span>文件柜</span></a></li>
+    <li class='last'><a href='Musc.html'><span>音乐</span></a></li>
+    <li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
     <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showtext" onClick="showdiv('contentid','showtext')"><span>登录</span></a></li>
     <li class='last' style="margin-right: 50px;"><a id="showtext" onClick="showdiv('contentid2','showtext')"><span>注册</span></a></li>
   </ul>
