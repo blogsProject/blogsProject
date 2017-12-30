@@ -46,17 +46,24 @@ public class UserController extends HttpServlet {
 		User user = new User(0, request.getParameter("username"), request.getParameter("password"),
 				request.getParameter("netname"), request.getParameter("relname"), request.getParameter("gender"),
 				request.getParameter("about"));
-		response.getWriter().write("" + userService.insertByUser(user));
+		userService.insertByUser(user);
 	}
 
 	protected void getUserByUsername(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		User user = userService.getUserByUsername(username);
-		if (user == null)
+		if (user == null){
 			response.sendRedirect("");
+			return;
+		}
+		if(!password.equals(user.getPassword())){
+			System.out.println("ÃÜÂë²»ÕýÈ·");
+			return;
+		}
 		request.getSession().setAttribute("user", user);
-		request.getRequestDispatcher("").forward(request, response);
+		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
 	protected void updateByUser(HttpServletRequest request, HttpServletResponse response)
@@ -83,11 +90,12 @@ public class UserController extends HttpServlet {
 	protected void checkUsername(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
+		User user = userService.getUserByUsername(username);
 		if (username == null)
-			response.getWriter().write(3);
-		if (userService.getUserByUsername(username) == null)
-			response.getWriter().write(1);
-		else
-			response.getWriter().write(2);
+			response.getWriter().write(""+3);
+		else if (user == null){
+			response.getWriter().write(""+1);
+		}else
+			response.getWriter().write(""+2);
 	}
 }

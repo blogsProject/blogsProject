@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.lzlz.blog.entiy.Files;
+import com.lzlz.blog.entiy.User;
 import com.lzlz.blog.service.FilesService;
 
 public class FileProcess {
@@ -41,7 +42,7 @@ public class FileProcess {
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
 		String dir = sdf.format(date);
 
-		String path = request.getRealPath("/upload/" + dir);
+		String path = request.getRealPath("/upload/" + ((User) (request.getSession().getAttribute("user"))).getUid());
 		System.out.println(new File(path).mkdirs());
 		/**
 		 * 原理 它是先存到 暂时存储室，然后在真正写到 对应目录的硬盘上， 按理来说 当上传一个文件时，其实是上传了两份，第一个是以 .tem
@@ -81,7 +82,7 @@ public class FileProcess {
 						// start = filename.lastIndexOf("."); // 索引到最后一个点
 						// String expanded_name = filename.substring(start);
 						List<String> fileNamelist = filesService.selectFileNameByUid(uid);
-						filename = filenameIsExist(filename, filename, fileNamelist, 1);
+						filename = CustomerUtil.filenameIsExist(filename, filename, fileNamelist, 1);
 						file = new File(path, filename);
 					} while (file.exists());
 					// 写到磁盘上去
@@ -129,25 +130,6 @@ public class FileProcess {
 		outs.close();
 	}
 
-	/**
-	 * 判断文件是否在数据库里存在 如果存在就加上 (数字) 参照window命名规则
-	 * 
-	 * @param fileold
-	 *            原来的文件名
-	 * @param filename
-	 *            更改后的文件名 注:调用这个方法的时候fileold和filename要一样
-	 * @param fileNamelist
-	 *            需要判断的文件字符串集合
-	 * @param count
-	 *            数字从几开始 默认从1开始
-	 * @return 修改后的文件名或者未修改的文件名(假如这个文件名不存在)
-	 */
-	public static String filenameIsExist(String fileold, String filename, List<String> fileNamelist, int count) {
-		if (count <= 0)
-			count = 1;
-		if (!fileNamelist.contains(filename))
-			return filename;
-		return filenameIsExist(fileold, fileold + "(" + count++ + ")", fileNamelist, count);
-	}
+	
 
 }
