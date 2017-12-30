@@ -49,6 +49,90 @@ function showdiv(targetid,objN){
 </script>
 
 <style>
+@media(min-width:1366px){
+.photo{
+position: absolute;
+width: 300px;
+height: 600px;
+margin-left:80px;
+margin-right:700px;
+border: 1px solid #d1d1d1;
+border-radius: 13px;
+overflow: auto;
+
+}
+.music{
+float:left;
+width: 300px;
+height: 600px;
+margin-left:700px;
+margin-right:60px;
+border: 1px solid #d1d1d1;
+border-radius: 13px;
+overflow: auto;
+}
+	.fridend1{
+		margin-top: 20px;
+		padding: 20px;
+	}
+	
+	.div-file{
+position:relative;
+height: 850px;
+width: 80%;
+margin: 0 auto;
+background: #fff;
+padding-top:50px;
+border: 1px solid #d1d1d1;
+border-radius: 13px;
+}
+.fileup{
+width:200px;
+margin:0 auto;
+}
+}
+
+@media(min-width:1920px){
+.div-file{
+position:relative;
+height: 850px;
+width: 70%;
+margin: 0 auto;
+background: #fff;
+padding-top:50px;
+border: 1px solid #d1d1d1;
+border-radius: 13px;
+}
+.fileup{
+width:200px;
+margin:0 auto;
+}
+.photo{
+position: absolute;
+width: 500px;
+height: 600px;
+margin-left:80px;
+margin-right:700px;
+border: 1px solid #d1d1d1;
+border-radius: 13px;
+overflow: auto;
+
+}
+.music{
+float:left;
+width: 500px;
+height: 600px;
+margin-left:700px;
+margin-right:60px;
+border: 1px solid #d1d1d1;
+border-radius: 13px;
+overflow: auto;
+}
+	.fridend1{
+		margin-top: 20px;
+		padding: 20px;
+	}
+}
 body {
 
 }
@@ -144,48 +228,7 @@ input>submit {
 .login {
 	z-index: 9999;
 }
-.div-file{
-position:relative;
-height: 850px;
-width: 70%;
-margin: 0 auto;
-background: #fff;
-padding-top:50px;
-border: 1px solid #d1d1d1;
-border-radius: 13px;
-}
-.fileup{
-height: 90px;
-width: 130px;
-margin:50px auto;
 
-text-align: center;
-}
-.photo{
-position: absolute;
-width: 500px;
-height: 600px;
-margin-left:80px;
-margin-right:700px;
-border: 1px solid #d1d1d1;
-border-radius: 13px;
-overflow: auto;
-
-}
-.music{
-float:left;
-width: 500px;
-height: 600px;
-margin-left:700px;
-margin-right:60px;
-border: 1px solid #d1d1d1;
-border-radius: 13px;
-overflow: auto;
-}
-	.fridend1{
-		margin-top: 20px;
-		padding: 20px;
-	}
 		.news{
 	margin: 20px;
 	}
@@ -346,14 +389,15 @@ overflow: auto;
 <a href="#"><h4 class="news" >图片</h4></a>
 </div>
 </div>
+<div style="margin: 0 auto" class="fileup">
+ <form action=""method="get" enctype="multipart/form-data">
 
- <form action="rnm"method="get" enctype="multipart/form-data">
-<div class="fileup">
 <input  type="file" name="file">
 
 <input class="bootstrap-frm2"  type="submit" value="上传">
-</div>
+
 </form>
+</div>
 </div>
 
  

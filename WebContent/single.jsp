@@ -42,6 +42,128 @@ function showdiv(targetid,objN){
  
 </script>
 <style>
+@media (min-width: 1366px){
+	.massage{
+	height: 190px;
+	width: 400px;
+text-align:left;
+position:absolute;
+	background: #fff;
+	z-index: 999999999999;
+margin: 100px 40px;
+padding-top:30px;
+text-align:center;
+border: 1px solid #d1d1d1;
+border-radius: 10px;
+	}
+	.div1{
+text-align:left;
+position:absolute;
+	height: 800px;
+	width: 500px;
+	background: #fff;
+	z-index: 999999999999;
+margin-top: 100px;
+margin-left: 460px;
+padding-left:90px;
+border: 1px solid #d1d1d1;
+border-radius: 10px;
+
+}
+.div2{
+text-align:left;
+position:absolute;
+	height: 600px;
+	width: 400px;
+	background: #fff;
+	z-index: 999999999999;
+margin-top:300px;
+margin-left:40px;
+padding-left:90px;
+padding-top:60px;
+border: 1px solid #d1d1d1;
+border-radius: 10px;
+overflow: auto;
+
+}
+.myblogs{
+position:absolute;
+background:#fff;
+		height: 600px;
+		width: 300px;	
+		margin-top:100px;
+		margin-left:1000px;
+		text-align:left;
+		padding-left: 90px;
+		padding-top: 30px;
+		padding-bottom: 40px;
+		border: 1px solid #d1d1d1;
+		border-radius: 10px;
+		
+	}
+}
+
+
+@media (min-width: 1920px){
+	.massage{
+	height: 190px;
+	width: 400px;
+text-align:left;
+position:absolute;
+	background: #fff;
+	z-index: 999999999999;
+margin: 100px 100px;
+padding-top:30px;
+text-align:center;
+border: 1px solid #d1d1d1;
+border-radius: 10px;
+	}
+	.div1{
+text-align:left;
+position:absolute;
+	height: 800px;
+	width: 500px;
+	background: #fff;
+	z-index: 999999999999;
+margin-top: 100px;
+margin-left: 660px;
+padding-left:90px;
+border: 1px solid #d1d1d1;
+border-radius: 10px;
+
+}
+.div2{
+text-align:left;
+position:absolute;
+	height: 600px;
+	width: 400px;
+	background: #fff;
+	z-index: 999999999999;
+margin-top:300px;
+margin-left:100px;
+padding-left:90px;
+padding-top:60px;
+border: 1px solid #d1d1d1;
+border-radius: 10px;
+overflow: auto;
+
+}
+.myblogs{
+position:absolute;
+background:#fff;
+		height: 600px;
+		width: 300px;	
+		margin-top:100px;
+		margin-left:1400px;
+		text-align:left;
+		padding-left: 90px;
+		padding-top: 30px;
+		padding-bottom: 40px;
+		border: 1px solid #d1d1d1;
+		border-radius: 10px;
+		
+	}
+}
 body {
 
 }
@@ -49,32 +171,7 @@ body {
 	cursor: hand;
 	cursor: pointer;
 }
-#contentid {
-	background: #FFFFFF;
-	position: absolute;
-	margin-top: 60px;
-	margin-left: 1500px;
-	width: 350px;
-	height: 400px;
-	max-height: 400px;
-	max-width: 350px;
-	border: 1px solid #CCC;
-	border-radius: 10px;
-	z-index: 999;
-	padding: 5px;
-}
-#contentid2 {
-	background: #FFFFFF;
-	position: absolute;
-	margin-top: 60px;
-	margin-left: 1500px;
-	width: 350px;
-	height: 900px;
-	border: 1px solid #CCC;
-	border-radius: 10px;
-	z-index: 999;
-	padding: 5px;
-}
+
 .none {
 	display: none;
 	　background: #FFFFFF;
@@ -152,35 +249,7 @@ input>submit {
 .login {
 	z-index: 9999;
 }
-.div1{
-text-align:left;
-position:absolute;
-	height: 800px;
-	width: 700px;
-	background: #fff;
-	z-index: 999999999999;
-margin-top: 100px;
-margin-left: 640px;
-padding-left:90px;
-border: 1px solid #d1d1d1;
-border-radius: 10px;
 
-}
-.div2{
-text-align:left;
-position:absolute;
-	height: 600px;
-	width: 400px;
-	background: #fff;
-	z-index: 999999999999;
-margin: 300px 100px;
-padding-left:90px;
-padding-top:60px;
-border: 1px solid #d1d1d1;
-border-radius: 10px;
-overflow: scroll;
-
-}
 .input1{
 text-align: center;
 border:1px solid #d1d1d1;
@@ -204,40 +273,12 @@ margin-top: 50px;
 		margin-top: 20px;
 		padding: 20px;
 	}
-	.massage{
-	height: 190px;
-	width: 400px;
-text-align:left;
-position:absolute;
-	background: #fff;
-	z-index: 999999999999;
-margin: 100px 100px;
-padding-top:30px;
-text-align:center;
-border: 1px solid #d1d1d1;
-border-radius: 10px;
-
 	
-	}
 	.news{
 	margin: 20px;
 	}
 
-.myblogs{
-position:absolute;
-background:#fff;
-		height: 600px;
-		width: 300px;	
-		margin-top:100px;
-		margin-left:1500px;
-		text-align:left;
-		padding-left: 90px;
-		padding-top: 30px;
-		padding-bottom: 40px;
-		border: 1px solid #d1d1d1;
-		border-radius: 10px;
-		
-	}
+
 	
 </style>
 </head>
@@ -251,62 +292,9 @@ background:#fff;
     <li class=' last'><a href='File.jsp'><span>文件柜</span></a></li>
     <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
     <li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
-    <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showtext" onClick="showdiv('contentid','showtext')"><span>登录</span></a></li>
-    <li class='last' style="margin-right: 50px;"><a id="showtext" onClick="showdiv('contentid2','showtext')"><span>注册</span></a></li>
   </ul>
 </div>
-<div id="contentid" class="none">
-  <form>
-    <h4 style="margin-top: 10px;margin-left: 15px">登录</h4>
-    <section> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="text" id="input-38" />
-      <label class="input__label input__label--isao" for="input-38" data-content="用户名"> <span class="input__label-content input__label-content--isao">用户名</span> </label>
-      </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="password" id="input-39" />
-      <label class="input__label input__label--isao" for="input-39" data-content="密码"> <span class="input__label-content input__label-content--isao">密码</span> </label>
-      </span>
-      <input class="bootstrap-frm2" type="submit"value="登录">
-    </section>
-    
 
-    
-  </form>
-</div>
-<div id="contentid2" class="none">
-  <form>
-    <h4 style="margin-top: 10px;margin-left: 15px">注册</h4>
-    <section> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="text" id="input-38" />
-      <label class="input__label input__label--isao" for="input-38" data-content="用户名"> <span class="input__label-content input__label-content--isao">用户名</span> </label>
-      </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="password" id="input-39" />
-      <label class="input__label input__label--isao" for="input-39" data-content="密码"> <span class="input__label-content input__label-content--isao">密码</span> </label>
-      </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="password" id="input-39" />
-      <label class="input__label input__label--isao" for="input-39" data-content="再次输入密码"> <span class="input__label-content input__label-content--isao">再次输入密码</span> </label>
-      </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="text" id="input-39" />
-      <label class="input__label input__label--isao" for="input-39" data-content="昵称"> <span class="input__label-content input__label-content--isao">昵称</span> </label>
-      </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="text" id="input-39" />
-      <label class="input__label input__label--isao" for="input-39" data-content="真实姓名（可不填）"> <span class="input__label-content input__label-content--isao">真实姓名（可不填）</span></label>
-      </span>
-      <section>
-        <label>选择你的性别:</label>
-        <div class="pretty circle">
-          <input type="radio" name="radio1">
-          <label><i class="default"></i>男</label>
-        </div>
-        <div class="pretty circle">
-          <input type="radio" name="radio1">
-          <label><i class="default"></i>女</label>
-        </div>
-      </section>
-      <textarea  class="bootstrap-frm1" placeholder="个人简介（可不填）"></textarea>
-      <input class="bootstrap-frm2" type="submit"value="注册">
-    </section>
-  </form>
-</div>
 <div class="div1">
 用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input class="input1" type="text" readonly="readonly">
 <br>
