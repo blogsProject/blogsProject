@@ -12,6 +12,9 @@ public class CustomerUtil {
 	 *            一次查多少个
 	 * @return 返回正确的参数
 	 */
+	private static final String[] MUSICSTR = { "mp3", "ogg", "wam" };
+	private static final String[] IMGSTR = { "png", "jpg", "gif" };
+
 	public static int limitFristParmaWithMyql(int curpage, int count) {
 		return curpage * count - count;
 	}
@@ -43,7 +46,7 @@ public class CustomerUtil {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 判断文件是否在数据库里存在 如果存在就加上 (数字) 参照window命名规则
 	 * 
@@ -63,5 +66,17 @@ public class CustomerUtil {
 		if (!fileNamelist.contains(filename))
 			return filename;
 		return filenameIsExist(fileold, fileold + "(" + count++ + ")", fileNamelist, count);
+	}
+
+	public static boolean isImageOrMusic(String fileExternName) {
+		for (int i = 0; i < IMGSTR.length; i++) {
+			if (IMGSTR[i].equals(fileExternName))
+				return true;
+		}
+		for (int i = 0; i < MUSICSTR.length; i++) {
+			if (MUSICSTR[i].equals(fileExternName))
+				return false;
+		}
+		return true;
 	}
 }

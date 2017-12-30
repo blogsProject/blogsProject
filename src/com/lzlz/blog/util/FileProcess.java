@@ -34,6 +34,7 @@ public class FileProcess {
 	 * @param uid
 	 *            用户id
 	 */
+
 	public static void uploadProcess(HttpServletRequest request, HttpServletResponse response,
 			FilesService filesService, boolean flag, int uid) {
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
@@ -41,7 +42,6 @@ public class FileProcess {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
 		String dir = sdf.format(date);
-
 		String path = request.getRealPath("/upload/" + ((User) (request.getSession().getAttribute("user"))).getUid());
 		System.out.println(new File(path).mkdirs());
 		/**
@@ -74,20 +74,21 @@ public class FileProcess {
 					String filename = value.substring(start + 1);// 3,
 																	// 截取(+1是去掉反斜杠)
 					File file = null;
+					String expanded_name = filename.substring(start);
 					do {
 						// 生成文件名
 						// int r = (int) (Math.random() * 1000);
 						// SimpleDateFormat sd = new
 						// SimpleDateFormat("hhmmssSSS");
 						// start = filename.lastIndexOf("."); // 索引到最后一个点
-						// String expanded_name = filename.substring(start);
 						List<String> fileNamelist = filesService.selectFileNameByUid(uid);
 						filename = CustomerUtil.filenameIsExist(filename, filename, fileNamelist, 1);
 						file = new File(path, filename);
 					} while (file.exists());
 					// 写到磁盘上去
 					item.write(file);
-					filesService.insertByFiles(new Files(0, null, dir + "/" + filename, flag ? "图片" : "音乐", uid));
+					filesService.insertByFiles(new Files(0, null, dir + "/" + filename,
+							CustomerUtil.isImageOrMusic(expanded_name) ? "图片" : "音乐", uid));
 					response.getWriter().write(filename);
 				}
 
@@ -129,7 +130,5 @@ public class FileProcess {
 		fis.close();
 		outs.close();
 	}
-
-	
 
 }
