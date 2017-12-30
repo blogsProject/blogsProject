@@ -5,6 +5,7 @@ public class Reply {
 	private int lid;
 	private String rcontent;
 	private String rdatetime;
+	private String username;
 
 	public Reply() {
 		super();
@@ -16,6 +17,23 @@ public class Reply {
 		this.lid = lid;
 		this.rcontent = rcontent;
 		this.rdatetime = rdate;
+	}
+
+	public Reply(int uid, int lid, String rcontent, String rdatetime, String username) {
+		super();
+		this.uid = uid;
+		this.lid = lid;
+		this.rcontent = rcontent;
+		this.rdatetime = rdatetime;
+		this.username = username;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public int getUid() {

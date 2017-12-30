@@ -64,6 +64,7 @@ public class LogController extends HttpServlet {
 		int curpage = Integer.valueOf(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
 		int Allpage = logService.getPageWhithAll(5);
 		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));
+		request.setAttribute("readList", logService.queryWithReadNum());
 		request.setAttribute("page", new Page(curpage, Allpage));
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}

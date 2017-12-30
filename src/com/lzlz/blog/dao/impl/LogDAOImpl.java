@@ -65,7 +65,7 @@ public class LogDAOImpl implements LogDAO {
 	@Override
 	public List<Log> queryAll(int curpage, int count) {
 		try {
-			String sql = "Select * from log limit ?,?";
+			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) from log limit ?,?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, CustomerUtil.limitFristParmaWithMyql(curpage, count));
@@ -75,6 +75,7 @@ public class LogDAOImpl implements LogDAO {
 			while (rs.next()) {
 				Log log = new Log(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
 						rs.getInt(6));
+				log.setUname(rs.getString(7));
 				list.add(log);
 			}
 			return list;
@@ -87,7 +88,7 @@ public class LogDAOImpl implements LogDAO {
 	@Override
 	public List<Log> queryByUid(int uid, int curpage, int count) {
 		try {
-			String sql = "Select * from log where uid=? limit ?,?";
+			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) where uid=?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
@@ -98,6 +99,7 @@ public class LogDAOImpl implements LogDAO {
 			while (rs.next()) {
 				Log log = new Log(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
 						rs.getInt(6));
+				log.setUname(rs.getString(7));
 				list.add(log);
 			}
 			return list;
@@ -110,7 +112,7 @@ public class LogDAOImpl implements LogDAO {
 	@Override
 	public List<Log> queryWithReadNum() {
 		try {
-			String sql = "Select * from log order by readnum asc limit 0,10";
+			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) from log order by readnum asc limit 0,10";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
@@ -118,6 +120,7 @@ public class LogDAOImpl implements LogDAO {
 			while (rs.next()) {
 				Log log = new Log(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
 						rs.getInt(6));
+				log.setUname(rs.getString(7));
 				list.add(log);
 			}
 			return list;
@@ -130,13 +133,14 @@ public class LogDAOImpl implements LogDAO {
 	@Override
 	public Log getLogByLid(int lid) {
 		try {
-			String sql = "Select * from log where lid=?";
+			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) from log where lid=?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, lid);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
-			return new Log(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+			return new Log(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6),
+					rs.getString(7));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

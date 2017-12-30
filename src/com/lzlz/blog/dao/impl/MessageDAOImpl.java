@@ -46,7 +46,7 @@ public class MessageDAOImpl implements MessageDAO {
 	@Override
 	public List<Message> selectByReceiveId(int receiveid, int curpage, int count) {
 		try {
-			String sql = "select * from message where receiveid=? limit ?,?";
+			String sql = "select mid,sendid,receiveid(select username from user where user.uid=message.sendid) from message where receiveid=? limit ?,?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, receiveid);
@@ -55,7 +55,7 @@ public class MessageDAOImpl implements MessageDAO {
 			ResultSet rs = pstm.executeQuery();
 			List<Message> list = new ArrayList<>();
 			while (rs.next()) {
-				list.add(new Message(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+				list.add(new Message(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4)));
 			}
 			return list;
 		} catch (Exception e) {

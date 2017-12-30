@@ -6,10 +6,19 @@ public class Log {
 	private String lcontent;
 	private String ltime;
 	private int uid;
+	private String uname;// 不建列 只储存数据
 	private int readnum;
 
 	public Log() {
 		super();
+	}
+
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 
 	public Log(int lid, String ltitle, String lcontent, String ltime, int uid, int readnum) {
@@ -19,6 +28,17 @@ public class Log {
 		this.lcontent = lcontent;
 		this.ltime = ltime;
 		this.uid = uid;
+		this.readnum = readnum;
+	}
+
+	public Log(int lid, String ltitle, String lcontent, String ltime, int uid, int readnum, String uname) {
+		super();
+		this.lid = lid;
+		this.ltitle = ltitle;
+		this.lcontent = lcontent;
+		this.ltime = ltime;
+		this.uid = uid;
+		this.uname = uname;
 		this.readnum = readnum;
 	}
 

@@ -33,7 +33,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 	@Override
 	public List<Reply> selectByLid(int lid, int curpage, int count) {
 		try {
-			String sql = "Select * from reply where lid=? limit ?,?";
+			String sql = "select uid,lid,rcontent,rdatetime,(select username from user where user.uid=reply.uid) from reply where lid=? limit ?,?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, lid);

@@ -1,5 +1,10 @@
 package com.lzlz.blog.entiy;
 
+/**
+ * 储存数据的类 不建立表
+ * @author MIKU
+ *
+ */
 public class Page {
 	private int curpage;
 	private int allPage;

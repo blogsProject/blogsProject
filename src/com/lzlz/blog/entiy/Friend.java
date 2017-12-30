@@ -3,6 +3,7 @@ package com.lzlz.blog.entiy;
 public class Friend {
 	private int first;
 	private int second;
+	private String firendName;
 
 	public Friend() {
 		super();
@@ -12,6 +13,13 @@ public class Friend {
 		super();
 		this.first = first;
 		this.second = second;
+	}
+
+	public Friend(int first, int second, String firendName) {
+		super();
+		this.first = first;
+		this.second = second;
+		this.firendName = firendName;
 	}
 
 	public int getFirst() {
@@ -28,6 +36,14 @@ public class Friend {
 
 	public void setSecond(int second) {
 		this.second = second;
+	}
+
+	public String getFirendName() {
+		return firendName;
+	}
+
+	public void setFirendName(String firendName) {
+		this.firendName = firendName;
 	}
 
 	@Override

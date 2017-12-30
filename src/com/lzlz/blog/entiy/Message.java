@@ -4,6 +4,7 @@ public class Message {
 	private int mid;
 	private int sendid;
 	private int receiveid;
+	private String sendname;
 
 	public Message() {
 		super();
@@ -14,6 +15,22 @@ public class Message {
 		this.mid = mid;
 		this.sendid = sendid;
 		this.receiveid = receiveid;
+	}
+
+	public Message(int mid, int sendid, int receiveid, String sendname) {
+		super();
+		this.mid = mid;
+		this.sendid = sendid;
+		this.receiveid = receiveid;
+		this.sendname = sendname;
+	}
+
+	public String getSendname() {
+		return sendname;
+	}
+
+	public void setSendname(String sendname) {
+		this.sendname = sendname;
 	}
 
 	public int getMid() {
