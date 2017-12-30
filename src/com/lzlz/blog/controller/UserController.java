@@ -36,6 +36,9 @@ public class UserController extends HttpServlet {
 			insertByUser(request, response);
 		else if (flag.equals("login"))
 			getUserByUsername(request, response);
+		else if(flag.equals("checkUsername"))
+			checkUsername(request, response);
+			
 	}
 
 	protected void insertByUser(HttpServletRequest request, HttpServletResponse response)
@@ -71,10 +74,20 @@ public class UserController extends HttpServlet {
 		String about = request.getParameter("about");
 		if (CustomerUtil.isNullStringArr(uid, username, password, netname, relname, gender, about))
 			System.out.println("处理语句");
-		else if(user.getUid() != Integer.valueOf(uid))
+		else if (user.getUid() != Integer.valueOf(uid))
 			System.out.println("处理语句");
 		User newuser = new User(Integer.valueOf(uid), username, password, netname, relname, gender, about);
 		response.getWriter().write("" + userService.updateByUser(newuser));
 	}
 
+	protected void checkUsername(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String username = request.getParameter("username");
+		if (username == null)
+			response.getWriter().write(2);
+		if (userService.getUserByUsername(username) == null)
+			response.getWriter().write(1);
+		else
+			response.getWriter().write(2);
+	}
 }
