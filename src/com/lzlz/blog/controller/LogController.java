@@ -25,8 +25,10 @@ public class LogController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String flag = request.getParameter("flag");
-		if (flag == null || flag == "")
+		if (flag == null || flag == "") {
 			response.sendRedirect("index.jsp");
+			return;
+		}
 		if (flag.equals("home") || flag == null) {
 			queryAll(request, response);
 		}
