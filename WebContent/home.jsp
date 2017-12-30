@@ -45,8 +45,10 @@ location="index.jsp";
 			username:document.getElementById("username").value
 		},
 		success : function (data) {
-		if(data!=1){
-			alert("用户名已存在！");
+		if(data=3){
+			alert("用户名不能为空！");
+		}else if(data!=1){
+			alert("用户名已存在");
 			userisexits=true;
 		}
 		}
@@ -239,7 +241,7 @@ text-align:left;
 
 <body>
 <div class="wrap-body">
-<div style="position:fixed ;width: 100%" id='cssmenu' class="align-center">
+<div style="position:absolute ;width: 100%" id='cssmenu' class="align-center">
   <ul>
     <li class="active"><a href='index.jsp'><span>主页</span></a></li>
     <c:if test="${!empty user }">
