@@ -125,61 +125,63 @@ function showdiv(targetid,objN){
  
 </script>
 <style>
+
 @media (max-width: 1366px) {
-  #login {
+ #contentid {
 	background: #FFFFFF;
 	position: absolute;
-	margin-top: 8%;
-	margin-left: 70%;
-	width: 28%;
-	height: 60%;
-	max-height: 60%;
-	max-width: 28%;
+	margin-top: 30px;
+	margin-left: 900px;
+	width: 350px;
+	height: 400px;
+	max-height: 400px;
+	max-width: 350px;
 	border: 1px solid #CCC;
 	border-radius: 10px;
 	z-index: 999;
 	padding: 5px;
 }
-#regist{
+
+#contentid2 {
 	background: #FFFFFF;
 	position: absolute;
-	margin-top: 8%;
-	margin-left: 70%;
-	width: 28%;
-	height: 140%;
-	max-height: 140%;
-	max-width: 28%;
+	margin-top: 30px;
+	margin-left: 900px;
+	width: 350px;
+	height: 900px;
+	max-height: 900px;
+	max-width: 350px;
 	border: 1px solid #CCC;
 	border-radius: 10px;
 	z-index: 999;
 	padding: 5px;
 }
   }
-  
-  @media (max-width: 1920px) {
-  #login {
+@media (max-width: 1920px) {
+ #contentid {
 	background: #FFFFFF;
 	position: absolute;
-	margin-top: 8%;
-	margin-left: 70%;
-	width: 20%;
-	height: 40%;
-	max-height: 60%;
-	max-width: 20%;
+	margin-top: 30px;
+	margin-left: 1400px;
+	width: 350px;
+	height: 400px;
+	max-height: 400px;
+	max-width: 350px;
 	border: 1px solid #CCC;
 	border-radius: 10px;
 	z-index: 999;
 	padding: 5px;
 }
-#regist{
+
+#contentid2 {
 	background: #FFFFFF;
 	position: absolute;
-	margin-top: 8%;
-	margin-left: 70%;
-	width: 20%;
-	height: 100%;
-	max-height: 100%;
-	max-width: 20%;
+	margin-top: 30px;
+	margin-left: 1400px;
+	width: 350px;
+	height: 900px;
+	max-height: 900px;
+	max-width: 350px;
 	border: 1px solid #CCC;
 	border-radius: 10px;
 	z-index: 999;
@@ -195,35 +197,17 @@ body {
 	cursor: hand;
 	cursor: pointer;
 }
-/**
-#contentid {
-	background: #FFFFFF;
-	position: absolute;
-	margin-top: 20%;
-	margin-left: 75%;
-	width: 350px;
-	height: 400px;
-	max-height: 400px;
-	max-width: 350px;
-	border: 1px solid #CCC;
-	border-radius: 10px;
-	z-index: 999;
-	padding: 5px;
+/**/
+
+
+body {
+
+}
+#showtext {
+	cursor: hand;
+	cursor: pointer;
 }
 
-#contentid2 {
-	background: #FFFFFF;
-	position: absolute;
-	margin-top: 60px;
-	margin-left: 1500px;
-	width: 350px;
-	height: 900px;
-	border: 1px solid #CCC;
-	border-radius: 10px;
-	z-index: 999;
-	padding: 5px;
-}
-**/
 .none {
 	display: none;
 	　background: #FFFFFF;
@@ -320,11 +304,11 @@ text-align:left;
     <li class='last'><a href='contact.html'><span>个人资料</span></a></li>
     </c:if>
     
-    <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showtext" onClick="showdiv('login','showtext')"><span>登录</span></a></li>
-    <li class='last' style="margin-right: 50px;"><a id="showtext" onClick="showdiv('regist','showtext')"><span>注册</span></a></li>
+    <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showtext" onClick="showdiv('contentid','showtext')"><span>登录</span></a></li>
+    <li class='last' style="margin-right: 50px;"><a id="showtext" onClick="showdiv('contentid2','showtext')"><span>注册</span></a></li>
   </ul>
 </div>
-<div id="login" class="none">
+<div id="contentid" class="none">
   <form>
     <h4 style="margin-top: 10px;margin-left: 15px">登录</h4>
     <section> <span class="input input--isao">
@@ -339,7 +323,7 @@ text-align:left;
   </form>
 </div>
 
-<div id="regist" class="none">
+<div id="contentid2" class="none">
   <form name="regeistform" action="UserController"  method="post">
   <input type="hidden" name="flag" value="regeist" >
     <h4 style="margin-top: 10px;margin-left: 15px">注册</h4>
