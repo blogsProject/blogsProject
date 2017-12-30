@@ -31,7 +31,7 @@ public class UserController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String flag = request.getParameter("mod");
+		String flag = request.getParameter("flag");
 		if (flag.equals("regeist"))
 			insertByUser(request, response);
 		else if (flag.equals("login"))
