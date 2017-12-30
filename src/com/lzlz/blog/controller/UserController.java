@@ -84,7 +84,7 @@ public class UserController extends HttpServlet {
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		if (username == null)
-			response.getWriter().write(2);
+			response.getWriter().write(3);
 		if (userService.getUserByUsername(username) == null)
 			response.getWriter().write(1);
 		else
