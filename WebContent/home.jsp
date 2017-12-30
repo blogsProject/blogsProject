@@ -48,7 +48,7 @@ location="index.jsp";
 			username:document.getElementById("username").value
 		},
 		success : function (data) {
-		if(data=3){
+		if(data == 3){
 			alert("用户名不能为空！");
 		}else if(data!=1){
 			alert("用户名已存在");
@@ -126,8 +126,8 @@ function showdiv(targetid,objN){
 </script>
 <style>
 
-@media (max-width: 1366px) {
- #contentid {
+@media (min-width: 1366px) {
+#contentid {
 	background: #FFFFFF;
 	position: absolute;
 	margin-top: 30px;
@@ -157,7 +157,7 @@ function showdiv(targetid,objN){
 	padding: 5px;
 }
   }
-@media (max-width: 1920px) {
+@media (min-width: 1920px) {
  #contentid {
 	background: #FFFFFF;
 	position: absolute;
@@ -188,6 +188,9 @@ function showdiv(targetid,objN){
 	padding: 5px;
 }
   }
+
+
+  
 
 
 body {
