@@ -9,7 +9,10 @@
 <title>Blog</title>
 <meta name="description" content="Free Responsive Html5 Css3 Templates ">
 <meta name="author" content="#">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no"  >
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+<meta name="HandheldFriendly" content="true">
+
 <script src="js/jquery.min.js"></script>
 <link rel="stylesheet" href="css/zerogrid.css">
 <link rel="stylesheet" href="css/style.css">
@@ -122,6 +125,62 @@ function showdiv(targetid,objN){
  
 </script>
 <style>
+@media (max-width: 1366px) {
+  #contentid {
+	background: #FFFFFF;
+	position: absolute;
+	margin-top: 4%;
+	margin-left: 72%;
+	width: 30%;
+	height: 55%;
+	max-height: 400px;
+	max-width: 350px;
+	border: 1px solid #CCC;
+	border-radius: 10px;
+	z-index: 999;
+	padding: 5px;
+  }
+  #contentid2 {
+	background: #FFFFFF;
+	position: absolute;
+	margin-top: 4%;
+	margin-left: 72%;
+	width: 30%;
+	height: 140%;
+	border: 1px solid #CCC;
+	border-radius: 10px;
+	z-index: 999;
+	padding: 5px;
+} 
+}
+@media (max-width: 1920px) {
+  #contentid {
+	background: #FFFFFF;
+	position: absolute;
+	margin-top: 4%;
+	margin-left: 72%;
+	width: 30%;
+	height: 55%;
+	max-height: 400px;
+	max-width: 350px;
+	border: 1px solid #CCC;
+	border-radius: 10px;
+	z-index: 999;
+	padding: 5px;
+  }
+  #contentid2 {
+	background: #FFFFFF;
+	position: absolute;
+	margin-top: 4%;
+	margin-left: 72%;
+	width: 20%;
+	height: 100%;
+	border: 1px solid #CCC;
+	border-radius: 10px;
+	z-index: 999;
+	padding: 5px;
+} 
+}
 body {
 
 }
@@ -129,11 +188,12 @@ body {
 	cursor: hand;
 	cursor: pointer;
 }
+/**
 #contentid {
 	background: #FFFFFF;
 	position: absolute;
-	margin-top: 60px;
-	margin-left: 1500px;
+	margin-top: 20%;
+	margin-left: 75%;
 	width: 350px;
 	height: 400px;
 	max-height: 400px;
@@ -143,6 +203,7 @@ body {
 	z-index: 999;
 	padding: 5px;
 }
+
 #contentid2 {
 	background: #FFFFFF;
 	position: absolute;
@@ -155,6 +216,7 @@ body {
 	z-index: 999;
 	padding: 5px;
 }
+**/
 .none {
 	display: none;
 	　background: #FFFFFF;
@@ -241,7 +303,7 @@ text-align:left;
 
 <body>
 <div class="wrap-body">
-<div style="position:absolute ;width: 100%" id='cssmenu' class="align-center">
+<div  id='cssmenu' class="align-center">
   <ul>
     <li class="active"><a href='index.jsp'><span>主页</span></a></li>
     <c:if test="${!empty user }">
