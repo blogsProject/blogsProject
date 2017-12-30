@@ -34,6 +34,77 @@ location="index.jsp";
 </c:if>
 </script>
 <script type="text/javascript">
+ var userisexits=false;
+ function checkuserexits() {
+	$.ajax({
+		url:"UserController",
+		type:"post",
+		data:{
+			flag:"checkUsername",
+			username:document.getElementById("username").value
+		},
+		success : function (data) {
+		if(data!=1){
+			alert("用户名已存在！");
+			userisexits=true;
+		}
+		}
+	});
+	}
+	function test() {
+		var password1 = document.getElementById("password1").value;
+		var password2 = document.getElementById("password2").value;
+		 if(password1==null||password2==null){
+			 window.alert("密码不能为空");
+			 return false;
+		 }else if(password1 != password2) {
+			 window.alert("您输入的新密码与确认密码确认不一致");
+			signupForm.repassword.focus();
+			return false;
+		}
+		
+		return true;
+	}
+
+	function checkName() {
+		var Uname = document.getElementById("username").value;
+		
+		if ((Uname).length == 0) {
+			alert("请输入用户名");
+			Uname.focus();
+			return false;
+		} else {
+			return true;
+		}
+	}
+	function checknetname() {
+		var netname = document.getElementById("netname").value;
+		
+		if ((netname).length == 0) {
+			alert("请输入昵称");
+			netname.focus();
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	
+	function submitcheck() {
+		if(test()){
+			alert("两次输入密码不一致");
+		}else if(checkName()){
+			alert("用户名不能为空");
+		}else if(checknetname()){
+			alert("昵称不能为空");
+		}else if(userisexits){
+			alert("用户名已存在！");
+		}else{
+			document.regeistform.onsubmit();
+		}
+	}
+	</script>
+<script type="text/javascript">
 function showdiv(targetid,objN){  
       var target=document.getElementById(targetid);
       var clicktext=document.getElementById(objN)
@@ -199,37 +270,38 @@ text-align:left;
   </form>
 </div>
 <div id="contentid2" class="none">
-  <form>
+  <form name="regeistform" action="UserController"  method="post">
+  <input type="hidden" name="flag" value="regeist" >
     <h4 style="margin-top: 10px;margin-left: 15px">注册</h4>
     <section> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="text" id="input-38" />
+      <input name="username" id="username"  onblur="checkuserexits()" class="input__field input__field--isao" type="text" id="input-38" />
       <label class="input__label input__label--isao" for="input-38" data-content="用户名"> <span class="input__label-content input__label-content--isao">用户名</span> </label>
       </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="password" id="input-39" />
+      <input name="password" id="password1"  class="input__field input__field--isao" type="password" id="input-39" />
       <label class="input__label input__label--isao" for="input-39" data-content="密码"> <span class="input__label-content input__label-content--isao">密码</span> </label>
       </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="password" id="input-39" />
+      <input  id="password2" class="input__field input__field--isao" type="password" id="input-39" />
       <label class="input__label input__label--isao" for="input-39" data-content="再次输入密码"> <span class="input__label-content input__label-content--isao">再次输入密码</span> </label>
       </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="text" id="input-39" />
+      <input name="netname" id="netname" class="input__field input__field--isao" type="text" id="input-39" />
       <label class="input__label input__label--isao" for="input-39" data-content="昵称"> <span class="input__label-content input__label-content--isao">昵称</span> </label>
       </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="text" id="input-39" />
+      <input name="relname" id="relname" class="input__field input__field--isao" type="text" id="input-39" />
       <label class="input__label input__label--isao" for="input-39" data-content="真实姓名（可不填）"> <span class="input__label-content input__label-content--isao">真实姓名（可不填）</span></label>
       </span>
       <section>
         <label>选择你的性别:</label>
         <div class="pretty circle">
-          <input type="radio" name="radio1">
+          <input  type="radio" name="gender" checked="checked">
           <label><i class="default"></i>男</label>
         </div>
         <div class="pretty circle">
-          <input type="radio" name="radio1">
+          <input type="radio" name="gender">
           <label><i class="default"></i>女</label>
         </div>
       </section>
       <textarea  class="bootstrap-frm1" placeholder="个人简介（可不填）"></textarea>
-      <input class="bootstrap-frm2" type="submit"value="注册">
+      <input name="about" class="bootstrap-frm2" type="button"   onclick="submitcheck()"  value="注册">
     </section>
   </form>
 </div>
@@ -239,6 +311,7 @@ text-align:left;
     <a >Blogs</a> <span>Write your life！</span>
     <hr class="line-1">
   </div>
+
 <!--  
   <div id="owl-slide" class="owl-carousel">
     <div class="item"> <img src="images/1.jpg" /> </div>
