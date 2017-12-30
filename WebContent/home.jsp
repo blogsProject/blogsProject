@@ -153,6 +153,7 @@ function showdiv(targetid,objN){
 	padding: 5px;
 } 
 }
+/**/
 @media (max-width: 1920px) {
   #contentid {
 	background: #FFFFFF;
