@@ -257,8 +257,8 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 	<div class="wrap-body">
 		<div id='cssmenu' class="align-center">
 			<ul>
-				<li class="active"><a href='index.jsp'><span>主页</span></a></li>
-				  <li class=' last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
+			 <li class="active"><a href='index.jsp'><span>主页</span></a></li>
+			 <li class=' last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
    			 <li class=' last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
    			 <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
    			 <li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
@@ -283,19 +283,18 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 							<p style="font-size: 9px;">${rep.rdatetime }</p>
 							</div>
 							</div>
-						</c:forEach>
-						
-						
-						
-						<div style="margin-right: 40px;">
-						<form action="LogController">
-		<textarea  name="lcontent" class="ckeditor" cols="80" id="lcontent"
+						</c:forEach>	
+		<div style="margin-right: 40px;">
+			<form action="ReplyController" method="post">
+		<textarea  name="rcontent" class="ckeditor" cols="80" id="rcontent"
 			rows="10"> 
-	</textarea>
+		</textarea>
+		<input type="hidden" name="flag" value="insertByReply"/>
+		<input type="hidden" name="lid" value="${log.lid }"/>
 		<input  class="bootstrap-frm2"  type="submit" value="提交" />
 	</form>
 	<script type="text/javascript">
-		CKEDITOR.replace('lcontent', {
+		CKEDITOR.replace('rcontent', {
 			toolbar : 'Full',
 			skin : 'kama'
 		});

@@ -36,6 +36,8 @@ public class ReplyController extends HttpServlet {
 			insertByReply(request, response);
 		else if (flag.equals("select"))
 			selectByLid(request, response);
+		else if (flag.equals("insertByReply"))
+			insertByReply(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
