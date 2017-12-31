@@ -73,6 +73,7 @@ public class FilesController extends HttpServlet {
 		int uid = Integer.valueOf(user.getUid());
 		request.setAttribute("imglist", filesService.selectByUidWithTypeNoFenye(uid, true));
 		request.setAttribute("musiclist", filesService.selectByUidWithTypeNoFenye(uid, false));
+		System.out.println("------------------------");
 		request.getRequestDispatcher("File.jsp").forward(request, response);
 	}
 }

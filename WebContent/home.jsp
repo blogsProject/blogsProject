@@ -454,7 +454,7 @@ input>submit {
 <div class="rizhi">
 <c:forEach items="${AlllogList}" var="log">
 <div class="rizhi1">
-<a href="#"><h3 class="news" >${log.ltitle }</h3></a>
+<a href="LogController?flag=selectById&lid=${log.lid }"><h3 class="news" >${log.ltitle }</h3></a>
 作者:${log.uname }  阅读数:${log.readnum }  发表时间:${log.ltime }
 </div>
 </c:forEach>

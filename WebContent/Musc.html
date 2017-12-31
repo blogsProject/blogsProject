@@ -246,7 +246,7 @@ var mplayer_song=[[
 		"src":"music/神田沙也加 - longing.mp3",
 	}
 ]];
-/*
+
 $.ajax({
 type:"get",
 	async:false, 
@@ -259,6 +259,9 @@ type:"get",
 			location="index.jsp";
 		var datajsno = $.parseJSON(data); 
 		var content = datajsno.fileList;
+		if(content==null){
+			alert("你当前没有上传的音乐，音乐播放器被禁用，请上传再试");
+		}
 		var con_length = content.length;
 		var kaitou = {
 				"basic":true,
@@ -273,7 +276,7 @@ type:"get",
 		});
 	}
 });
-*/
+
 </script>
 <script>
 

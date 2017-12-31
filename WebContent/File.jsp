@@ -39,12 +39,6 @@
 		location = "index.jsp";
 	</script>
 </c:if>
-<c:if test="${empty imglist || empty musiclist}">
-	<script type="text/javascript">
-		alert("请通过正确的方式访问该页面");
-		location = "index.jsp";
-	</script>
-</c:if>
 <script type="text/javascript">
 	function showdiv(targetid, objN) {
 		var target = document.getElementById(targetid);
@@ -268,172 +262,37 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 				<li class=' last'><a href='File.jsp'><span>文件柜</span></a></li>
 				<li class='last'><a href='Musc.html'><span>音乐</span></a></li>
 				<li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
-				<li class='last' style="margin-right: 10px; margin-left: 160px;"><a
-					id="showtext" onClick="showdiv('contentid','showtext')"><span>登录</span></a></li>
-				<li class='last' style="margin-right: 50px;"><a id="showtext"
-					onClick="showdiv('contentid2','showtext')"><span>注册</span></a></li>
 			</ul>
 		</div>
-		<div id="contentid" class="none">
-			<form>
-				<h4 style="margin-top: 10px; margin-left: 15px">登录</h4>
-				<section>
-					<span class="input input--isao"> <input
-						class="input__field input__field--isao" type="text" id="input-38" />
-						<label class="input__label input__label--isao" for="input-38"
-						data-content="用户名"> <span
-							class="input__label-content input__label-content--isao">用户名</span>
-					</label>
-					</span> <span class="input input--isao"> <input
-						class="input__field input__field--isao" type="password"
-						id="input-39" /> <label class="input__label input__label--isao"
-						for="input-39" data-content="密码"> <span
-							class="input__label-content input__label-content--isao">密码</span>
-					</label>
-					</span> <input class="bootstrap-frm2" type="submit" value="登录">
-				</section>
-
-				<!--        <input type="submit" value="登录">-->
-
-			</form>
-		</div>
-		<div id="contentid2" class="none">
-			<form>
-				<h4 style="margin-top: 10px; margin-left: 15px">注册</h4>
-				<section>
-					<span class="input input--isao"> <input
-						class="input__field input__field--isao" type="text" id="input-38" />
-						<label class="input__label input__label--isao" for="input-38"
-						data-content="用户名"> <span
-							class="input__label-content input__label-content--isao">用户名</span>
-					</label>
-					</span> <span class="input input--isao"> <input
-						class="input__field input__field--isao" type="password"
-						id="input-39" /> <label class="input__label input__label--isao"
-						for="input-39" data-content="密码"> <span
-							class="input__label-content input__label-content--isao">密码</span>
-					</label>
-					</span> <span class="input input--isao"> <input
-						class="input__field input__field--isao" type="password"
-						id="input-39" /> <label class="input__label input__label--isao"
-						for="input-39" data-content="再次输入密码"> <span
-							class="input__label-content input__label-content--isao">再次输入密码</span>
-					</label>
-					</span> <span class="input input--isao"> <input
-						class="input__field input__field--isao" type="text" id="input-39" />
-						<label class="input__label input__label--isao" for="input-39"
-						data-content="昵称"> <span
-							class="input__label-content input__label-content--isao">昵称</span>
-					</label>
-					</span> <span class="input input--isao"> <input
-						class="input__field input__field--isao" type="text" id="input-39" />
-						<label class="input__label input__label--isao" for="input-39"
-						data-content="真实姓名（可不填）"> <span
-							class="input__label-content input__label-content--isao">真实姓名（可不填）</span>
-					</label>
-					</span>
-					<section>
-						<label>选择你的性别:</label>
-						<div class="pretty circle">
-							<input type="radio" name="radio1"> <label><i
-								class="default"></i> 男</label>
-						</div>
-						<div class="pretty circle">
-							<input type="radio" name="radio1"> <label><i
-								class="default"></i> 女</label>
-						</div>
-					</section>
-					<textarea class="bootstrap-frm1" placeholder="个人简介（可不填）"></textarea>
-					<input class="bootstrap-frm2" type="submit" value="注册">
-				</section>
-			</form>
-		</div>
-
 		<section id="container">
 			<div class="wrap-container">
 				<div id="main-content">
 					<div class="div-file">
-
 						<div class="music">
 							<h2>音乐</h2>
+							<c:if test="${empty musiclist }">
+							<h2>还没有上传音乐，请上传</h2>
+							</c:if>
+							<c:forEach items="${musiclist }" var="music">
 							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
+								<a href="FilesController?flag=download&type=flase&fid=${music.fid }"><h4 class="news">${music.fname }</h4></a>
 							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">音乐</h4></a>
-							</div>
-
+							</c:forEach>
+							
 						</div>
 
 
 						<div class="photo">
 							<h2>照片</h2>
+							<c:if test="${empty imglist }">
+							<h2>还没有上传图片，请上传</h2>
+							</c:if>
+							<c:forEach items="${imglist }" var="img">
 							<div class="friend1">
-								<a href="#"><h4 class="news">图片</h4></a>
+								<a href="FilesController?flag=download&type=flase&fid=${img.fid }"><h4 class="news">${img.fname }</h4></a>
 							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">图片</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">图片</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">图片</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">图片</h4></a>
-							</div>
-							<div class="friend1">
-								<a href="#"><h4 class="news">图片</h4></a>
-							</div>
+							</c:forEach>
+							
 						</div>
 						<div style="margin: 0 auto" class="fileup">
 							<form action="" method="get" enctype="multipart/form-data">
