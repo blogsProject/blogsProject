@@ -45,7 +45,7 @@ alert("请先登录");
 location="index.jsp";
 </script>
 </c:if>
-<c:if test="${empty lid }">
+<c:if test="${empty loginfo }">
 <script type="text/javascript">
 alert("请通过正确的方式访问该页面");
 location="index.jsp";
@@ -210,14 +210,14 @@ margin-right:40px;
 <div id="main-content">
 <div>
 <form action="LogController" method="post">
-		标题：<input name="ltitle" placeholder="请输入标题" readonly="readonly">
-		<textarea name="content" class="ckeditor" cols="80" id="content"
+		标题：<input name="ltitle" placeholder="请输入标题"  value="${loginfo.ltitle }" readonly="readonly">
+		<textarea name="lcontent" class="ckeditor" cols="80" id="lcontent"
 			name="content" rows="10"> 
-										${log.lcontent }
+										${loginfo.lcontent }
 </textarea>
 
-<input type="hidden" name="flag" value="update"/>
-<input type="hidden" name="lid" value="${log.lid }"/>
+<input type="hidden" name="flag" value="updatebylog"/>
+<input type="hidden" name="lid" value="${loginfo.lid }"/>
 		<input type="submit" value="提交" />
 	</form>
 </div>

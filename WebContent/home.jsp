@@ -363,7 +363,7 @@ input>submit {
     <li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
     <li class=' last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
     <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
-    <li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
+    <li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
     </c:if>
     <c:if test="${empty user }">
     <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showtext" onClick="showdiv('contentid','showtext')"><span>登录</span></a></li>

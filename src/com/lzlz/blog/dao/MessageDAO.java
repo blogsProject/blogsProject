@@ -24,6 +24,17 @@ public interface MessageDAO {
 	public int deleteByMid(int mid);
 
 	/**
+	 * 通过接受者和发送者删除信息
+	 * 
+	 * @param sendid
+	 *            发送者
+	 * @param receiveid
+	 *            接受者
+	 * @return 结果码
+	 */
+	public int deleteBySendOrRece(int sendid, int receiveid);
+
+	/**
 	 * 通过接收人获取所有的Message的个数
 	 * 
 	 * @param receive

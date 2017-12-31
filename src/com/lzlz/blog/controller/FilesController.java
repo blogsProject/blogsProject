@@ -41,6 +41,8 @@ public class FilesController extends HttpServlet {
 			queryAllByLid(request, response);
 		else if (flag.equals("download"))
 			downFileByFid(request, response);
+		else if (flag.equals("photo"))
+			photo(request, response);
 		else {
 			response.setCharacterEncoding("utf-8");
 			response.getWriter().write("请通过正确方式访问该页面");
@@ -128,5 +130,19 @@ public class FilesController extends HttpServlet {
 		}
 		System.out.println("--------------------------------");
 		FileProcess.uploadProcess(request, response, filesService, user.getUid());
+	}
+
+	protected void photo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			request.setAttribute("ret", 4);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		request.setAttribute("plist", filesService.selectByUidWithTypeNoFenye(user.getUid(), true));
+		request.setAttribute("flag", true);
+		request.getRequestDispatcher("photo.jsp").forward(request, response);
 	}
 }

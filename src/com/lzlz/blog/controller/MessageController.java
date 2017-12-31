@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lzlz.blog.entiy.Friend;
 import com.lzlz.blog.entiy.Message;
 import com.lzlz.blog.entiy.User;
+import com.lzlz.blog.service.FriendService;
 import com.lzlz.blog.service.MessageService;
 import com.lzlz.blog.util.DAOFactory;
 
@@ -16,10 +18,12 @@ public class MessageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private MessageService messageService;
+	private FriendService friendService;
 
 	@Override
 	public void init() throws ServletException {
 		this.messageService = DAOFactory.getMessageService();
+		this.friendService = DAOFactory.getFriendService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,15 +47,13 @@ public class MessageController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		String receiveid = request.getParameter("receiveid");
-		if (user == null || receiveid == null)
-			System.out.println("¥¶¿Ì”Ôæ‰");
-		int uid = user.getUid();
-		response.getWriter()
-				.write("" + messageService.insertByMessage(new Message(0, uid, Integer.valueOf(receiveid))));
-	}
-
-	protected void deleteByMid(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().write("" + messageService.deleteByMid(1));
+		if (user == null || receiveid == null) {
+			request.setAttribute("flag", 5);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		messageService.insertByMessage(new Message(0, user.getUid(), Integer.valueOf(receiveid)));
+		request.setAttribute("ret", 11);
+		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 }

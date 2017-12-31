@@ -206,8 +206,8 @@ margin-right:40px;
 <div>
 <form action="LogController" method="post">
 		标题：<input name="ltitle" placeholder="请输入标题">
-		<textarea name="content" class="ckeditor" cols="80" id="content"
-			name="content" rows="10"> 
+		<textarea name="lcontent" class="ckeditor" cols="80" id="lcontent"
+			rows="10"> 
 </textarea>
 
 <input type="hidden" name="flag" value="insert"/>
@@ -272,4 +272,10 @@ margin-right:40px;
 <script src="js/jquery.magnific-popup.min.js"></script> 
 <script src="js/salvattore.min.js"></script> 
 <script src="js/photomain.js"></script>
+<script type="text/javascript">
+		CKEDITOR.replace('lcontent', {
+			toolbar : 'Full',
+			skin : 'kama'
+		});
+	</script>
 </html>

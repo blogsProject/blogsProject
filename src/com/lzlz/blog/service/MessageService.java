@@ -8,7 +8,9 @@ public interface MessageService {
 	public int insertByMessage(Message message);
 
 	public int deleteByMid(int mid);
-
+	
+	public int deleteBySendOrRece(int sendid,int receiveid);
+	
 	public int getAllCountByReceiveId(int receive);
 
 	public List<Message> selectByReceiveId(int receive);

@@ -46,7 +46,7 @@ public class MessageDAOImpl implements MessageDAO {
 	@Override
 	public List<Message> selectByReceiveId(int receiveid) {
 		try {
-			String sql = "select mid,sendid,receiveid(select username from user where user.uid=message.sendid) from message where receiveid=?";
+			String sql = "select mid,sendid,receiveid,(select username from user where user.uid=message.sendid) from message where receiveid=?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, receiveid);
@@ -91,6 +91,21 @@ public class MessageDAOImpl implements MessageDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		return 0;
+	}
+
+	@Override
+	public int deleteBySendOrRece(int sendid, int receiveid) {
+		try {
+			String sql = "delete from message where sendid=? and receiveid=?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sendid);
+			pstmt.setInt(1, receiveid);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return 0;
 	}

@@ -37,8 +37,12 @@ public class MessageServiceImpl implements MessageService {
 
 	@Override
 	public int getAllCountByReceiveId(int receiveid) {
-		// TODO Auto-generated method stub
 		return messageDAO.getAllCountByReceiveId(receiveid);
+	}
+
+	@Override
+	public int deleteBySendOrRece(int sendid, int receiveid) {
+		return 0;
 	}
 
 }

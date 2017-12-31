@@ -49,10 +49,14 @@ public class ReplyController extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		String lid = request.getParameter("lid");
 		String rcontent = request.getParameter("rcontent");
-		if (user == null || lid == null || rcontent == null)
-			System.out.println("¥¶¿Ì”Ôæ‰");
-		response.getWriter()
-				.write("" + replyService.insertByReply(new Reply(user.getUid(), Integer.valueOf(lid), rcontent, null)));
+		if (user == null || lid == null || rcontent == null) {
+			request.setAttribute("ret", 5);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		replyService.insertByReply(new Reply(user.getUid(), Integer.valueOf(lid), rcontent, null));
+		request.setAttribute("ret", 8);
+		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 
 	protected void selectByLid(HttpServletRequest request, HttpServletResponse response)

@@ -34,7 +34,7 @@ public class UserController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+				doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -122,8 +122,9 @@ public class UserController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			request.setAttribute("ret", 1);
+			request.setAttribute("ret", 4);
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+		return;
 		}
 		request.setAttribute("messagelist", messageService.selectByReceiveId(user.getUid()));
 		request.setAttribute("friendlist", friendService.selectByFirst(user.getUid()));
