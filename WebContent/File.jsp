@@ -295,11 +295,10 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 							
 						</div>
 						<div style="margin: 0 auto" class="fileup">
-							<form action="" method="get" enctype="multipart/form-data">
-
+							<form action="FilesController" method="post" enctype="multipart/form-data">
+								<input type="hidden" name="flag" value="insert">
 								<input type="file" name="file"> <input
 									class="bootstrap-frm2" type="submit" value="上传">
-
 							</form>
 						</div>
 					</div>

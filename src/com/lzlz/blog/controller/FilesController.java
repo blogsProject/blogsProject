@@ -33,6 +33,7 @@ public class FilesController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String flag = request.getParameter("flag");
+		System.out.println(flag);
 		if (flag == null)
 			response.sendRedirect("index.jsp");
 		if (flag.equals("music"))
@@ -113,6 +114,7 @@ public class FilesController extends HttpServlet {
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
+		System.out.println("--------------------------------");
 		FileProcess.uploadProcess(request, response, filesService, user.getUid());
 	}
 }
