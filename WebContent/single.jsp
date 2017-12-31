@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <html >
@@ -281,6 +282,14 @@ margin-top: 50px;
 
 	
 </style>
+<script type="text/javascript">
+ function success(sendid) {
+	location = "MessageController?flag=success&sendid="+sendid;
+}
+ function delete1(sendid) {
+	 location = "MessageController?flag=delete&sendid="+sendid;
+}
+</script>
 </head>
 
 <body>
@@ -296,156 +305,44 @@ margin-top: 50px;
 </div>
 
 <div class="div1">
-用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input class="input1" type="text" readonly="readonly">
+用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input class="input1" type="text"  value="${user.username }" readonly="readonly">
 <br>
-昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：<input class="input1" type="text" readonly="readonly">
+昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：<input class="input1" value="${user.netname }"  type="text" readonly="readonly">
 <br>
-真实姓名：<input class="input1" type="text" readonly="readonly">
+真实姓名：<input value="${user.relname }"  class="input1" type="text" readonly="readonly">
 <br>
 
-性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input class="input1" type="text" readonly="readonly">
+性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input class="input1" value="${user.username }"  type="text" readonly="readonly">
       <br><br><br>
-个人简介：  <textarea  class="bootstrap-frm3" readonly="readonly"></textarea>
+个人简介：  <textarea  class="bootstrap-frm3" readonly="readonly">${user.about } </textarea>
 <input class="bootstrap-frm2" type="submit" value="修改资料">
 </div>
 <div class="massage">
-<p>你没有任何消息</p>
+<c:if test="${empty messagelist }">
+<p>你没有消息</p>
+</c:if>
+<c:forEach items="${messagelist }" var="mlist">
+<p>${mlist.sendname }请求添加好友</p><button onclick="success(${mlist.sendid })">同意</button><button onclick="delete1(${mlist.sendid })">忽略</button>
+</c:forEach>
 </div>
 <div  class="div2">
 <h2 style="margin-bottom: 30px;">好友列表</h2>
-
+<c:forEach items="${friendlist }" var="flist">
 <div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
+<h3 class="news" >${flist.secondName }</h3>
 </div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >好友</h3></a>
-
-
-</div>
+</c:forEach>
 </div>
 <div class="myblogs">
 <h2 style="margin-bottom: 30px;">我的博客</h2>
+<c:forEach items="${loglist }" var="llist">
 <div class="friend1">
-<a href="#"><h3 class="news" >博客</h3></a>
-
-
+<a href="LogController?flag=info&lid=${llist.lid }"><h3 class="news" >${llist.ltitle }</h3></a>
+<br>
+<a href="LogController?flag=update&lid=${llist.lid }">修改</a><a href="LogController?flag=delete&lid=${llist.lid }">删除</a>
 </div>
-<div class="friend1">
-<a href="#"><h3 class="news" >博客</h3></a>
-
-
+</c:forEach>
 </div>
-<div class="friend1">
-<a href="#"><h3 class="news" >博客</h3></a>
-
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >博客</h3></a>
-
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >博客</h3></a>
-
-
-</div>
-<div class="friend1">
-<a href="#"><h3 class="news" >博客</h3></a>
-
-
-</div>
-</div>
-
 <script src="owl-carousel/owl.carousel.js"></script> 
   <script>
 		$(document).ready(function() {

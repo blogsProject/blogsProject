@@ -1,6 +1,8 @@
 package com.lzlz.blog.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,36 +35,45 @@ public class FilesController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String flag = request.getParameter("flag");
-		System.out.println(flag);
-		if (flag == null)
-			response.sendRedirect("index.jsp");
 		if (flag.equals("music"))
 			queryFileByUidWhithType(request, response);
 		else if (flag.equals("all"))
 			queryAllByLid(request, response);
 		else if (flag.equals("download"))
 			downFileByFid(request, response);
-		else if (flag.equals("insert"))
-			insertByFile(request, response);
+		else {
+			response.setCharacterEncoding("utf-8");
+			response.getWriter().write("请通过正确方式访问该页面");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String flag = request.getParameter("flag");
+		if (flag == null)
+			insertByFile(request, response);
 	}
 
 	protected void queryFileByUidWhithType(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		int ret = 0;
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			request.setAttribute("ret", 4);
-			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			ret = 0;
+			response.getWriter().write("" + ret);
 			return;
 		}
 		int uid = Integer.valueOf(user.getUid());
 		boolean type = Boolean.valueOf(request.getParameter("type"));
 		JSONObject jsonObject = new JSONObject();
+		List<Files> list = filesService.selectByUidWithTypeNoFenye(uid, type);
+		if (list == null)
+			ret = 1;
 		jsonObject.put("fileList", filesService.selectByUidWithTypeNoFenye(uid, type));
+		jsonObject.put("ret", ret);
 		response.getWriter().write(jsonObject.toString());
 	}
 
@@ -78,6 +89,7 @@ public class FilesController extends HttpServlet {
 		int uid = Integer.valueOf(user.getUid());
 		request.setAttribute("imglist", filesService.selectByUidWithTypeNoFenye(uid, true));
 		request.setAttribute("musiclist", filesService.selectByUidWithTypeNoFenye(uid, false));
+		request.setAttribute("flag", true);
 		request.getRequestDispatcher("File.jsp").forward(request, response);
 	}
 

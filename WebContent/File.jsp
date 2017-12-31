@@ -251,8 +251,11 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 </style>
 </head>
 <body>
-
-
+<c:if test="${ empty flag }">
+<script type="text/javascript">
+ location="FilesController?flag=all";
+</script>
+</c:if>
 	<div class="wrap-body">
 		<div style="position: fixed; width: 100%" id='cssmenu'
 			class="align-center">
@@ -289,7 +292,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 							</c:if>
 							<c:forEach items="${imglist }" var="img">
 							<div class="friend1">
-								<a href="FilesController?flag=download&type=flase&fid=${img.fid }"><h4 class="news">${music.fname }</h4></a>
+								<a href="FilesController?flag=download&type=flase&fid=${img.fid }"><h4 class="news">${img.fname }</h4></a>
 							</div>
 							</c:forEach>
 							

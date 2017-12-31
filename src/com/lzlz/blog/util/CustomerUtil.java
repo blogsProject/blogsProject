@@ -60,12 +60,13 @@ public class CustomerUtil {
 	 *            数字从几开始 默认从1开始
 	 * @return 修改后的文件名或者未修改的文件名(假如这个文件名不存在)
 	 */
-	public static String filenameIsExist(String fileold, String filename, List<String> fileNamelist, int count) {
+	public static String filenameIsExist(String fileold, String filename, String externname, List<String> fileNamelist,
+			int count) {
 		if (count <= 0)
 			count = 1;
-		if (!fileNamelist.contains(filename))
+		if (!fileNamelist.contains(filename + "." + externname))
 			return filename;
-		return filenameIsExist(fileold, fileold + "(" + count++ + ")", fileNamelist, count);
+		return filenameIsExist(fileold, fileold + "(" + count++ + ")", externname, fileNamelist, count);
 	}
 
 	public static int isImageOrMusic(String fileExternName) {

@@ -44,14 +44,12 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 
 	@Override
-	public List<Message> selectByReceiveId(int receiveid, int curpage, int count) {
+	public List<Message> selectByReceiveId(int receiveid) {
 		try {
-			String sql = "select mid,sendid,receiveid(select username from user where user.uid=message.sendid) from message where receiveid=? limit ?,?";
+			String sql = "select mid,sendid,receiveid(select username from user where user.uid=message.sendid) from message where receiveid=?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, receiveid);
-			pstm.setInt(2, CustomerUtil.limitFristParmaWithMyql(curpage, count));
-			pstm.setInt(3, count);
 			ResultSet rs = pstm.executeQuery();
 			List<Message> list = new ArrayList<>();
 			while (rs.next()) {

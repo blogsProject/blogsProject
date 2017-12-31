@@ -106,7 +106,7 @@ public interface LogService {
 	 * @param count
 	 * @return
 	 */
-	public List<Log> queryByUid(int uid, int curpage, int count);
+	public List<Log> queryByUid(int uid);
 
 	/**
 	 * 查询阅读数排名前十的日志

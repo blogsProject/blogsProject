@@ -11,7 +11,7 @@ public interface MessageService {
 
 	public int getAllCountByReceiveId(int receive);
 
-	public List<Message> selectByReceiveId(int receive, int curpage, int count);
+	public List<Message> selectByReceiveId(int receive);
 
 	public int getPageByReceiveId(int count, int receiveid);
 }

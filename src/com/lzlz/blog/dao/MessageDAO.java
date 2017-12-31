@@ -43,7 +43,7 @@ public interface MessageDAO {
 	 *            一页多少个
 	 * @return Message集合
 	 */
-	public List<Message> selectByReceiveId(int receive, int curpage, int count);
+	public List<Message> selectByReceiveId(int receive);
 
 	/**
 	 * 通过接受者获取信息总页数

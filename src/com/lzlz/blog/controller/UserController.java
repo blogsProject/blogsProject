@@ -8,18 +8,28 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.lzlz.blog.entiy.User;
+import com.lzlz.blog.service.FriendService;
+import com.lzlz.blog.service.LogService;
+import com.lzlz.blog.service.MessageService;
 import com.lzlz.blog.service.UserService;
 import com.lzlz.blog.util.CustomerUtil;
 import com.lzlz.blog.util.DAOFactory;
+import com.mysql.jdbc.Messages;
 
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private UserService userService;
+	private LogService logService;
+	private MessageService messageService;
+	private FriendService friendService;
 
 	@Override
 	public void init() throws ServletException {
 		this.userService = DAOFactory.getUserService();
+		this.logService = DAOFactory.getLogService();
+		this.messageService = DAOFactory.getMessageService();
+		this.friendService = DAOFactory.getFriendService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,7 +48,8 @@ public class UserController extends HttpServlet {
 			getUserByUsername(request, response);
 		else if (flag.equals("checkUsername"))
 			checkUsername(request, response);
-
+		else if (flag.equals("single"))
+			single(request, response);
 	}
 
 	protected void insertByUser(HttpServletRequest request, HttpServletResponse response)
@@ -59,9 +70,9 @@ public class UserController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		User user = userService.getUserByUsername(username);
-		System.out.println(username+"---"+user);
 		if (user == null) {
-			response.sendRedirect("index.jsp");
+			request.setAttribute("ret", 7);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
 		if (!password.equals(user.getPassword())) {
@@ -104,5 +115,20 @@ public class UserController extends HttpServlet {
 			response.getWriter().write("" + 1);
 		} else
 			response.getWriter().write("" + 2);
+	}
+
+	protected void single(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			request.setAttribute("ret", 1);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+		}
+		request.setAttribute("messagelist", messageService.selectByReceiveId(user.getUid()));
+		request.setAttribute("friendlist", friendService.selectByFirst(user.getUid()));
+		request.setAttribute("loglist", logService.queryByUid(user.getUid()));
+		request.setAttribute("flag", true);
+		request.getRequestDispatcher("single.jsp").forward(request, response);
 	}
 }

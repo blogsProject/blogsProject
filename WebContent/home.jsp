@@ -64,8 +64,6 @@ location="index.jsp";
 			 window.alert("密码不能为空");
 			 return false;
 		 }else if(password1 != password2) {
-			 window.alert("您输入的新密码与确认密码确认不一致");
-			signupForm.repassword.focus();
 			return false;
 		}
 		
@@ -97,16 +95,16 @@ location="index.jsp";
 
 	
 	function submitcheck() {
-		if(test()){
+		if(!test()){
 			alert("两次输入密码不一致");
-		}else if(checkName()){
+		}else if(!checkName()){
 			alert("用户名不能为空");
-		}else if(checknetname()){
+		}else if(!checknetname()){
 			alert("昵称不能为空");
 		}else if(userisexits){
 			alert("用户名已存在！");
 		}else{
-			document.regeistform.onsubmit();
+			document.regeistform.submit();
 		}
 	}
 	</script>
@@ -416,16 +414,16 @@ input>submit {
       <section>
         <label>选择你的性别:</label>
         <div class="pretty circle">
-          <input  type="radio" name="gender" checked="checked">
+          <input  type="radio" name="gender" checked="checked" value="男">
           <label><i class="default"></i>男</label>
         </div>
         <div class="pretty circle">
-          <input type="radio" name="gender">
+          <input type="radio" name="gender" value="女">
           <label><i class="default"></i>女</label>
         </div>
       </section>
-      <textarea  class="bootstrap-frm1" placeholder="个人简介（可不填）"></textarea>
-      <input name="about" class="bootstrap-frm2" type="button"   onclick="submitcheck()"  value="注册">
+      <textarea  name="about" class="bootstrap-frm1" placeholder="个人简介（可不填）"></textarea>
+      <input class="bootstrap-frm2" type="button"   onclick="submitcheck()"  value="注册">
     </section>
   </form>
 </div>

@@ -26,8 +26,8 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public List<Message> selectByReceiveId(int receiveid, int curpage, int count) {
-		return messageDAO.selectByReceiveId(receiveid, curpage, count);
+	public List<Message> selectByReceiveId(int receiveid) {
+		return messageDAO.selectByReceiveId(receiveid);
 	}
 
 	@Override

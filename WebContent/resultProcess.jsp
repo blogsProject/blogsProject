@@ -44,9 +44,33 @@
 				location = "index.jsp";
 			</script>
 		</c:when>
-		<c:when test="${ret == 5 }">
+		<c:when test="${ret == 6 }">
 			<script type="text/javascript">
 				alert("请上传正确格式的文件。");
+				location = "index.jsp";
+			</script>
+		</c:when>
+		<c:when test="${ret == 7 }">
+			<script type="text/javascript">
+				alert("用户名不存在");
+				location = "index.jsp";
+			</script>
+		</c:when>
+		<c:when test="${ret == 8 }">
+			<script type="text/javascript">
+				alert("添加成功");
+				location = "index.jsp";
+			</script>
+		</c:when>
+		<c:when test="${ret == 9 }">
+			<script type="text/javascript">
+				alert("修改成功");
+				location = "index.jsp";
+			</script>
+		</c:when>
+		<c:when test="${ret == 10 }">
+			<script type="text/javascript">
+				alert("删除成功");
 				location = "index.jsp";
 			</script>
 		</c:when>

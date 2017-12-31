@@ -16,22 +16,20 @@ public class FriendServiceImpl implements FriendService {
 
 	@Override
 	public int insertByFriend(Friend friend) {
+		// TODO Auto-generated method stub
 		return friendDAO.insertByFriend(friend);
 	}
 
 	@Override
 	public int deleteBySecondId(int first, int second) {
+		// TODO Auto-generated method stub
 		return friendDAO.deleteBySecondId(first, second);
 	}
 
 	@Override
-	public List<Integer> selectByFirst(int curpage, int count) {
-		return friendDAO.selectByFirst(curpage, count);
-	}
-
-	@Override
-	public int getAllPageByFristByCount(int frist, int count) {
-		return friendDAO.getAllPageByFristByCount(frist, count);
+	public List<Integer> selectByFirst(int first) {
+		// TODO Auto-generated method stub
+		return friendDAO.selectByFirst(first);
 	}
 
 }

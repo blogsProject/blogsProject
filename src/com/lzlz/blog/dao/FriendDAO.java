@@ -31,7 +31,7 @@ public interface FriendDAO {
 	 *            多少个一页
 	 * @return 查询的集合
 	 */
-	public List<Integer> selectByFirst(int curpage, int count);
+	public List<Integer> selectByFirst(int first);
 
 	/**
 	 * 通过first和count获取总页数
@@ -40,13 +40,5 @@ public interface FriendDAO {
 	 *            frist 多少个一页 主人编号
 	 * @return 总页数
 	 */
-	public int getAllPageByFristByCount(int frist, int count);
 
-	/**
-	 * 通过first获取总记录数
-	 * 
-	 * @param frist
-	 * @return 总的记录数
-	 */
-	public int getAllCountByFristByCount(int frist);
 }

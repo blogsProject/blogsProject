@@ -238,14 +238,7 @@ input>submit {
 <script src="js/mplayer-functions.js"></script>
 <script src="js/jquery.nstSlider.min.js"></script>
 <script type="text/javascript">
-var mplayer_song=[[
-	{
-		"name":"longing",
-		"singer":"神田沙也加",
-		
-		"src":"music/神田沙也加 - longing.mp3",
-	}
-]];
+var mplayer_song=[[]];
 
 $.ajax({
 type:"get",
@@ -255,11 +248,13 @@ type:"get",
 		flag:"music",
 		type:false
 	},success : function(data){
-		if(data == 1)
+		if(data == 0){
+			alert("请先登录");
 			location="index.jsp";
+		}
 		var datajsno = $.parseJSON(data); 
 		var content = datajsno.fileList;
-		if(content==null){
+		if(datajsno.ret == 1){
 			alert("你当前没有上传的音乐，音乐播放器被禁用，请上传再试");
 		}
 		var con_length = content.length;
@@ -271,7 +266,7 @@ type:"get",
 		$.each(content,function(i){
 			var temp={};
 			temp.name=content[i].fname;
-			temp.src =content[i].fpath;
+			temp.src ="upload/"+content[i].fpath;
 			mplayer_song[0].push(temp);
 		});
 	}
@@ -279,7 +274,6 @@ type:"get",
 
 </script>
 <script>
-
 var modeText = ['顺序播放','单曲循环','随机播放','列表循环'];
 var player = new MPlayer({
 	// 容器选择器名称

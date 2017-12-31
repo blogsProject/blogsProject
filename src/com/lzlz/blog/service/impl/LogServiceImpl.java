@@ -40,8 +40,8 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public List<Log> queryByUid(int uid, int curpage, int count) {
-		return logDAO.queryByUid(uid, curpage, count);
+	public List<Log> queryByUid(int uid) {
+		return logDAO.queryByUid(uid);
 	}
 
 	@Override

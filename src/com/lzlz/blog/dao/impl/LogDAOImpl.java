@@ -86,14 +86,12 @@ public class LogDAOImpl implements LogDAO {
 	}
 
 	@Override
-	public List<Log> queryByUid(int uid, int curpage, int count) {
+	public List<Log> queryByUid(int uid) {
 		try {
 			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) where uid=?";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
-			pstmt.setInt(2, CustomerUtil.limitFristParmaWithMyql(curpage, count));
-			pstmt.setInt(3, count);
 			ResultSet rs = pstmt.executeQuery();
 			List<Log> list = new ArrayList<>();
 			while (rs.next()) {
