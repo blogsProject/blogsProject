@@ -157,16 +157,18 @@ function showdiv(targetid,objN){
 	padding: 5px;
 }
 .rizhi{
-		height: 100%;
-		width: 700px;	
-margin-left:300px;
+position:absolute;
+		height: 700px;
+		width: 690px;	
+		max-width:690px;
+margin-left:200px;
 text-align:left;
 		padding-left: 90px;
 		padding-top: 30px;
 		padding-bottom: 40px;
 		border: 1px solid #d1d1d1;
 		border-radius: 10px;
-		
+		background: #fff;
 	}
 	.rizhi1{
 		margin-top: 20px;
@@ -177,8 +179,10 @@ text-align:left;
 	}
 	
 	.ph{
-		height: 100%;
+	position:absolute;
+		height: 600px;
 		width: 300px;	
+		margin-top:0px;
 margin-left:1020px;
 text-align:left;
 		padding-left: 90px;
@@ -189,9 +193,17 @@ text-align:left;
 		
 	}
 		#write{
+		margin-top:0px;
 		width: 100px;
 		height: 70px;
 		margin-left: 1020px;
+	}
+	.page{
+position:absolute;
+margin:740px 420px;
+		width: 200px;
+		height: 30px;
+		
 	}
 
   }
@@ -449,7 +461,9 @@ input>submit {
 </div>
 
 </div>
+
 <!-- 分页 -->
+<div  class="page">
 <c:choose>
 <c:when test="${page.curpage-1 <= 0 }"> 
  上一页
@@ -466,6 +480,7 @@ input>submit {
 <a href="LogController?flag=home&curpage=${page.curpage+1 }">下一页</a>
 </c:otherwise>
   </c:choose>
+  </div>
   <div id="write">
   <a href="write.jsp"><button style="margin: 0 80px;" class="bootstrap-frm2" >发表日志</button></a>
   </div>
