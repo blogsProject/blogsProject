@@ -45,12 +45,7 @@ alert("请先登录");
 location="index.jsp";
 </script>
 </c:if>
-<c:if test="${empty lid }">
-<script type="text/javascript">
-alert("请通过正确的方式访问该页面");
-location="index.jsp";
-</script>
-</c:if>
+
 <script type="text/javascript">
 function showdiv(targetid,objN){  
       var target=document.getElementById(targetid);
