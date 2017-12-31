@@ -47,6 +47,8 @@ public class LogController extends HttpServlet {
 			updateByLog(request, response);
 		else if (flag.equals("selectById"))
 			quertByLid(request, response);
+		else if (flag.equals("delete"))
+			deleteByLid(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -124,7 +126,7 @@ public class LogController extends HttpServlet {
 			request.setAttribute("ret", 5);
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 		}
-
+		logService.deleteByLid(lid);
 		request.setAttribute("ret", 10);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}

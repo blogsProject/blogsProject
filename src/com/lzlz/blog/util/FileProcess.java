@@ -67,12 +67,12 @@ public class FileProcess {
 				else {
 					// 获取上传文件的名字
 					String filename = item.getName();
-					;
 					// 获取文件名(不包含扩展名)
 					String filename_no_externn = filename.substring(0, filename.lastIndexOf("."));
 					// 截取(+1是去掉反斜杠)
 					File file = null;
 					String expanded_name = filename.substring(filename.lastIndexOf(".") + 1);
+					System.out.println(filename_no_externn+expanded_name);
 					do {
 						// 生成文件名
 						// int r = (int) (Math.random() * 1000);
@@ -80,8 +80,8 @@ public class FileProcess {
 						// SimpleDateFormat("hhmmssSSS");
 						// start = filename.lastIndexOf("."); // 索引到最后一个点
 						List<String> fileNamelist = filesService.selectFileNameByUid(uid);
-						filename = CustomerUtil.filenameIsExist(filename_no_externn, filename_no_externn,expanded_name, fileNamelist,
-								1) + "." + expanded_name;
+						filename = CustomerUtil.filenameIsExist(filename_no_externn, filename_no_externn, expanded_name,
+								fileNamelist, 1) + "." + expanded_name;
 						file = new File(path, filename);
 					} while (file.exists());
 					// 写到磁盘上去
@@ -134,4 +134,10 @@ public class FileProcess {
 		outs.close();
 	}
 
+	public static boolean remove(HttpServletRequest request, String fpath) {
+		File f = new File(request.getRealPath("upload") + "/" + fpath);
+		if (f.exists())
+			return f.delete();
+		return false;
+	}
 }

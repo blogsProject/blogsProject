@@ -304,10 +304,10 @@ alert("请通过正确的方式访问");
 <div style=" position:absolute;   width: 100%" id='cssmenu' class="align-center">
   <ul>
     <li class="active"><a href='index.jsp'><span>主页</span></a></li>
-    <li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
-    <li class=' last'><a href='File.jsp'><span>文件柜</span></a></li>
+    <li class='last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
+    <li class='last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
     <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
-    <li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
+    <li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
   </ul>
 </div>
 
@@ -346,7 +346,7 @@ alert("请通过正确的方式访问");
 <h2 style="margin-bottom: 30px;">我的博客</h2>
 <c:forEach items="${loglist }" var="llist">
 <div class="friend1">
-<a href="LogController?flag=info&lid=${llist.lid }"><h5 class="news" >${llist.ltitle }</h5></a>
+<a href="LogController?flag=selectById&lid=${llist.lid }"><h5 class="news" >${llist.ltitle }</h5></a>
 <a href="LogController?flag=update&lid=${llist.lid }">修改</a>|<a href="LogController?flag=delete&lid=${llist.lid }">删除</a>
 </div>
 <br>

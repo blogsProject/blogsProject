@@ -251,20 +251,20 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 </style>
 </head>
 <body>
-<c:if test="${ empty flag }">
-<script type="text/javascript">
- location="FilesController?flag=all";
-</script>
-</c:if>
+	<c:if test="${ empty flag }">
+		<script type="text/javascript">
+			location = "FilesController?flag=all";
+		</script>
+	</c:if>
 	<div class="wrap-body">
 		<div style="position: fixed; width: 100%" id='cssmenu'
 			class="align-center">
 			<ul>
 				<li class="active"><a href='index.jsp'><span>主页</span></a></li>
-				<li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
-				<li class=' last'><a href='File.jsp'><span>文件柜</span></a></li>
-				<li class='last'><a href='Musc.html'><span>音乐</span></a></li>
-				<li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
+				<li class='last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
+				<li class='last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
+				<li class='last'><a href="Musc.html"><span>音乐</span></a></li>
+				<li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
 			</ul>
 		</div>
 		<section id="container">
@@ -274,38 +274,41 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 						<div class="music">
 							<h2>音乐</h2>
 							<c:if test="${empty musiclist }">
-							<h2>还没有上传音乐，请上传</h2>
+								<h2>还没有上传音乐，请上传</h2>
 							</c:if>
 							<c:forEach items="${musiclist }" var="music">
-							<div class="friend1">
-								<a href="FilesController?flag=download&type=flase&fid=${music.fid }"><h4 class="news">${music.fname }</h4></a>
-								<br>
-								<a href="FilesController?flag=delete&fid=${music.fid }"><button>删除</button></a>
-							</div>
+								<div class="friend1">
+									<a
+										href="FilesController?flag=download&type=flase&fid=${music.fid }"><h4
+											class="news">${music.fname }</h4></a> <br> <a
+										href="FilesController?flag=delete&fid=${music.fid }"><button>删除</button></a>
+								</div>
 							</c:forEach>
-							
+
 						</div>
 
 
 						<div class="photo">
 							<h2>照片</h2>
 							<c:if test="${empty imglist }">
-							<h2>还没有上传图片，请上传</h2>
+								<h2>还没有上传图片，请上传</h2>
 							</c:if>
 							<c:forEach items="${imglist }" var="img">
-							<div class="friend1">
-								<a href="FilesController?flag=download&type=flase&fid=${img.fid }"><h4 class="news">${img.fname }</h4></a>
-								<br>
-								<a href="FilesController?flag=delete&fid=${img.fid }"><button>删除</button></a>
-							</div>
+								<div class="friend1">
+									<a
+										href="FilesController?flag=download&type=flase&fid=${img.fid }"><h4
+											class="news">${img.fname }</h4></a> <br> <a
+										href="FilesController?flag=delete&fid=${img.fid }"><button>删除</button></a>
+								</div>
 							</c:forEach>
-							
+
 						</div>
 						<div style="margin: 0 auto" class="fileup">
-							<form action="FilesController" method="post" enctype="multipart/form-data">
-								<input type="hidden" name="flag" value="insert">
-								<input type="file" name="file"> <input
-									class="bootstrap-frm2" type="submit" value="上传">
+							<form action="FilesController" method="post"
+								enctype="multipart/form-data">
+								<input type="hidden" name="flag" value="insert"> <input
+									type="file" name="file"> <input class="bootstrap-frm2"
+									type="submit" value="上传">
 							</form>
 						</div>
 					</div>
@@ -396,7 +399,9 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 									.each(
 											function(i) {
 												var index = $(this).attr("id");
-												$(this).uploadify({
+												$(this)
+														.uploadify(
+																{
 																	debug : false,
 																	swf : 'js/uploadify.swf', //swf文件路径
 																	method : 'post', // 提交方式
@@ -467,11 +472,14 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 																	},
 
 																	// 在每一个文件上传成功后触发
-																	onUploadSuccess : function(file,data,response) {
+																	onUploadSuccess : function(
+																			file,
+																			data,
+																			response) {
 																		alert(/*file.name + ' is uploaded succeed!  ' +
-																		'  server-side returned data:' + data +
-																		'  response: ' + response*/'文件上传成功');
-																					}
+																																				'  server-side returned data:' + data +
+																																				'  response: ' + response*/'文件上传成功');
+																	}
 
 																});
 											});

@@ -66,6 +66,7 @@ public class CustomerUtil {
 			count = 1;
 		if (!fileNamelist.contains(filename + "." + externname))
 			return filename;
+		System.out.println(fileold+"------"+filename);
 		return filenameIsExist(fileold, fileold + "(" + count++ + ")", externname, fileNamelist, count);
 	}
 
@@ -75,8 +76,10 @@ public class CustomerUtil {
 				return 1;
 		}
 		for (int i = 0; i < MUSICSTR.length; i++) {
-			if (MUSICSTR[i].equals(fileExternName))
+			if (MUSICSTR[i].equals(fileExternName)){
+				System.out.println("2");
 				return 2;
+			}
 		}
 		return 3;
 	}

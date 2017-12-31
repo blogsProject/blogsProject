@@ -258,11 +258,10 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 		<div id='cssmenu' class="align-center">
 			<ul>
 				<li class="active"><a href='index.jsp'><span>主页</span></a></li>
-
-				<li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
-				<li class=' last'><a href='single.html'><span>文件柜</span></a></li>
-				<li class='last'><a href="Musc.html"><span>音乐</span></a></li>
-				<li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
+				  <li class=' last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
+   			 <li class=' last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
+   			 <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
+   			 <li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
 
 			</ul>
 		</div>

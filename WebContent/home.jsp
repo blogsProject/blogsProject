@@ -360,8 +360,8 @@ input>submit {
   <ul>
     <li class="active"><a href='index.jsp'><span>主页</span></a></li>
     <c:if test="${!empty user }">
-    <li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
-    <li class=' last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
+    <li class='last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
+    <li class='last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
     <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
     <li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
     </c:if>
