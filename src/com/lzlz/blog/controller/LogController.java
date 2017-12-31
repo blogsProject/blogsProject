@@ -169,6 +169,7 @@ public class LogController extends HttpServlet {
 		int lid = Integer.valueOf(lid_str);
 		logService.updateByLidWhithReadNum(lid);
 		request.setAttribute("log", logService.getLogByLid(lid));
+		request.setAttribute("replyList", replyService.selectByLid(lid, curpage, 5));
 		request.setAttribute("page", new Page(curpage, replyService.getPageByLid(5, lid)));
 		request.getRequestDispatcher("bloginfo.jsp").forward(request, response);
 	}

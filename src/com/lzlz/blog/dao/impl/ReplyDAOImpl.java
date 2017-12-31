@@ -43,6 +43,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 			List<Reply> list = new ArrayList<>();
 			while (rs.next()) {
 				Reply reply = new Reply(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4));
+				reply.setUsername(rs.getString(5));
 				list.add(reply);
 			}
 			return list;
