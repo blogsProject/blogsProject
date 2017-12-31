@@ -486,7 +486,10 @@ input>submit {
     <h3>排行</h3>
 <c:forEach items="${AlllogList}" var="log">
 <div class="rizhi1">
-<a href="#"><h2 class="news" >${log.ltitle }</h2></a>
+<a href="#"><h4 class="news" >${log.ltitle }</h2></a>
+<br>
+阅读数:${log.readnum }
+<br> 
 </div>
 </c:forEach>
 </div>
