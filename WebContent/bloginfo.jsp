@@ -13,7 +13,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
-
+<script type="text/javascript" src="CKeditor/ckeditor.js"></script>
 <script src="js/jquery.min.js"></script>
 <link rel="stylesheet" href="css/zerogrid.css">
 <link rel="stylesheet" href="css/style.css">
@@ -285,6 +285,22 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 							</div>
 						</c:forEach>
 						
+						
+						
+						<div style="margin-right: 40px;">
+						<form action="LogController">
+		<textarea  name="lcontent" class="ckeditor" cols="80" id="lcontent"
+			rows="10"> 
+	</textarea>
+		<input  class="bootstrap-frm2"  type="submit" value="提交" />
+	</form>
+	<script type="text/javascript">
+		CKEDITOR.replace('lcontent', {
+			toolbar : 'Full',
+			skin : 'kama'
+		});
+	</script>
+						</div>
 					</div>
 
 				</div>
