@@ -32,4 +32,10 @@ public class FriendServiceImpl implements FriendService {
 		return friendDAO.selectByFirst(first);
 	}
 
+	@Override
+	public boolean friendIsHave(int firstid, int secondid) {
+		// TODO Auto-generated method stub
+		return friendDAO.friendIsHave(firstid, secondid);
+	}
+
 }

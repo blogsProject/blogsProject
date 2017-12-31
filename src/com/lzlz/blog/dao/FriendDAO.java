@@ -40,5 +40,5 @@ public interface FriendDAO {
 	 *            frist 多少个一页 主人编号
 	 * @return 总页数
 	 */
-
+	public boolean friendIsHave(int firstid,int secondid);
 }

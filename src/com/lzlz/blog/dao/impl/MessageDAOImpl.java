@@ -102,7 +102,7 @@ public class MessageDAOImpl implements MessageDAO {
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, sendid);
-			pstmt.setInt(1, receiveid);
+			pstmt.setInt(2, receiveid);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

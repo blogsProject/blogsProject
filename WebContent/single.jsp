@@ -291,10 +291,10 @@ alert("请通过正确的方式访问");
 </c:if>
 <script type="text/javascript">
  function success(sendid) {
-	location = "MessageController?flag=success&sendid="+sendid;
+	location = "FriendController?flag=success&secondid="+sendid;
 }
  function delete1(sendid) {
-	 location = "MessageController?flag=delete&sendid="+sendid;
+	 location = "FriendController?flag=delete&secondid="+sendid;
 }
 </script>
 </head>
@@ -323,7 +323,7 @@ alert("请通过正确的方式访问");
 性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input class="input1" value="${user.username }"  type="text" readonly="readonly">
       <br><br><br>
 个人简介：  <textarea  class="bootstrap-frm3" readonly="readonly">${user.about } </textarea>
-<input class="bootstrap-frm2" type="submit" value="修改资料">
+<input class="bootstrap-frm2" type="button" onclick="location='sUpdate.jsp' " value="修改资料">
 </form>
 </div>
 <div class="massage">
@@ -338,7 +338,7 @@ alert("请通过正确的方式访问");
 <h2 style="margin-bottom: 30px;">好友列表</h2>
 <c:forEach items="${friendlist }" var="flist">
 <div class="friend1">
-<h3 class="news" >${flist.secondName }</h3><a href="FriendController?flag=delete&secondid"=${flist.secondid }>删除好友</a>
+<h3 class="news" >${flist.username }</h3><a href="FriendController?flag=deleteFriend&secondid=${flist.uid }">删除好友</a>
 </div>
 </c:forEach>
 </div>

@@ -257,11 +257,11 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 	<div class="wrap-body">
 		<div id='cssmenu' class="align-center">
 			<ul>
-			 <li class="active"><a href='index.jsp'><span>主页</span></a></li>
-			 <li class=' last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
-   			 <li class=' last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
-   			 <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
-   			 <li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
+				<li class="active"><a href='index.jsp'><span>主页</span></a></li>
+				<li class=' last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
+				<li class=' last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
+				<li class='last'><a href="Musc.html"><span>音乐</span></a></li>
+				<li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
 
 			</ul>
 		</div>
@@ -270,35 +270,48 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 				<div id="main-content">
 					<!-- 日志 -->
 					<div class="rizhi">
-						<h3>${log.ltitle }<a href="UserController?flag=userinfo&uid=${log.uid }" style="font-size: 12px;margin-left: 30px;">${log.username }</a></h3>
-						<div style="margin-top: 50px;margin-bottom: 30px; ">
-						<p style="font-size: 18px;">${log.lcontent }</p>
-						<p style="font-size: 9px;margin-top: 30px;">${log.ltime }</p>
+						<h3>${log.ltitle }<a
+								href="UserController?flag=userinfo&uid=${log.uid }"
+								style="font-size: 12px; margin-left: 30px;">${log.uname }</a>
+						</h3>
+						<div style="margin-top: 50px; margin-bottom: 30px;">
+							<p style="font-size: 18px;">${log.lcontent }</p>
+							<p style="font-size: 9px; margin-top: 30px;">${log.ltime }</p>
 						</div>
 						<c:forEach items="${replyList}" var="rep">
-						<div>
-							<a href="UserController?flag=userinfo&uid=${rep.uid }" style="font-size: 20px;">${rep.username }</a>
+							<div>
+								<a href="UserController?flag=userinfo&uid=${rep.uid }"
+									style="font-size: 20px;">${rep.username }</a>
 								<div>
-							<p style="font-size: 18px;">${rep.rcontent}</p>
-							<p style="font-size: 9px;">${rep.rdatetime }</p>
+									<p style="font-size: 18px;">${rep.rcontent}</p>
+									<p style="font-size: 9px;">${rep.rdatetime }</p>
+								</div>
 							</div>
-							</div>
-						</c:forEach>	
-		<div style="margin-right: 40px;">
-			<form action="ReplyController" method="post">
-		<textarea  name="rcontent" class="ckeditor" cols="80" id="rcontent"
-			rows="10"> 
+						</c:forEach>
+						<div style="margin-right: 40px;">
+							<form action="ReplyController" method="post">
+								<textarea name="rcontent" class="ckeditor" cols="80"
+									id="rcontent" rows="10"> 
 		</textarea>
-		<input type="hidden" name="flag" value="insertByReply"/>
-		<input type="hidden" name="lid" value="${log.lid }"/>
-		<input  class="bootstrap-frm2"  type="submit" value="提交" />
-	</form>
-	<script type="text/javascript">
-		CKEDITOR.replace('rcontent', {
-			toolbar : 'Full',
-			skin : 'kama'
-		});
-	</script>
+								<input type="hidden" name="flag" value="insertByReply" /> <input
+									type="hidden" name="lid" value="${log.lid }" />
+								<c:choose>
+									<c:when test="${flag }">
+										<input class="bootstrap-frm2" type="text" value="已有该好友"
+											readonly="readonly" />
+									</c:when>
+									<c:otherwise>
+										<input class="bootstrap-frm2" type="submit" value="提交" />
+									</c:otherwise>
+								</c:choose>
+
+							</form>
+							<script type="text/javascript">
+								CKEDITOR.replace('rcontent', {
+									toolbar : 'Full',
+									skin : 'kama'
+								});
+							</script>
 						</div>
 					</div>
 

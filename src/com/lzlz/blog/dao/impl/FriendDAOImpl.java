@@ -35,7 +35,7 @@ public class FriendDAOImpl implements FriendDAO {
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, second);
-			pstmt.setInt(1, first);
+			pstmt.setInt(2, first);
 			System.out.println(pstmt.toString());
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -62,6 +62,26 @@ public class FriendDAOImpl implements FriendDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean friendIsHave(int firstid, int secondid) {
+
+		try {
+			String sql = "Select second from friend where first=? and second=?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, firstid);
+			pstmt.setInt(2, secondid);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

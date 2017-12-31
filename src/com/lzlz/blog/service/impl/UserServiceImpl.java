@@ -40,4 +40,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByUid(uid);
 	}
 
+	@Override
+	public List<User> queryByList(List<Integer> listid) {
+		// TODO Auto-generated method stub
+		return userDao.queryByList(listid);
+	}
+
 }

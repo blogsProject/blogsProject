@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lzlz.blog.entiy.Friend;
 import com.lzlz.blog.entiy.User;
 import com.lzlz.blog.service.FriendService;
 import com.lzlz.blog.service.LogService;
@@ -34,7 +35,7 @@ public class UserController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-				doPost(request, response);
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,6 +43,12 @@ public class UserController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String flag = request.getParameter("flag");
+		if (flag == null) {
+			request.setAttribute("ret", 5);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		System.out.println(flag);
 		if (flag.equals("regeist"))
 			insertByUser(request, response);
 		else if (flag.equals("login"))
@@ -50,6 +57,11 @@ public class UserController extends HttpServlet {
 			checkUsername(request, response);
 		else if (flag.equals("single"))
 			single(request, response);
+		else if (flag.equals("userinfo"))
+			userinfo(request, response);
+		else if (flag.equals("updateByUser"))
+			updateByUser(request, response);
+
 	}
 
 	protected void insertByUser(HttpServletRequest request, HttpServletResponse response)
@@ -88,21 +100,27 @@ public class UserController extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if (user == null)
+		if (user == null) {
 			response.sendRedirect("");
-		String uid = request.getParameter("uid");
+		}
+		int uid = user.getUid();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String netname = request.getParameter("netname");
 		String relname = request.getParameter("relname");
 		String gender = request.getParameter("gender");
 		String about = request.getParameter("about");
-		if (CustomerUtil.isNullStringArr(uid, username, password, netname, relname, gender, about))
-			System.out.println("处理语句");
-		else if (user.getUid() != Integer.valueOf(uid))
-			System.out.println("处理语句");
+		System.out.println(username + "-" + password + "-" + netname + "-" + relname + "-" + gender + "-" + about);
+		if (CustomerUtil.isNullStringArr(username, password, netname, relname, gender, about)) {
+			request.setAttribute("ret", 5);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+
 		User newuser = new User(Integer.valueOf(uid), username, password, netname, relname, gender, about);
-		response.getWriter().write("" + userService.updateByUser(newuser));
+		userService.updateByUser(newuser);
+		request.setAttribute("ret", 9);
+		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 
 	protected void checkUsername(HttpServletRequest request, HttpServletResponse response)
@@ -124,12 +142,35 @@ public class UserController extends HttpServlet {
 		if (user == null) {
 			request.setAttribute("ret", 4);
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
-		return;
+			return;
 		}
 		request.setAttribute("messagelist", messageService.selectByReceiveId(user.getUid()));
-		request.setAttribute("friendlist", friendService.selectByFirst(user.getUid()));
+		request.setAttribute("friendlist", userService.queryByList(friendService.selectByFirst(user.getUid())));
 		request.setAttribute("loglist", logService.queryByUid(user.getUid()));
 		request.setAttribute("flag", true);
 		request.getRequestDispatcher("single.jsp").forward(request, response);
 	}
+
+	protected void userinfo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			request.setAttribute("ret", 4);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		String uid_str = request.getParameter("uid");
+		if (uid_str == null) {
+			request.setAttribute("ret", 5);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		boolean friend = friendService.friendIsHave(user.getUid(), Integer.valueOf(uid_str));
+		System.out.println(friend);
+		request.setAttribute("flag", friend);
+		request.setAttribute("seconduser", userService.getUserByUid(Integer.valueOf(uid_str)));
+		request.getRequestDispatcher("userinfo.jsp").forward(request, response);
+	}
+
 }

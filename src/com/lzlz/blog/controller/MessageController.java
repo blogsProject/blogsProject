@@ -33,7 +33,7 @@ public class MessageController extends HttpServlet {
 		String flag = request.getParameter("flag");
 		if (flag == null)
 			response.sendRedirect("index.jsp");
-		if (flag.equals("insert"))
+		if (flag.equals("insertfriend"))
 			insertByMessage(request, response);
 	}
 
@@ -46,14 +46,14 @@ public class MessageController extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		String receiveid = request.getParameter("receiveid");
-		if (user == null || receiveid == null) {
+		String secondid = request.getParameter("secondid");
+		if (user == null || secondid == null) {
 			request.setAttribute("flag", 5);
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
-		messageService.insertByMessage(new Message(0, user.getUid(), Integer.valueOf(receiveid)));
-		request.setAttribute("ret", 11);
+		messageService.insertByMessage(new Message(0, user.getUid(), Integer.valueOf(secondid)));
+		request.setAttribute("ret", 8);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 }

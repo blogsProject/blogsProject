@@ -42,7 +42,7 @@ public class MessageServiceImpl implements MessageService {
 
 	@Override
 	public int deleteBySendOrRece(int sendid, int receiveid) {
-		return 0;
+		return messageDAO.deleteBySendOrRece(sendid, receiveid);
 	}
 
 }

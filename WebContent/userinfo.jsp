@@ -282,7 +282,7 @@ margin-top: 50px;
 
 	
 </style>
-<c:if test="${empty flag }">
+<c:if test="${empty seconduser }">
 <script type="text/javascript">
 alert("请通过正确的方式访问");
 	location = "index.jsp";
@@ -304,31 +304,35 @@ alert("请通过正确的方式访问");
 <div style=" position:absolute;   width: 100%" id='cssmenu' class="align-center">
   <ul>
     <li class="active"><a href='index.jsp'><span>主页</span></a></li>
+    <c:if test="${!empty user}">
      <li class='last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
     <li class='last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
     <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
     <li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
+ </c:if>
   </ul>
 </div>
 
 <div class="div1">
-<form action="MessageController?flag=insertfriend&secondid=${seconduser }">
-用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input class="input1" type="text"  value="${user.username }" readonly="readonly">
+<form action="MessageController" method="post">
+用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input class="input1" type="text"  value="${seconduser.username }" readonly="readonly">
 <br>
-昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：<input class="input1" value="${user.netname }"  type="text" readonly="readonly">
+昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：<input class="input1" value="${seconduser.netname }"  type="text" readonly="readonly">
 <br>
-真实姓名：<input value="${user.relname }"  class="input1" type="text" readonly="readonly">
+真实姓名：<input value="${seconduser.relname }"  class="input1" type="text" readonly="readonly">
 <br>
 
-性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input class="input1" value="${user.username }"  type="text" readonly="readonly">
+性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input class="input1" value="${seconduser.username }"  type="text" readonly="readonly">
       <br><br><br>
-个人简介：  <textarea  class="bootstrap-frm3" readonly="readonly">${user.about } </textarea>
-<input class="bootstrap-frm2" type="submit" value="添加好友">
+个人简介：  <textarea  class="bootstrap-frm3" readonly="readonly">${seconduser.about } </textarea>
+<input type="hidden" name="flag" value="insertfriend"/>
+<input type="hidden" name="secondid" value="${seconduser.uid }"/>
+<c:choose>
+<c:when test="${flag }"><input class="bootstrap-frm2" type="text" readonly="readonly" value="已有该好友"></c:when>
+<c:otherwise><input class="bootstrap-frm2" type="submit" value="添加好友"></c:otherwise>
+</c:choose>
 </form>
 </div>
-
-
-
 <script src="owl-carousel/owl.carousel.js"></script> 
   <script>
 		$(document).ready(function() {
