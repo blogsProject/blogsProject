@@ -282,6 +282,13 @@ margin-top: 50px;
 
 	
 </style>
+<c:if test="${empty flag }">
+<script type="text/javascript">
+alert("请通过正确的方式访问");
+	location = "index.jsp";
+
+</script>
+</c:if>
 <script type="text/javascript">
  function success(sendid) {
 	location = "MessageController?flag=success&sendid="+sendid;
