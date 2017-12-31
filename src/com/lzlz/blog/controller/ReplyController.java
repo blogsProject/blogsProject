@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lzlz.blog.entiy.Page;
 import com.lzlz.blog.entiy.Reply;
 import com.lzlz.blog.entiy.User;
 import com.lzlz.blog.service.ReplyService;
@@ -55,12 +56,15 @@ public class ReplyController extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		String lid = request.getParameter("lid");
+		String lid_str = request.getParameter("lid");
 		String curpage_str = request.getParameter("curpage");
-		curpage_str = curpage_str == null ? "1" : curpage_str;
-		if (user == null || lid == null)
-			System.out.println("¥¶¿Ì”Ôæ‰");
-		response.getWriter()
-				.write("" + replyService.selectByLid(Integer.valueOf(lid), Integer.valueOf(curpage_str), 5));
+		int curpage = Integer.valueOf(curpage_str == null ? "1" : curpage_str);
+		if (user == null || lid_str == null) {
+			return;
+		}
+		int lid = Integer.valueOf(curpage);
+		request.setAttribute("replyList", replyService.selectByLid(lid, curpage, 5));
+		request.setAttribute("page", new Page(curpage, replyService.getPageByLid(5, lid)));
+		request.getRequestDispatcher("bloginfo.jsp").forward(request, response);
 	}
 }
