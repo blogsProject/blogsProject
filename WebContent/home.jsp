@@ -188,6 +188,11 @@ text-align:left;
 		border-radius: 10px;
 		
 	}
+		#write{
+		width: 100px;
+		height: 70px;
+		margin-left: 1020px;
+	}
 
   }
 @media (min-width: 1920px) {
@@ -226,7 +231,7 @@ text-align:left;
 	.rizhi{
 		height: 100%;
 		width: 800px;	
-margin:0 auto;
+margin-left:540px;
 text-align:left;
 		padding-left: 90px;
 		padding-top: 30px;
@@ -244,7 +249,8 @@ text-align:left;
 	}
 	
 	.ph{
-		height: 100%;
+	position:absolute;
+		height: 400px;
 		width: 300px;	
 margin-left:1400px;
 text-align:left;
@@ -255,21 +261,16 @@ text-align:left;
 		border-radius: 10px;
 		
 	}
+	#write{
+		width: 100px;
+		height: 70px;
+		margin-left: 1400px;
+	}
 
   }
 
 
   
-
-
-body {
-
-}
-#showtext {
-	cursor: hand;
-	cursor: pointer;
-}
-/**/
 
 
 body {
@@ -465,6 +466,9 @@ input>submit {
 <a href="LogController?flag=home&curpage=${page.curpage+1 }">下一页</a>
 </c:otherwise>
   </c:choose>
+  <div id="write">
+  <a href="write.jsp"><button style="margin: 0 80px;" class="bootstrap-frm2" >发表日志</button></a>
+  </div>
   <div class="ph">
     <h3>排行</h3>
 <c:forEach items="${AlllogList}" var="log">
