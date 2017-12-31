@@ -65,7 +65,9 @@ public class LogController extends HttpServlet {
 		int Allpage = logService.getPageWhithAll(5);
 		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));
 		request.setAttribute("readList", logService.queryWithReadNum());
-		request.setAttribute("page", new Page(curpage, Allpage));
+		Page page = new Page(curpage, Allpage);
+		System.out.println(page.toString());
+		request.setAttribute("page", page);
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 

@@ -153,7 +153,7 @@ input>submit {
 <div class="wrap-body">
 <div style="position:fixed ;width: 100%" id='cssmenu' class="align-center">
   <ul>
-    <li class="active"><a href='index.html'><span>主页</span></a></li>
+    <li class="active"><a href='index.jsp'><span>主页</span></a></li>
     <li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
     <li class=' last'><a href='File.jsp'><span>文件柜</span></a></li>
     <li class='last'><a href='Musc.html'><span>音乐</span></a></li>

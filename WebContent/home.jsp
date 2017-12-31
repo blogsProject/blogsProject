@@ -352,7 +352,7 @@ input>submit {
     <li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
     <li class=' last'><a href='single.html'><span>文件柜</span></a></li>
     <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
-    <li class='last'><a href='contact.html'><span>个人资料</span></a></li>
+    <li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
     </c:if>
     <c:if test="${empty user }">
     <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showtext" onClick="showdiv('contentid','showtext')"><span>登录</span></a></li>
@@ -365,15 +365,16 @@ input>submit {
   </ul>
 </div>
 <div id="contentid" class="none">
-  <form>
+  <form action="UserController" method="post">
     <h4 style="margin-top: 10px;margin-left: 15px">登录</h4>
     <section> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="text" id="input-38" />
+      <input name="username"  class="input__field input__field--isao" type="text" id="input-38" />
       <label class="input__label input__label--isao" for="input-38" data-content="用户名"> <span class="input__label-content input__label-content--isao">用户名</span> </label>
       </span> <span class="input input--isao">
-      <input class="input__field input__field--isao" type="password" id="input-39" />
+      <input name="password"  class="input__field input__field--isao" type="password" id="input-39" />
       <label class="input__label input__label--isao" for="input-39" data-content="密码"> <span class="input__label-content input__label-content--isao">密码</span> </label>
       </span>
+      <input type="hidden" name="flag" value="login"/> 
       <input class="bootstrap-frm2" type="submit"value="登录">
     </section>
   </form>
@@ -441,7 +442,7 @@ input>submit {
 <c:forEach items="${AlllogList}" var="log">
 <div class="rizhi1">
 <a href="#"><h3 class="news" >${log.ltitle }</h3></a>
-作者:${log.uname }阅读数:${log.readnum }发表时间:${log.ltime }
+作者:${log.uname }  阅读数:${log.readnum }  发表时间:${log.ltime }
 </div>
 </c:forEach>
 </div>
@@ -449,7 +450,7 @@ input>submit {
 </div>
 <!-- 分页 -->
 <c:choose>
-<c:when test="${page.curpage-1<=0 }"> 
+<c:when test="${page.curpage-1 <= 0 }"> 
  上一页
 </c:when>
 <c:otherwise>
@@ -457,7 +458,7 @@ input>submit {
 </c:otherwise>
   </c:choose> |
   <c:choose>
-   <c:when test="${page.curpage+1>=page.allPage }"> 
+   <c:when test="${page.curpage+1 >= page.allPage }"> 
  下一页
 </c:when>
 <c:otherwise>

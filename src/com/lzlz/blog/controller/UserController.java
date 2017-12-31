@@ -36,9 +36,9 @@ public class UserController extends HttpServlet {
 			insertByUser(request, response);
 		else if (flag.equals("login"))
 			getUserByUsername(request, response);
-		else if(flag.equals("checkUsername"))
+		else if (flag.equals("checkUsername"))
 			checkUsername(request, response);
-			
+
 	}
 
 	protected void insertByUser(HttpServletRequest request, HttpServletResponse response)
@@ -46,7 +46,12 @@ public class UserController extends HttpServlet {
 		User user = new User(0, request.getParameter("username"), request.getParameter("password"),
 				request.getParameter("netname"), request.getParameter("relname"), request.getParameter("gender"),
 				request.getParameter("about"));
-		userService.insertByUser(user);
+		int ret = 0;
+		if (userService.insertByUser(user) == 1) {
+			ret = 1;
+		}
+		request.setAttribute("ret", ret);
+		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 
 	protected void getUserByUsername(HttpServletRequest request, HttpServletResponse response)
@@ -54,15 +59,17 @@ public class UserController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		User user = userService.getUserByUsername(username);
-		if (user == null){
-			response.sendRedirect("");
+		System.out.println(username+"---"+user);
+		if (user == null) {
+			response.sendRedirect("index.jsp");
 			return;
 		}
-		if(!password.equals(user.getPassword())){
-			System.out.println("ÃÜÂë²»ÕýÈ·");
+		if (!password.equals(user.getPassword())) {
+			request.setAttribute("ret", 2);
 			return;
 		}
 		request.getSession().setAttribute("user", user);
+		request.setAttribute("ret", 3);
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
@@ -92,10 +99,10 @@ public class UserController extends HttpServlet {
 		String username = request.getParameter("username");
 		User user = userService.getUserByUsername(username);
 		if (username == null)
-			response.getWriter().write(""+3);
-		else if (user == null){
-			response.getWriter().write(""+1);
-		}else
-			response.getWriter().write(""+2);
+			response.getWriter().write("" + 3);
+		else if (user == null) {
+			response.getWriter().write("" + 1);
+		} else
+			response.getWriter().write("" + 2);
 	}
 }
