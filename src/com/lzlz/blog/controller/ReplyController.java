@@ -10,16 +10,19 @@ import javax.servlet.http.HttpSession;
 import com.lzlz.blog.entiy.Page;
 import com.lzlz.blog.entiy.Reply;
 import com.lzlz.blog.entiy.User;
+import com.lzlz.blog.service.LogService;
 import com.lzlz.blog.service.ReplyService;
 import com.lzlz.blog.util.DAOFactory;
 
 public class ReplyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ReplyService replyService;
+	private LogService logService;
 
 	@Override
 	public void init() throws ServletException {
 		this.replyService = DAOFactory.getReplyService();
+		this.logService = DAOFactory.getLogService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -63,6 +66,7 @@ public class ReplyController extends HttpServlet {
 			return;
 		}
 		int lid = Integer.valueOf(curpage);
+		request.setAttribute("logobj", logService.getLogByLid(lid));
 		request.setAttribute("replyList", replyService.selectByLid(lid, curpage, 5));
 		request.setAttribute("page", new Page(curpage, replyService.getPageByLid(5, lid)));
 		request.getRequestDispatcher("bloginfo.jsp").forward(request, response);
