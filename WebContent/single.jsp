@@ -312,6 +312,7 @@ alert("请通过正确的方式访问");
 </div>
 
 <div class="div1">
+<form action="UserController?flag=update">
 用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input class="input1" type="text"  value="${user.username }" readonly="readonly">
 <br>
 昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：<input class="input1" value="${user.netname }"  type="text" readonly="readonly">
@@ -323,6 +324,7 @@ alert("请通过正确的方式访问");
       <br><br><br>
 个人简介：  <textarea  class="bootstrap-frm3" readonly="readonly">${user.about } </textarea>
 <input class="bootstrap-frm2" type="submit" value="修改资料">
+</form>
 </div>
 <div class="massage">
 <c:if test="${empty messagelist }">
@@ -336,7 +338,7 @@ alert("请通过正确的方式访问");
 <h2 style="margin-bottom: 30px;">好友列表</h2>
 <c:forEach items="${friendlist }" var="flist">
 <div class="friend1">
-<h3 class="news" >${flist.secondName }</h3>
+<h3 class="news" >${flist.secondName }</h3><a href="FriendController?flag=delete&secondid"=${flist.secondid }>删除好友</a>
 </div>
 </c:forEach>
 </div>

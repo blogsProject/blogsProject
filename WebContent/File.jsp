@@ -279,6 +279,8 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 							<c:forEach items="${musiclist }" var="music">
 							<div class="friend1">
 								<a href="FilesController?flag=download&type=flase&fid=${music.fid }"><h4 class="news">${music.fname }</h4></a>
+								<br>
+								<a href="FilesController?flag=delete&fid=${music.fid }"><button>删除</button></a>
 							</div>
 							</c:forEach>
 							
@@ -293,6 +295,8 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 							<c:forEach items="${imglist }" var="img">
 							<div class="friend1">
 								<a href="FilesController?flag=download&type=flase&fid=${img.fid }"><h4 class="news">${img.fname }</h4></a>
+								<br>
+								<a href="FilesController?flag=delete&fid=${img.fid }"><button>删除</button></a>
 							</div>
 							</c:forEach>
 							
