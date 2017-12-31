@@ -38,6 +38,18 @@
 				location = "index.jsp";
 			</script>
 		</c:when>
+		<c:when test="${ret == 5 }">
+			<script type="text/javascript">
+				alert("请通过正确的方式,访问该页面。");
+				location = "index.jsp";
+			</script>
+		</c:when>
+		<c:when test="${ret == 5 }">
+			<script type="text/javascript">
+				alert("请上传正确格式的文件。");
+				location = "index.jsp";
+			</script>
+		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">
 				alert("服务器错误");

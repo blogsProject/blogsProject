@@ -48,7 +48,12 @@ public interface FilesDAO {
 	 * @return 文件集合
 	 */
 	public List<Files> selectByUidWithType(int uid, boolean flag, int curpage, int count);
-
+	/**
+	 * 通过用户的ID来获取Files类
+	 * @param fid 文件编号
+	 * @return 文件实体类
+	 */
+	public Files selectFileByFid(int fid);
 	/**
 	 * 不分页的查询
 	 * 

@@ -144,4 +144,25 @@ public class FilesDAOImpl implements FilesDAO {
 		return null;
 	}
 
+	@Override
+	public Files selectFileByFid(int fid) {
+		try {
+			String sql = "select * from files where fid=?";
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, fid);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String fpath = rs.getString(2);
+				String fnameIncludeExtern = fpath.substring(fpath.indexOf('/') + 1);
+				String fnameNoExtern = fnameIncludeExtern.substring(0, fnameIncludeExtern.lastIndexOf('.'));
+				Files file = new Files(rs.getInt(1), fnameNoExtern, fpath, rs.getString(3), rs.getInt(4));
+				return file;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

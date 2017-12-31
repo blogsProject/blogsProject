@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lzlz.blog.entiy.Files;
 import com.lzlz.blog.entiy.User;
 import com.lzlz.blog.service.FilesService;
 import com.lzlz.blog.util.DAOFactory;
@@ -38,11 +39,14 @@ public class FilesController extends HttpServlet {
 			queryFileByUidWhithType(request, response);
 		else if (flag.equals("all"))
 			queryAllByLid(request, response);
+		else if (flag.equals("download"))
+			downFileByFid(request, response);
+		else if (flag.equals("insert"))
+			insertByFile(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		FileProcess.uploadProcess(request, response, filesService, true, 1);
 	}
 
 	protected void queryFileByUidWhithType(HttpServletRequest request, HttpServletResponse response)
@@ -73,7 +77,42 @@ public class FilesController extends HttpServlet {
 		int uid = Integer.valueOf(user.getUid());
 		request.setAttribute("imglist", filesService.selectByUidWithTypeNoFenye(uid, true));
 		request.setAttribute("musiclist", filesService.selectByUidWithTypeNoFenye(uid, false));
-		System.out.println("------------------------");
 		request.getRequestDispatcher("File.jsp").forward(request, response);
+	}
+
+	protected void downFileByFid(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			request.setAttribute("ret", 4);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		String fid_str = request.getParameter("fid");
+		if (fid_str == null) {
+			request.setAttribute("ret", 5);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		Files file = filesService.selectFileByFid(Integer.valueOf(fid_str));
+		if (file == null || file.getUid() != user.getUid()) {
+			request.setAttribute("ret", 5);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		FileProcess.downloadProcess(request, response, file);
+	}
+
+	protected void insertByFile(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			request.setAttribute("ret", 4);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		FileProcess.uploadProcess(request, response, filesService, user.getUid());
 	}
 }

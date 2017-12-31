@@ -49,4 +49,9 @@ public class FilesServiceImpl implements FilesService {
 		return fileDAO.selectByUidWithTypeNoFenye(uid, flag);
 	}
 
+	@Override
+	public Files selectFileByFid(int fid) {
+		return fileDAO.selectFileByFid(fid);
+	}
+
 }

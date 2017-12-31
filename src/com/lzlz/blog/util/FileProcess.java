@@ -36,13 +36,12 @@ public class FileProcess {
 	 */
 
 	public static void uploadProcess(HttpServletRequest request, HttpServletResponse response,
-			FilesService filesService, boolean flag, int uid) {
+			FilesService filesService, int uid) {
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
 		// 获取上传文件存放的 目录 , 无则创建
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
-		String dir = sdf.format(date);
-		String path = request.getRealPath("/upload/" + ((User) (request.getSession().getAttribute("user"))).getUid());
+		String path = request.getRealPath("/upload/" + uid);
 		System.out.println(new File(path).mkdirs());
 		/**
 		 * 原理 它是先存到 暂时存储室，然后在真正写到 对应目录的硬盘上， 按理来说 当上传一个文件时，其实是上传了两份，第一个是以 .tem
@@ -87,13 +86,16 @@ public class FileProcess {
 					} while (file.exists());
 					// 写到磁盘上去
 					item.write(file);
-					filesService.insertByFiles(new Files(0, null, dir + "/" + filename,
-							CustomerUtil.isImageOrMusic(expanded_name) ? "图片" : "音乐", uid));
+					int type = CustomerUtil.isImageOrMusic(expanded_name);
+					if (type == 3) {
+						request.setAttribute("ret", 6);
+						request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+						return;
+					}
+					filesService.insertByFiles(new Files(0, null, uid + "/" + filename, type == 1 ? "图片" : "音乐", uid));
 					response.getWriter().write(filename);
 				}
-
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -108,8 +110,9 @@ public class FileProcess {
 	 *            HttpServletResponse 实例对象
 	 * @throws IOException
 	 */
-	public static void downloadProcess(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String filename = request.getRealPath("upload") + "/" + request.getParameter("filename");
+	public static void downloadProcess(HttpServletRequest request, HttpServletResponse response, Files file)
+			throws IOException {
+		String filename = request.getRealPath("upload") + "/" + file.getFpath();
 		System.out.println(filename);
 		File f = new File(filename);
 		if (!f.exists()) {

@@ -68,15 +68,15 @@ public class CustomerUtil {
 		return filenameIsExist(fileold, fileold + "(" + count++ + ")", fileNamelist, count);
 	}
 
-	public static boolean isImageOrMusic(String fileExternName) {
+	public static int isImageOrMusic(String fileExternName) {
 		for (int i = 0; i < IMGSTR.length; i++) {
 			if (IMGSTR[i].equals(fileExternName))
-				return true;
+				return 1;
 		}
 		for (int i = 0; i < MUSICSTR.length; i++) {
 			if (MUSICSTR[i].equals(fileExternName))
-				return false;
+				return 2;
 		}
-		return true;
+		return 3;
 	}
 }

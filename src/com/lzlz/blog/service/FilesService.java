@@ -11,6 +11,8 @@ public interface FilesService {
 
 	public int getAllPageByCountWithUid(int count, int uid);
 
+	public Files selectFileByFid(int fid);
+
 	public List<Files> selectByUidWithType(int uid, boolean flag, int curpage, int count);
 
 	public List<Files> selectByUidWithTypeNoFenye(int uid, boolean flag);
@@ -18,4 +20,5 @@ public interface FilesService {
 	public List<String> selectFileNameByUid(int uid);
 
 	public int getAllCountByUid(int uid);
+
 }
