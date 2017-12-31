@@ -36,6 +36,8 @@ public class FilesController extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		if (flag.equals("music"))
 			queryFileByUidWhithType(request, response);
+		else if (flag.equals("all"))
+			queryAllByLid(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -46,12 +48,31 @@ public class FilesController extends HttpServlet {
 	protected void queryFileByUidWhithType(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user") == null)
-			response.getWriter().write(1);
-		int uid = Integer.valueOf(((User) session.getAttribute("user")).getUid());
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			request.setAttribute("ret", 4);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		int uid = Integer.valueOf(user.getUid());
 		boolean type = Boolean.valueOf(request.getParameter("type"));
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("fileList", filesService.selectByUidWithTypeNoFenye(uid, type));
 		response.getWriter().write(jsonObject.toString());
+	}
+
+	protected void queryAllByLid(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			request.setAttribute("ret", 4);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		int uid = Integer.valueOf(user.getUid());
+		request.setAttribute("imglist", filesService.selectByUidWithTypeNoFenye(uid, true));
+		request.setAttribute("musiclist", filesService.selectByUidWithTypeNoFenye(uid, false));
+		request.getRequestDispatcher("File.jsp").forward(request, response);
 	}
 }

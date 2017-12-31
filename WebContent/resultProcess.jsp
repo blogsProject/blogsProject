@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:if test="${empty ret }">
+		<script type="text/javascript">
+			location = "index.jsp";
+		</script>
+	</c:if>
 	<c:choose>
 		<c:when test="${ret == 1 }">
 			<script type="text/javascript">
@@ -24,6 +29,12 @@
 		<c:when test="${ret == 3 }">
 			<script type="text/javascript">
 				alert("登录成功");
+				location = "index.jsp";
+			</script>
+		</c:when>
+		<c:when test="${ret == 4 }">
+			<script type="text/javascript">
+				alert("请先登录");
 				location = "index.jsp";
 			</script>
 		</c:when>
