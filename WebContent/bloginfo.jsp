@@ -272,13 +272,20 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 					<!-- 日志 -->
 					<div class="rizhi">
 						<h3>${log.ltitle }</h3>
+						<div>
 						<p style="font-size: 18px;">${log.lcontent }</p>
 						<p style="font-size: 9px;">${log.ltime }</p>
+						</div>
 						<c:forEach items="${replyList}" var="rep">
-							<h4>${rep.username }</h4>
+						<div>
+							<h5>${rep.username }</h5>
+								<div>
 							<p style="font-size: 18px;">${rep.rcontent}</p>
 							<p style="font-size: 9px;">${rep.rdatetime }</p>
+							</div>
+							</div>
 						</c:forEach>
+						
 					</div>
 
 				</div>

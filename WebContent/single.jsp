@@ -276,7 +276,7 @@ margin-top: 50px;
 	}
 	
 	.news{
-	margin: 20px;
+	margin-top: 20px;
 	}
 
 
@@ -346,9 +346,9 @@ alert("请通过正确的方式访问");
 <h2 style="margin-bottom: 30px;">我的博客</h2>
 <c:forEach items="${loglist }" var="llist">
 <div class="friend1">
-<a href="LogController?flag=info&lid=${llist.lid }"><h3 class="news" >${llist.ltitle }</h3></a>
+<a href="LogController?flag=info&lid=${llist.lid }"><h5 class="news" >${llist.ltitle }</h5></a>
 <br>
-<a href="LogController?flag=update&lid=${llist.lid }">修改</a><a href="LogController?flag=delete&lid=${llist.lid }">删除</a>
+<a href="LogController?flag=update&lid=${llist.lid }">修改</a>|<a href="LogController?flag=delete&lid=${llist.lid }">删除</a>
 </div>
 </c:forEach>
 </div>
