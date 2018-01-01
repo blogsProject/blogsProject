@@ -153,7 +153,7 @@ public class LogController extends HttpServlet {
 	 * @param response
 	 * @throws ServletException
 	 * @throws IOException
-	 */
+	 */ 
 	protected void queryAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("-------");
