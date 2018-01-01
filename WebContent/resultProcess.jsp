@@ -83,7 +83,7 @@
 		<c:when test="${ret == 12 }">
 		<script type="text/javascript">
 			alert("发表评论成功");
-			location="LogController?flag=selectById&lid=${lid }&curpage=1";
+			location="LogController?flag=selectById&lid=${lid }";
 		</script>
 		</c:when>
 		<c:otherwise>
