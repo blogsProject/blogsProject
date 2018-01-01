@@ -38,7 +38,6 @@ public class LogDAOImpl implements LogDAO {
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, lid);
-			System.out.println(pstmt.toString());
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

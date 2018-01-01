@@ -28,7 +28,6 @@ public class FriendController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String flag = request.getParameter("flag");
-		System.out.println(flag);
 		if (flag == null)
 			response.sendRedirect("index.jsp");
 		else if (flag.equals("success"))
@@ -61,7 +60,6 @@ public class FriendController extends HttpServlet {
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
-		System.out.println(Integer.valueOf(secondid_str)+"---"+user.getUid());
 		messageService.deleteBySendOrRece(Integer.valueOf(secondid_str), user.getUid());
 		messageService.deleteBySendOrRece(user.getUid(),Integer.valueOf(secondid_str));
 		request.setAttribute("ret", 10);
