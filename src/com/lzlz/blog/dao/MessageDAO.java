@@ -15,15 +15,6 @@ public interface MessageDAO {
 	public int insertByMessage(Message message);
 
 	/**
-	 * 通过mid一条数据
-	 * 
-	 * @param mid
-	 *            信息编号
-	 * @return 结果码
-	 */
-	public int deleteByMid(int mid);
-
-	/**
 	 * 通过接受者和发送者删除信息
 	 * 
 	 * @param sendid
@@ -33,15 +24,6 @@ public interface MessageDAO {
 	 * @return 结果码
 	 */
 	public int deleteBySendOrRece(int sendid, int receiveid);
-
-	/**
-	 * 通过接收人获取所有的Message的个数
-	 * 
-	 * @param receive
-	 *            接受者ID
-	 * @return message的个数
-	 */
-	public int getAllCountByReceiveId(int receive);
 
 	/**
 	 * 通过接收人获取所有的Message集合
@@ -56,12 +38,4 @@ public interface MessageDAO {
 	 */
 	public List<Message> selectByReceiveId(int receive);
 
-	/**
-	 * 通过接受者获取信息总页数
-	 * 
-	 * @param count
-	 * @param receiveid
-	 * @return 总页数
-	 */
-	public int getPageByReceiveId(int count, int receiveid);
 }

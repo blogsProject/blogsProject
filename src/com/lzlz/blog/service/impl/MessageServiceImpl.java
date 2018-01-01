@@ -21,23 +21,8 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public int deleteByMid(int mid) {
-		return messageDAO.deleteByMid(mid);
-	}
-
-	@Override
 	public List<Message> selectByReceiveId(int receiveid) {
 		return messageDAO.selectByReceiveId(receiveid);
-	}
-
-	@Override
-	public int getPageByReceiveId(int count, int receiveid) {
-		return messageDAO.getPageByReceiveId(count, receiveid);
-	}
-
-	@Override
-	public int getAllCountByReceiveId(int receiveid) {
-		return messageDAO.getAllCountByReceiveId(receiveid);
 	}
 
 	@Override

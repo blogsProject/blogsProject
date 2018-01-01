@@ -24,36 +24,14 @@ public interface FilesDAO {
 	public int deleteByFid(int fid);
 
 	/**
-	 * 通过制定一页的个数来获取用户的文件的页数
-	 * 
-	 * @param count
-	 *            一页多少个
-	 * @param uid
-	 *            用户id
-	 * @return 页数
-	 */
-	public int getAllPageByCountWithUid(int count, int uid);
-
-	/**
-	 * 通过用户的ID来获取当前页数指定类型的文件集合
-	 * 
-	 * @param uid
-	 *            用户id
-	 * @param flag
-	 *            文件类型 true图片 false音乐
-	 * @param curpage
-	 *            当前页数
-	 * @param count
-	 *            一页查多少个
-	 * @return 文件集合
-	 */
-	public List<Files> selectByUidWithType(int uid, boolean flag, int curpage, int count);
-	/**
 	 * 通过用户的ID来获取Files类
-	 * @param fid 文件编号
+	 * 
+	 * @param fid
+	 *            文件编号
 	 * @return 文件实体类
 	 */
 	public Files selectFileByFid(int fid);
+
 	/**
 	 * 不分页的查询
 	 * 

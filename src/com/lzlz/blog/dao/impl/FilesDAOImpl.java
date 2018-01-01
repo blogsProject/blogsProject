@@ -9,7 +9,6 @@ import java.util.List;
 
 import com.lzlz.blog.dao.FilesDAO;
 import com.lzlz.blog.entiy.Files;
-import com.lzlz.blog.util.CustomerUtil;
 import com.lzlz.blog.util.DBConnection;
 
 public class FilesDAOImpl implements FilesDAO {
@@ -53,40 +52,6 @@ public class FilesDAOImpl implements FilesDAO {
 	}
 
 	@Override
-	public List<Files> selectByUidWithType(int uid, boolean flag, int curpage, int count) {
-		String type;
-		if (flag)
-			type = "Õº∆¨";
-		else
-			type = "“Ù¿÷";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		try {
-			String sql = "select * from files where uid=? and ftype=? limit ?,?";
-			conn = new DBConnection().getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, uid);
-			pstmt.setString(2, type);
-			pstmt.setInt(3, CustomerUtil.limitFristParmaWithMyql(curpage, count));
-			pstmt.setInt(4, count);
-			List<Files> list = new ArrayList<>();
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				String fpath = rs.getString(2);
-				String fnameIncludeExtern = fpath.substring(fpath.indexOf('/') + 1);
-				String fnameNoExtern = fnameIncludeExtern.substring(0, fnameIncludeExtern.lastIndexOf('.'));
-				list.add(new Files(rs.getInt(1), fnameNoExtern, fpath, rs.getString(3), rs.getInt(4)));
-			}
-			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
-		return null;
-	}
-
-	@Override
 	public List<String> selectFileNameByUid(int uid) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -111,11 +76,6 @@ public class FilesDAOImpl implements FilesDAO {
 	}
 
 	@Override
-	public int getAllPageByCountWithUid(int count, int uid) {
-		return CustomerUtil.getPage(count, getAllCountByUid(uid));
-	}
-
-	@Override
 	public int getAllCountByUid(int uid) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -129,8 +89,8 @@ public class FilesDAOImpl implements FilesDAO {
 			return rs.getInt(1);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
-			new DBConnection().closeConnection(conn,pstmt);
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
@@ -161,8 +121,8 @@ public class FilesDAOImpl implements FilesDAO {
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
-			new DBConnection().closeConnection(conn,pstmt);
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return null;
 	}
@@ -186,8 +146,8 @@ public class FilesDAOImpl implements FilesDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally{
-			new DBConnection().closeConnection(conn,pstmt);
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return null;
 	}

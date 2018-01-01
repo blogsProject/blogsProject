@@ -9,7 +9,6 @@ import java.util.List;
 
 import com.lzlz.blog.dao.MessageDAO;
 import com.lzlz.blog.entiy.Message;
-import com.lzlz.blog.util.CustomerUtil;
 import com.lzlz.blog.util.DBConnection;
 
 public class MessageDAOImpl implements MessageDAO {
@@ -33,23 +32,6 @@ public class MessageDAOImpl implements MessageDAO {
 		return 0;
 	}
 
-	@Override
-	public int deleteByMid(int mid) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		try {
-			String sql = "delete from message where mid=?";
-			conn = new DBConnection().getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mid);
-			return pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
-		return 0;
-	}
 
 	@Override
 	public List<Message> selectByReceiveId(int receiveid) {
@@ -74,40 +56,6 @@ public class MessageDAOImpl implements MessageDAO {
 		return null;
 	}
 
-	@Override
-	public int getPageByReceiveId(int count, int receiveid) {
-		return CustomerUtil.getPage(count, getAllCountByReceiveId(receiveid));
-	}
-
-	@Override
-	public int getAllCountByReceiveId(int receiveid) {
-		Connection conn = null;
-		PreparedStatement pstm = null;
-		try {
-			String sql = "select count(*) from message where receiveid=?";
-			conn = new DBConnection().getConnection();
-			pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, receiveid);
-			ResultSet rs = pstm.executeQuery();
-			rs.next();
-			int ret = rs.getInt(1);
-			return ret;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (conn != null)
-					conn.close();
-				if (pstm != null)
-					pstm.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				new DBConnection().closeConnection(conn, pstm);
-			}
-		}
-		return 0;
-	}
 
 	@Override
 	public int deleteBySendOrRece(int sendid, int receiveid) {

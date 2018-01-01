@@ -71,7 +71,6 @@ public class FileProcess {
 					// 截取(+1是去掉反斜杠)
 					File file = null;
 					String expanded_name = filename.substring(filename.lastIndexOf(".") + 1);
-					System.out.println(filename_no_externn+expanded_name);
 					do {
 						// 生成文件名
 						// int r = (int) (Math.random() * 1000);
@@ -112,7 +111,6 @@ public class FileProcess {
 	public static void downloadProcess(HttpServletRequest request, HttpServletResponse response, Files file)
 			throws IOException {
 		String filename = request.getRealPath("upload") + "/" + file.getFpath();
-		System.out.println(filename);
 		File f = new File(filename);
 		if (!f.exists()) {
 			response.setCharacterEncoding("utf-8");
