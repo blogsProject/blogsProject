@@ -34,7 +34,7 @@
 <c:if test="${empty user }">
 	<script type="text/javascript">
 		alert("请先登录");
-		loctaion = "index.jsp";
+		location = "index.jsp";
 	</script>
 </c:if>
 <script type="text/javascript">
@@ -208,10 +208,12 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 			class="align-center">
 			<ul>
 				<li class="active"><a href='index.jsp'><span>主页</span></a></li>
+				<c:if test="${!empty user }">
 				<li class=' last'><a href='photo.jsp'><span>相册</span></a></li>
 				<li class=' last'><a href='File.jsp'><span>文件柜</span></a></li>
 				<li class='last'><a href="Musc.html"><span>音乐</span></a></li>
 				<li class='last'><a href='single.jsp'><span>个人资料</span></a></li>
+				</c:if>
 			</ul>
 		</div>
 		<div class="div1">

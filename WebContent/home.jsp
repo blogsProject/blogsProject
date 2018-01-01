@@ -372,6 +372,7 @@ input>submit {
       <c:if test="${!empty user }">
        <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showusername" ><span>${user.username }</span></a></li>
         <li class='last' style="margin-right: 50px;"><a id="shownetname" ><span>${user.netname }</span></a></li>
+        <li class='last' style="margin-right: 50px;"><a href="UserController?flag=exit" id="exit" ><span>登出</span></a></li>
       </c:if>
   </ul>
 </div>
