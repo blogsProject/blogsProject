@@ -57,7 +57,8 @@ public class ReplyController extends HttpServlet {
 			return;
 		}
 		replyService.insertByReply(new Reply(user.getUid(), Integer.valueOf(lid), rcontent, null));
-		request.setAttribute("ret", 8);
+		request.setAttribute("ret", 12);
+		request.setAttribute("lid", Integer.valueOf(lid));
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 

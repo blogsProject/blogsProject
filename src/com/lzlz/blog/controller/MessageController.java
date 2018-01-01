@@ -53,7 +53,7 @@ public class MessageController extends HttpServlet {
 			return;
 		}
 		messageService.insertByMessage(new Message(0, user.getUid(), Integer.valueOf(secondid)));
-		request.setAttribute("ret", 8);
+		request.setAttribute("ret", 11);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 }

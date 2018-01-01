@@ -172,8 +172,12 @@ text-align:left;
 		margin-top: 20px;
 		padding: 20px;
 	}
+	.rizhi3{
+		margin-top: 20px;
+		
+	}
 	.news{
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	}
 	
 	.ph{
@@ -188,7 +192,7 @@ text-align:left;
 		padding-bottom: 40px;
 		border: 1px solid #d1d1d1;
 		border-radius: 10px;
-		
+		overflow: auto;
 	}
 		#write{
 		margin-top:0px;
@@ -269,7 +273,7 @@ text-align:left;
 		padding-bottom: 40px;
 		border: 1px solid #d1d1d1;
 		border-radius: 10px;
-		
+		overflow: auto;
 	}
 	#write{
 		width: 100px;
@@ -472,7 +476,7 @@ input>submit {
 </c:otherwise>
   </c:choose> |
   <c:choose>
-   <c:when test="${page.curpage+1 >= page.allPage }"> 
+   <c:when test="${page.curpage+1 > page.allPage }"> 
  下一页
 </c:when>
 <c:otherwise>
@@ -485,9 +489,9 @@ input>submit {
   </div>
   <div class="ph">
     <h3>排行</h3>
-<c:forEach items="${AlllogList}" var="log">
-<div class="rizhi1">
-<a href="#"><h4 class="news" >${log.ltitle }</h2></a>
+<c:forEach items="${readList}" var="log">
+<div class="rizhi3">
+<a href="LogController?flag=selectById&lid=${log.lid }"><h6 class="news" >${log.ltitle }</h6></a>
 <br>
 阅读数:${log.readnum }
 <br> 

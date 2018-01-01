@@ -74,7 +74,18 @@
 				location = "index.jsp";
 			</script>
 		</c:when>
-	
+	<c:when test="${ret == 11 }">
+			<script type="text/javascript">
+				alert("好友申请发送成功");
+				location = "index.jsp";
+			</script>
+		</c:when>
+		<c:when test="${ret == 12 }">
+		<script type="text/javascript">
+			alert("发表评论成功");
+			location="LogController?flag=selectById&lid=${lid }&curpage=1";
+		</script>
+		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">
 				alert("服务器错误");

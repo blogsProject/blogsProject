@@ -100,7 +100,7 @@ background:#fff;
 		padding-bottom: 40px;
 		border: 1px solid #d1d1d1;
 		border-radius: 10px;
-		
+		overflow: auto;
 	}
 }
 
@@ -162,7 +162,7 @@ background:#fff;
 		padding-bottom: 40px;
 		border: 1px solid #d1d1d1;
 		border-radius: 10px;
-		
+		overflow: auto;
 	}
 }
 body {
@@ -343,7 +343,7 @@ alert("请通过正确的方式访问");
 <h2 style="margin-bottom: 30px;">好友列表</h2>
 <c:forEach items="${friendlist }" var="flist">
 <div class="friend1">
-<h3 class="news" >${flist.username }</h3><a href="FriendController?flag=deleteFriend&secondid=${flist.uid }">删除好友</a>
+<h3 class="news" ><a href="UserController?flag=userinfo&uid=${flist.uid }">${flist.username }</a></h3><a href="FriendController?flag=deleteFriend&secondid=${flist.uid }">删除好友</a>
 </div>
 </c:forEach>
 </div>

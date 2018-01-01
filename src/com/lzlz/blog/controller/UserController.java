@@ -48,7 +48,6 @@ public class UserController extends HttpServlet {
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
-		System.out.println(flag);
 		if (flag.equals("regeist"))
 			insertByUser(request, response);
 		else if (flag.equals("login"))
@@ -61,7 +60,8 @@ public class UserController extends HttpServlet {
 			userinfo(request, response);
 		else if (flag.equals("updateByUser"))
 			updateByUser(request, response);
-
+		else if(flag.equals("exit"))
+			exit(request, response);
 	}
 
 	protected void insertByUser(HttpServletRequest request, HttpServletResponse response)
@@ -110,7 +110,6 @@ public class UserController extends HttpServlet {
 		String relname = request.getParameter("relname");
 		String gender = request.getParameter("gender");
 		String about = request.getParameter("about");
-		System.out.println(username + "-" + password + "-" + netname + "-" + relname + "-" + gender + "-" + about);
 		if (CustomerUtil.isNullStringArr(username, password, netname, relname, gender, about)) {
 			request.setAttribute("ret", 5);
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
@@ -167,10 +166,13 @@ public class UserController extends HttpServlet {
 			return;
 		}
 		boolean friend = friendService.friendIsHave(user.getUid(), Integer.valueOf(uid_str));
-		System.out.println(friend);
 		request.setAttribute("flag", friend);
 		request.setAttribute("seconduser", userService.getUserByUid(Integer.valueOf(uid_str)));
 		request.getRequestDispatcher("userinfo.jsp").forward(request, response);
 	}
 
+	protected void exit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getSession().setAttribute("user", null);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
 }

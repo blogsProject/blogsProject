@@ -36,7 +36,6 @@ public class FriendDAOImpl implements FriendDAO {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, second);
 			pstmt.setInt(2, first);
-			System.out.println(pstmt.toString());
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,6 +53,7 @@ public class FriendDAOImpl implements FriendDAO {
 			pstmt.setInt(1, first);
 			ResultSet rs = pstmt.executeQuery();
 			List<Integer> list = new ArrayList<>();
+		
 			while (rs.next()) {
 				list.add(rs.getInt(1));
 			}

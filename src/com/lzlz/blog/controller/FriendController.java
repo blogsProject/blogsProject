@@ -61,9 +61,9 @@ public class FriendController extends HttpServlet {
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
-		System.out.println("------");
 		System.out.println(Integer.valueOf(secondid_str)+"---"+user.getUid());
 		messageService.deleteBySendOrRece(Integer.valueOf(secondid_str), user.getUid());
+		messageService.deleteBySendOrRece(user.getUid(),Integer.valueOf(secondid_str));
 		request.setAttribute("ret", 10);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
@@ -83,8 +83,8 @@ public class FriendController extends HttpServlet {
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
-		System.out.println("-----------");
 		friendService.insertByFriend(new Friend(user.getUid(), Integer.valueOf(secondid_str)));
+		friendService.insertByFriend(new Friend(Integer.valueOf(secondid_str),user.getUid()));
 		messageService.deleteBySendOrRece(Integer.valueOf(secondid_str), user.getUid());
 		request.setAttribute("flag", 8);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
@@ -106,6 +106,7 @@ public class FriendController extends HttpServlet {
 		}
 		int secondid = Integer.valueOf(secondid_str);
 		friendService.deleteBySecondId(user.getUid(), secondid);
+		friendService.deleteBySecondId( secondid,user.getUid());
 		request.setAttribute("ret", 10);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 		return;

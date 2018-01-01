@@ -65,7 +65,7 @@ public class LogDAOImpl implements LogDAO {
 	@Override
 	public List<Log> queryAll(int curpage, int count) {
 		try {
-			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) from log limit ?,?";
+			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) from log order by lid desc limit ?,? ";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, CustomerUtil.limitFristParmaWithMyql(curpage, count));
@@ -110,7 +110,7 @@ public class LogDAOImpl implements LogDAO {
 	@Override
 	public List<Log> queryWithReadNum() {
 		try {
-			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) from log order by readnum asc limit 0,10";
+			String sql = "Select lid,ltitle,lcontent,ltime,uid,readnum,(select username from user where user.uid=log.uid) from log order by readnum desc limit 0,10";
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();

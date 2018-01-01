@@ -329,16 +329,16 @@ input::-webkit-input-placeholder { /* WebKit browsers */
  上一页
 </c:when>
 				<c:otherwise>
-					<a href="LogController?flag=home&curpage=${page.curpage-1 }">上一页</a>
+					<a href="LogController?flag=selectById&lid=${log.lid }&curpage=${page.curpage-1 }">上一页</a>
 				</c:otherwise>
 			</c:choose>
 			|
 			<c:choose>
-				<c:when test="${page.curpage+1 >= page.allPage }"> 
+				<c:when test="${page.curpage+1 > page.allPage }"> 
  下一页
 </c:when>
 				<c:otherwise>
-					<a href="LogController?flag=home&curpage=${page.curpage+1 }">下一页</a>
+					<a href="LogController?flag=selectById&lid=${log.lid }&curpage=${page.curpage+1 }">下一页</a>
 				</c:otherwise>
 			</c:choose>
 	</div>

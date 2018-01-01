@@ -37,7 +37,6 @@ public class FilesDAOImpl implements FilesDAO {
 			Connection conn = new DBConnection().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, fid);
-			System.out.println(pstmt.toString());
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

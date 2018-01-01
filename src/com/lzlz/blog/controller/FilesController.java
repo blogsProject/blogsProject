@@ -130,7 +130,6 @@ public class FilesController extends HttpServlet {
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
-		System.out.println("--------------------------------");
 		FileProcess.uploadProcess(request, response, filesService, user.getUid());
 	}
 
@@ -143,7 +142,6 @@ public class FilesController extends HttpServlet {
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
-		System.out.println("----------");
 		request.setAttribute("plist", filesService.selectByUidWithTypeNoFenye(user.getUid(), true));
 		request.setAttribute("flag", true);
 		request.getRequestDispatcher("photo.jsp").forward(request, response);
