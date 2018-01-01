@@ -294,7 +294,7 @@ alert("请通过正确的方式访问");
 	location = "FriendController?flag=success&secondid="+sendid;
 }
  function delete1(sendid) {
-	 location = "FriendController?flag=delete&secondid="+sendid;
+	 location = "MessageController?flag=delete&secondid="+sendid;
 }
 </script>
 </head>

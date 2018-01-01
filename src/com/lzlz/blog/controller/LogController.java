@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.tribes.util.Logs;
 
 import com.lzlz.blog.entiy.Log;
 import com.lzlz.blog.entiy.Page;
@@ -131,11 +130,6 @@ public class LogController extends HttpServlet {
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 
-	protected void getLogByLid(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().write("" + logService.getLogByLid(1));
-	}
-
 	protected void queryAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int curpage = Integer.valueOf(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
@@ -145,15 +139,6 @@ public class LogController extends HttpServlet {
 		Page page = new Page(curpage, Allpage);
 		request.setAttribute("page", page);
 		request.getRequestDispatcher("home.jsp").forward(request, response);
-	}
-
-	protected void queryWithReadNum(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		StringBuffer sb = new StringBuffer();
-		for (Log log : logService.queryWithReadNum()) {
-			sb.append(log);
-		}
-		response.getWriter().write("" + sb.toString());
 	}
 
 	protected void quertByLid(HttpServletRequest request, HttpServletResponse response)

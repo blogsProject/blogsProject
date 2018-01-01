@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.lzlz.blog.entiy.Friend;
 import com.lzlz.blog.entiy.User;
 import com.lzlz.blog.service.FriendService;
 import com.lzlz.blog.service.LogService;
@@ -15,7 +14,6 @@ import com.lzlz.blog.service.MessageService;
 import com.lzlz.blog.service.UserService;
 import com.lzlz.blog.util.CustomerUtil;
 import com.lzlz.blog.util.DAOFactory;
-import com.mysql.jdbc.Messages;
 
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

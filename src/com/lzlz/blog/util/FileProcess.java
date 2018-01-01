@@ -16,7 +16,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.lzlz.blog.entiy.Files;
-import com.lzlz.blog.entiy.User;
 import com.lzlz.blog.service.FilesService;
 
 public class FileProcess {
