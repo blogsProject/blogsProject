@@ -39,7 +39,13 @@ public class MessageController extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+	/**
+	 * 添加好友申请的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void insertByMessage(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -54,7 +60,13 @@ public class MessageController extends HttpServlet {
 		request.setAttribute("ret", 11);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
-
+	/**
+	 * 删除好友申请的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();

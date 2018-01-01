@@ -54,7 +54,13 @@ public class LogController extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+	/**
+	 * 添加日志的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void insertByLog(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -76,7 +82,13 @@ public class LogController extends HttpServlet {
 		request.setAttribute("ret", 8);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
-
+	/**
+	 * 修改日志的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void updateByLog(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -98,7 +110,13 @@ public class LogController extends HttpServlet {
 		request.setAttribute("ret", 9);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
-
+	/**
+	 * 删除日志的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void deleteByLid(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -129,7 +147,13 @@ public class LogController extends HttpServlet {
 		request.setAttribute("ret", 10);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
-
+	/**
+	 * 查询所有日志的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void queryAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int curpage = Integer.valueOf(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
@@ -140,7 +164,13 @@ public class LogController extends HttpServlet {
 		request.setAttribute("page", page);
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
-
+	/**
+	 * 通过日志id查询日志的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void quertByLid(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String lid_str = request.getParameter("lid");
@@ -158,7 +188,13 @@ public class LogController extends HttpServlet {
 		request.setAttribute("page", new Page(curpage, replyService.getPageByLid(5, lid)));
 		request.getRequestDispatcher("bloginfo.jsp").forward(request, response);
 	}
-
+	/**
+	 * 修改日志的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();

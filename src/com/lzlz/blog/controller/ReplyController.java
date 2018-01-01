@@ -44,7 +44,13 @@ public class ReplyController extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+	/**
+	 * 添加评论的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void insertByReply(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -66,7 +72,13 @@ public class ReplyController extends HttpServlet {
 		request.setAttribute("lid", Integer.valueOf(lid));
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
-
+	/**
+	 * 通过日志ID查询评论的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void selectByLid(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();

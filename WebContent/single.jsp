@@ -325,7 +325,7 @@ alert("请通过正确的方式访问");
 真实姓名：<input value="${user.relname }"  class="input1" type="text" readonly="readonly">
 <br>
 
-性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input class="input1" value="${user.username }"  type="text" readonly="readonly">
+性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<input class="input1" value="${user.gender }"  type="text" readonly="readonly">
       <br><br><br>
 个人简介：  <textarea  class="bootstrap-frm3" readonly="readonly">${user.about } </textarea>
 <input class="bootstrap-frm2" type="button" onclick="location='sUpdate.jsp' " value="修改资料">

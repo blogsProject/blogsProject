@@ -225,8 +225,8 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 					class="input1" type="text"> <br> 真实姓名：<input
 					name="relname" value="${user.relname }"
 					style="margin-bottom: 20px;" class="input1" type="text" /> <br>
-				<br> 密码：<input name="password" value="${user.password }"
-					style="margin-bottom: 20px;" class="input1" type="text"> <br>
+				<br> 密码：<input type="password" name="password" value="${user.password }"
+					style="margin-bottom: 20px;" class="input1"> <br>
 
 				性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
 				<div class="pretty circle">
@@ -240,7 +240,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 						class="default"></i>女</label>
 				</div>
 				<br> <br> <br> 个人简介：
-				<textarea name="about" class="bootstrap-frm3"></textarea>
+				<textarea name="about" class="bootstrap-frm3">${user.about } </textarea>
 				<input type="hidden" name="flag" value="updateByUser" /> <input
 					class="bootstrap-frm2" type="submit" value="点击修改">
 			</form>

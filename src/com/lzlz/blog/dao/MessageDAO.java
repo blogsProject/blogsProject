@@ -13,7 +13,6 @@ public interface MessageDAO {
 	 * @return 结果码
 	 */
 	public int insertByMessage(Message message);
-
 	/**
 	 * 通过接受者和发送者删除信息
 	 * 
@@ -24,7 +23,6 @@ public interface MessageDAO {
 	 * @return 结果码
 	 */
 	public int deleteBySendOrRece(int sendid, int receiveid);
-
 	/**
 	 * 通过接收人获取所有的Message集合
 	 * 

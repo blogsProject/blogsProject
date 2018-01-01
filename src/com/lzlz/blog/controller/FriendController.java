@@ -41,7 +41,13 @@ public class FriendController extends HttpServlet {
 		doGet(request, response);
 	}
 
-
+	/**
+	 * 添加好友的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void success(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -63,6 +69,13 @@ public class FriendController extends HttpServlet {
 		request.setAttribute("flag", 8);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
+	/**
+	 * 通过好友对象删除好友的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void deleteFriend(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();

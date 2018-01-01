@@ -59,7 +59,13 @@ public class FilesController extends HttpServlet {
 		if (flag == null)
 			insertByFile(request, response);
 	}
-
+	/**
+	 * 通过用户id和指定类型查询文件的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void queryFileByUidWhithType(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -80,7 +86,13 @@ public class FilesController extends HttpServlet {
 		jsonObject.put("ret", ret);
 		response.getWriter().write(jsonObject.toString());
 	}
-
+	/**
+	 * 通过用户id查询所有文件的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void queryAllByLid(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -96,7 +108,13 @@ public class FilesController extends HttpServlet {
 		request.setAttribute("flag", true);
 		request.getRequestDispatcher("File.jsp").forward(request, response);
 	}
-
+	/**
+	 * 通过文件ID下载文件的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void downFileByFid(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -120,7 +138,13 @@ public class FilesController extends HttpServlet {
 		}
 		FileProcess.downloadProcess(request, response, file);
 	}
-
+	/**
+	 * 通过files类插入数据的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void insertByFile(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -132,7 +156,13 @@ public class FilesController extends HttpServlet {
 		}
 		FileProcess.uploadProcess(request, response, filesService, user.getUid());
 	}
-
+	/**
+	 * 通过用户id查询图片的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void photo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -146,7 +176,13 @@ public class FilesController extends HttpServlet {
 		request.setAttribute("flag", true);
 		request.getRequestDispatcher("photo.jsp").forward(request, response);
 	}
-
+	/**
+	 * 通过文件id删除文件的业务逻辑
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void deleteById(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();

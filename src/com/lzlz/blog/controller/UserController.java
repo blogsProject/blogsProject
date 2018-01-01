@@ -58,10 +58,18 @@ public class UserController extends HttpServlet {
 			userinfo(request, response);
 		else if (flag.equals("updateByUser"))
 			updateByUser(request, response);
-		else if(flag.equals("exit"))
+		else if (flag.equals("exit"))
 			exit(request, response);
 	}
 
+	/**
+	 * 注册的业务逻辑
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void insertByUser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User user = new User(0, request.getParameter("username"), request.getParameter("password"),
@@ -75,6 +83,14 @@ public class UserController extends HttpServlet {
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 
+	/**
+	 * 通过用户名查询用户是否存在的业务逻辑
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void getUserByUsername(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
@@ -94,6 +110,14 @@ public class UserController extends HttpServlet {
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
+	/**
+	 * 修改用户信息的业务逻辑
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void updateByUser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -113,13 +137,21 @@ public class UserController extends HttpServlet {
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
-
 		User newuser = new User(Integer.valueOf(uid), username, password, netname, relname, gender, about);
 		userService.updateByUser(newuser);
+		session.setAttribute("user", newuser);
 		request.setAttribute("ret", 9);
 		request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 	}
 
+	/**
+	 * 检查用户是否存在的业务逻辑
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void checkUsername(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
@@ -132,6 +164,14 @@ public class UserController extends HttpServlet {
 			response.getWriter().write("" + 2);
 	}
 
+	/**
+	 * 查询用户个人信息的业务逻辑(好友，消息，信息，日志)
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void single(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -148,6 +188,14 @@ public class UserController extends HttpServlet {
 		request.getRequestDispatcher("single.jsp").forward(request, response);
 	}
 
+	/**
+	 * 查看指定用户信息的页面
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void userinfo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -169,6 +217,14 @@ public class UserController extends HttpServlet {
 		request.getRequestDispatcher("userinfo.jsp").forward(request, response);
 	}
 
+	/**
+	 * 登出的业务逻辑
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void exit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().setAttribute("user", null);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
