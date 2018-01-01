@@ -51,7 +51,12 @@ public class ReplyController extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		String lid = request.getParameter("lid");
 		String rcontent = request.getParameter("rcontent");
-		if (user == null || lid == null || rcontent == null) {
+		if(user == null){
+			request.setAttribute("ret", 4);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+			return;
+		}
+		if (lid == null || rcontent == null) {
 			request.setAttribute("ret", 5);
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;

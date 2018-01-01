@@ -16,39 +16,49 @@ public class MessageDAOImpl implements MessageDAO {
 
 	@Override
 	public int insertByMessage(Message message) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "insert message(sendid,receiveid) value(?,?)";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, message.getSendid());
 			pstmt.setInt(2, message.getReceiveid());
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
 
 	@Override
 	public int deleteByMid(int mid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "delete from message where mid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mid);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
 
 	@Override
 	public List<Message> selectByReceiveId(int receiveid) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
 		try {
 			String sql = "select mid,sendid,receiveid,(select username from user where user.uid=message.sendid) from message where receiveid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstm = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, receiveid);
 			ResultSet rs = pstm.executeQuery();
 			List<Message> list = new ArrayList<>();
@@ -58,6 +68,8 @@ public class MessageDAOImpl implements MessageDAO {
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstm);
 		}
 		return null;
 	}
@@ -90,6 +102,8 @@ public class MessageDAOImpl implements MessageDAO {
 					pstm.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				new DBConnection().closeConnection(conn, pstm);
 			}
 		}
 		return 0;
@@ -97,15 +111,19 @@ public class MessageDAOImpl implements MessageDAO {
 
 	@Override
 	public int deleteBySendOrRece(int sendid, int receiveid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "delete from message where sendid=? and receiveid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, sendid);
 			pstmt.setInt(2, receiveid);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}

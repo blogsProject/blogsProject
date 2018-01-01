@@ -16,30 +16,38 @@ public class FilesDAOImpl implements FilesDAO {
 
 	@Override
 	public int insertByFiles(Files files) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "insert files(fpath,ftype,uid) value(?,?,?)";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, files.getFpath());
 			pstmt.setString(2, files.getFtype());
 			pstmt.setInt(3, files.getUid());
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
 
 	@Override
 	public int deleteByFid(int fid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "delete from files where fid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, fid);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
@@ -51,10 +59,12 @@ public class FilesDAOImpl implements FilesDAO {
 			type = "Õº∆¨";
 		else
 			type = "“Ù¿÷";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "select * from files where uid=? and ftype=? limit ?,?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
 			pstmt.setString(2, type);
 			pstmt.setInt(3, CustomerUtil.limitFristParmaWithMyql(curpage, count));
@@ -70,16 +80,20 @@ public class FilesDAOImpl implements FilesDAO {
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return null;
 	}
 
 	@Override
 	public List<String> selectFileNameByUid(int uid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "select fpath from files where uid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
 			ResultSet rs = pstmt.executeQuery();
 			List<String> list = new ArrayList<>();
@@ -90,6 +104,8 @@ public class FilesDAOImpl implements FilesDAO {
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return null;
 	}
@@ -101,22 +117,28 @@ public class FilesDAOImpl implements FilesDAO {
 
 	@Override
 	public int getAllCountByUid(int uid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "select count(*) from files where uid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			return rs.getInt(1);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			new DBConnection().closeConnection(conn,pstmt);
 		}
 		return 0;
 	}
 
 	@Override
 	public List<Files> selectByUidWithTypeNoFenye(int uid, boolean flag) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		String type;
 		if (flag)
 			type = "Õº∆¨";
@@ -124,8 +146,8 @@ public class FilesDAOImpl implements FilesDAO {
 			type = "“Ù¿÷";
 		try {
 			String sql = "select * from files where uid=? and ftype=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
 			pstmt.setString(2, type);
 			List<Files> list = new ArrayList<>();
@@ -139,16 +161,20 @@ public class FilesDAOImpl implements FilesDAO {
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			new DBConnection().closeConnection(conn,pstmt);
 		}
 		return null;
 	}
 
 	@Override
 	public Files selectFileByFid(int fid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "select * from files where fid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, fid);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -160,6 +186,8 @@ public class FilesDAOImpl implements FilesDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally{
+			new DBConnection().closeConnection(conn,pstmt);
 		}
 		return null;
 	}

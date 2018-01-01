@@ -15,10 +15,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int insertByUser(User user) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "insert user(username,password,netname,relname,gender,about) value(?,?,?,?,?,?)";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getPassword());
 			pstmt.setString(3, user.getNetname());
@@ -28,16 +30,20 @@ public class UserDAOImpl implements UserDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
 
 	@Override
 	public User getUserByUsername(String username) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "Select * from user where username=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -49,16 +55,20 @@ public class UserDAOImpl implements UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 
 	}
 
 	@Override
 	public int updateByUser(User user) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "update user set password=?,netname=?,relname=?,gender=?,about=? where uid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getPassword());
 			pstmt.setString(2, user.getNetname());
 			pstmt.setString(3, user.getRelname());
@@ -68,16 +78,20 @@ public class UserDAOImpl implements UserDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
 
 	@Override
 	public List<User> queryAll() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "Select * from user";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			List<User> list = new ArrayList<>();
 			while (rs.next()) {
@@ -88,16 +102,20 @@ public class UserDAOImpl implements UserDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return null;
 	}
 
 	@Override
 	public User getUserByUid(int uid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "Select * from user where uid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -108,16 +126,20 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return null;
 	}
 
 	@Override
 	public List<User> queryByList(List<Integer> listid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "Select * from user";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			List<User> list = new ArrayList<>();
 			while (rs.next()) {
@@ -131,6 +153,8 @@ public class UserDAOImpl implements UserDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return null;
 	}

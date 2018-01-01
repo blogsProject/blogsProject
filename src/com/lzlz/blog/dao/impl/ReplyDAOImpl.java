@@ -16,26 +16,32 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public int insertByReply(Reply reply) {
+		Connection conn =null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "insert reply(uid,lid,rcontent,rdatetime) value(?,?,?,now())";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, reply.getUid());
 			pstmt.setInt(2, reply.getLid());
 			pstmt.setString(3, reply.getRcontent());
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			new DBConnection().closeConnection(conn,pstmt);
 		}
 		return 0;
 	}
 
 	@Override
 	public List<Reply> selectByLid(int lid, int curpage, int count) {
+		Connection conn =null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "select uid,lid,rcontent,rdatetime,(select username from user where user.uid=reply.uid) from reply where lid=? limit ?,?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, lid);
 			pstmt.setInt(2, CustomerUtil.limitFristParmaWithMyql(curpage, count));
 			pstmt.setInt(3, count);
@@ -49,6 +55,8 @@ public class ReplyDAOImpl implements ReplyDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			new DBConnection().closeConnection(conn,pstmt);
 		}
 		return null;
 	}
@@ -60,16 +68,20 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public int getAllCountByLid(int lid) {
+		Connection conn =null;
+		PreparedStatement pstmt = null;
 		try {
 			String sql = "Select count(*) from reply where lid=?";
-			Connection conn = new DBConnection().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn = new DBConnection().getConnection();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, lid);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			return rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			new DBConnection().closeConnection(conn,pstmt);
 		}
 		return 0;
 	}

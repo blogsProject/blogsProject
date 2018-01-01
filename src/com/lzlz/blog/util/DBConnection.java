@@ -3,6 +3,7 @@ package com.lzlz.blog.util;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -27,5 +28,17 @@ public class DBConnection {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public void closeConnection(Connection conn, PreparedStatement pstmt) {
+		try {
+			if (conn != null)
+				conn.close();
+			if (pstmt != null)
+				pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 }
