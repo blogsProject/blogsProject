@@ -215,8 +215,6 @@ input>submit {
 			<thead>
 				<tr>
 					<th>歌名</th>
-					<th>歌手</th>
-					<th>时长</th>
 				</tr>
 			</thead>
 			<tbody class="mp-list"></tbody>
@@ -292,7 +290,7 @@ var player = new MPlayer({
 	// 当前歌词距离顶部的距离
 	lrcTopPos: 34,
 	// 列表模板，用${变量名}$插入模板变量
-	listFormat: '<tr><td>${name}$</td><td>${singer}$</td><td>${time}$</td></tr>',
+	listFormat: '<tr><td>${name}$</td></tr>',
 	// 音量滑块改变事件名称
 	volSlideEventName:'change',
 	// 初始音量
