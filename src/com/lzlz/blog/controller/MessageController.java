@@ -20,7 +20,7 @@ public class MessageController extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		this.messageService = DAOFactory.getMessageService();
-	}
+	} 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
