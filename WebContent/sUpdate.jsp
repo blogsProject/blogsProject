@@ -51,6 +51,21 @@
 	}
 </script>
 <style>
+@media(min-width:1366px){
+.div1 {
+	text-align: left;
+	position: absolute;
+	height: 840px;
+	width: 700px;
+	background: #fff;
+
+	margin-top: 100px;
+	margin-left: 340px;
+	padding-left: 90px;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+}
+}
 body {
 	
 }
@@ -176,19 +191,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 	z-index: 9999;
 }
 
-.div1 {
-	text-align: left;
-	position: absolute;
-	height: 800px;
-	width: 700px;
-	background: #fff;
-	z-index: 999999999999;
-	margin-top: 100px;
-	margin-left: 640px;
-	padding-left: 90px;
-	border: 1px solid #d1d1d1;
-	border-radius: 10px;
-}
+
 
 .input1 {
 	text-align: center;
