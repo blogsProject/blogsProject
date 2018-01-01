@@ -26,8 +26,6 @@ public class FriendDAOImpl implements FriendDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
@@ -45,9 +43,7 @@ public class FriendDAOImpl implements FriendDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 
@@ -69,9 +65,7 @@ public class FriendDAOImpl implements FriendDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
@@ -92,9 +86,7 @@ public class FriendDAOImpl implements FriendDAO {
 			return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return false;
 	}
 

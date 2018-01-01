@@ -156,6 +156,7 @@ public class LogController extends HttpServlet {
 	 */
 	protected void queryAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("-------");
 		int curpage = Integer.valueOf(request.getParameter("curpage") == null ? "1" : request.getParameter("curpage"));
 		int Allpage = logService.getPageWhithAll(5);
 		request.setAttribute("AlllogList", logService.queryAll(curpage, 5));

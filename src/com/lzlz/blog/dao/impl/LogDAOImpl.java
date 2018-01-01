@@ -29,9 +29,7 @@ public class LogDAOImpl implements LogDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 
@@ -47,8 +45,6 @@ public class LogDAOImpl implements LogDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
@@ -67,9 +63,7 @@ public class LogDAOImpl implements LogDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 
@@ -94,9 +88,7 @@ public class LogDAOImpl implements LogDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
@@ -120,9 +112,7 @@ public class LogDAOImpl implements LogDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
@@ -145,9 +135,7 @@ public class LogDAOImpl implements LogDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
@@ -166,9 +154,7 @@ public class LogDAOImpl implements LogDAO {
 					rs.getString(7));
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
@@ -191,9 +177,7 @@ public class LogDAOImpl implements LogDAO {
 			return rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 
@@ -209,9 +193,7 @@ public class LogDAOImpl implements LogDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 
@@ -228,9 +210,7 @@ public class LogDAOImpl implements LogDAO {
 			return rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 

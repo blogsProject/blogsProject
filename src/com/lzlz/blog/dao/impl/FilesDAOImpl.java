@@ -27,9 +27,7 @@ public class FilesDAOImpl implements FilesDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 
@@ -45,9 +43,7 @@ public class FilesDAOImpl implements FilesDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 
@@ -69,9 +65,7 @@ public class FilesDAOImpl implements FilesDAO {
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
@@ -89,9 +83,7 @@ public class FilesDAOImpl implements FilesDAO {
 			return rs.getInt(1);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return 0;
 	}
 
@@ -121,9 +113,7 @@ public class FilesDAOImpl implements FilesDAO {
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
@@ -146,9 +136,7 @@ public class FilesDAOImpl implements FilesDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 

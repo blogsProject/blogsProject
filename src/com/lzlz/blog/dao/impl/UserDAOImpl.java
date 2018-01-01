@@ -30,8 +30,6 @@ public class UserDAOImpl implements UserDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
@@ -55,8 +53,6 @@ public class UserDAOImpl implements UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
 		}
 
 	}
@@ -78,8 +74,6 @@ public class UserDAOImpl implements UserDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return 0;
 	}
@@ -102,8 +96,6 @@ public class UserDAOImpl implements UserDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
 		}
 		return null;
 	}
@@ -126,9 +118,7 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
@@ -153,9 +143,7 @@ public class UserDAOImpl implements UserDAO {
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			new DBConnection().closeConnection(conn, pstmt);
-		}
+		} 
 		return null;
 	}
 
