@@ -26,7 +26,9 @@ public class MessageDAOImpl implements MessageDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
+		}
 		return 0;
 	}
 
@@ -48,7 +50,9 @@ public class MessageDAOImpl implements MessageDAO {
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		} finally {
+			new DBConnection().closeConnection(conn, pstm);
+		}
 		return null;
 	}
 
@@ -66,7 +70,9 @@ public class MessageDAOImpl implements MessageDAO {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		} finally {
+			new DBConnection().closeConnection(conn, pstmt);
+		}
 		return 0;
 	}
 
