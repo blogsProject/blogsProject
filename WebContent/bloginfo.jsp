@@ -439,6 +439,27 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 								</div>
 							</div>
 						</c:forEach>
+						<div style="margin-left: 190px; margin-bottom: 30px;">
+								<c:choose>
+				<c:when test="${page.curpage-1 <= 0 }"> 
+ 上一页
+</c:when>
+				<c:otherwise>
+					<a
+						href="LogController?flag=selectById&lid=${log.lid }&curpage=${page.curpage-1 }">上一页</a>
+				</c:otherwise>
+			</c:choose>
+			|
+			<c:choose>
+				<c:when test="${page.curpage+1 > page.allPage }"> 
+ 下一页
+</c:when>
+				<c:otherwise>
+				
+					<a href="LogController?flag=selectById&lid=${log.lid }&curpage=${page.curpage+1 }">下一页</a>
+				</c:otherwise>
+			</c:choose>
+			</div>
 						<div style="margin-right: 40px;">
 							<form action="ReplyController" method="post">
 								<textarea name="rcontent" class="ckeditor" cols="80"
@@ -470,25 +491,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 
 			</div>
 			<!-- 分页 -->
-			<c:choose>
-				<c:when test="${page.curpage-1 <= 0 }"> 
- 上一页
-</c:when>
-				<c:otherwise>
-					<a
-						href="LogController?flag=selectById&lid=${log.lid }&curpage=${page.curpage-1 }">上一页</a>
-				</c:otherwise>
-			</c:choose>
-			|
-			<c:choose>
-				<c:when test="${page.curpage+1 > page.allPage }"> 
- 下一页
-</c:when>
-				<c:otherwise>
-					<a
-						href="LogController?flag=selectById&lid=${log.lid }&curpage=${page.curpage+1 }">下一页</a>
-				</c:otherwise>
-			</c:choose>
+	
 	</div>
 	<script src="owl-carousel/owl.carousel.js"></script>
 	<script>
