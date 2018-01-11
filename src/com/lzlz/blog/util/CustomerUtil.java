@@ -13,8 +13,7 @@ public class CustomerUtil {
 	 * @return 返回正确的参数
 	 */
 	private static final String[] MUSICSTR = { "mp3", "ogg", "wam" };
-	private static final String[] IMGSTR = { "png", "jpg", "gif" };
-
+	private static final String[] IMGSTR = { "png", "jpg", "gif" ,"bmp"};
 	public static int limitFristParmaWithMyql(int curpage, int count) {
 		return curpage * count - count;
 	}
@@ -75,12 +74,14 @@ public class CustomerUtil {
 	 * @return
 	 */
 	public static int isImageOrMusic(String fileExternName) {
+		System.out.println(fileExternName);
 		for (int i = 0; i < IMGSTR.length; i++) {
-			if (IMGSTR[i].equals(fileExternName))
+			System.out.println(IMGSTR[i]+" "+fileExternName);
+			if (IMGSTR[i].equalsIgnoreCase(fileExternName))
 				return 1;
 		}
 		for (int i = 0; i < MUSICSTR.length; i++) {
-			if (MUSICSTR[i].equals(fileExternName))
+			if (MUSICSTR[i].equalsIgnoreCase(fileExternName))
 				return 2;
 		}
 		return 3;
