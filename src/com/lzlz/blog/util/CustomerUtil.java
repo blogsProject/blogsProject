@@ -56,7 +56,7 @@ public class CustomerUtil {
 	 *            更改后的文件名(不带扩展名) 注:调用这个方法的时候fileold和filename要一样
 	 * @param fileNamelist
 	 *            需要判断的文件字符串集合
-	 * @param count
+	 * @param count 
 	 *            数字从几开始 默认从1开始
 	 * @return 修改后的文件名或者未修改的文件名(假如这个文件名不存在)
 	 */
