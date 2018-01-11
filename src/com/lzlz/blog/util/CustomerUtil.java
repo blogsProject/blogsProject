@@ -74,9 +74,7 @@ public class CustomerUtil {
 	 * @return
 	 */
 	public static int isImageOrMusic(String fileExternName) {
-		System.out.println(fileExternName);
 		for (int i = 0; i < IMGSTR.length; i++) {
-			System.out.println(IMGSTR[i]+" "+fileExternName);
 			if (IMGSTR[i].equalsIgnoreCase(fileExternName))
 				return 1;
 		}
