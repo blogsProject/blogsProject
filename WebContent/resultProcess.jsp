@@ -86,6 +86,12 @@
 			location="LogController?flag=selectById&lid=${lid }";
 		</script>
 		</c:when>
+		<c:when test="${ret == 13 }">
+		<script type="text/javascript">
+			alert("内容不能为空");
+			location="write.jsp";
+		</script>
+		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">
 				alert("服务器错误");

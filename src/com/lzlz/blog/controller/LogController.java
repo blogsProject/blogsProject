@@ -72,6 +72,10 @@ public class LogController extends HttpServlet {
 		}
 		String ltitle = request.getParameter("ltitle");
 		String lcontent = request.getParameter("lcontent");
+		if(lcontent==null || lcontent.trim()==""){
+			request.setAttribute("ret", 13);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
+		}
 		if (CustomerUtil.isNullStringArr(ltitle, lcontent)) {
 			request.setAttribute("ret", 5);
 			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
