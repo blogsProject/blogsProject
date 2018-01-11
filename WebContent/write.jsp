@@ -62,6 +62,18 @@
 			clicktext.innerText = '登录';
 		}
 	}
+	function test() {
+		var ltitle1 = document.getElementById("ltitle").value;
+		var lcontent1 = document.getElementById("lcontent").value;
+		 if(ltitle1==""){
+			 window.alert("标题不能为空");
+			 return ;
+		}else{
+		document.	write.submit();
+		return;
+		}
+		}
+		
 </script>
 <style>
 body {
@@ -233,14 +245,14 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 			<div class="wrap-container">
 				<div id="main-content">
 					<div>
-						<form action="LogController" method="post">
-							标题：<input name="ltitle" placeholder="请输入标题">
-							<textarea name="lcontent" class="ckeditor" cols="80"
+						<form name="write" action="LogController" method="post">
+							标题：<input id="ltitle" name="ltitle" placeholder="请输入标题">
+							<textarea id="lcontent" name="lcontent" class="ckeditor" cols="80"
 								id="lcontent" rows="10"> 
 </textarea>
 
-							<input type="hidden" name="flag" value="insert" /> <input
-								type="submit" value="提交" />
+							<input type="hidden" name="flag" value="insert" /> <button
+								onclick="test()" type="button" >提交</button>
 						</form>
 					</div>
 
