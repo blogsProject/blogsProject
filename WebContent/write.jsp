@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
+	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -9,23 +9,27 @@
 <title>blog</title>
 <link rel="stylesheet" href="css/zerogrid.css">
 <link rel="stylesheet" href="css/style.css">
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
 <link rel="stylesheet" href="css/menu.css">
 <script src="js/jquery1111.min.js" type="text/javascript"></script>
 <script src="js/script.js"></script>
 <link href="ueditor/themes/default/css/umeditor.css" type="text/css"
 	rel="stylesheet">
-	<script type="text/javascript" src="CKeditor/ckeditor.js"></script>
+<script type="text/javascript" src="CKeditor/ckeditor.js"></script>
 <script type="text/javascript" src="ueditor/third-party/jquery.min.js"></script>
 <script type="text/javascript" src="ueditor/third-party/template.min.js"></script>
 <script type="text/javascript" charset="utf-8"
 	src="ueditor/umeditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="ueditor/umeditor.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="ueditor/umeditor.min.js"></script>
 <script type="text/javascript" src="ueditor/lang/zh-cn/zh-cn.js"></script>
-<style href="editor/themes/default/css/myeditor.css" type="text/css" rel="stylesheet"></style>
+<style href="editor/themes/default/css/myeditor.css" type="text/css"
+	rel="stylesheet"></style>
 <link href="owl-carousel/owl.carousel.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="css/demo.css" />
 <link rel="stylesheet" type="text/css" href="css/component.css" />
 <link rel="stylesheet" type="text/css" href="css/normalize1.css" />
@@ -40,34 +44,35 @@
 <link rel="stylesheet" href="css/photostyle.css">
 <script src="js/modernizr-2.6.2.min.js"></script>
 <c:if test="${empty user }">
-<script type="text/javascript">
-alert("请先登录");
-location="index.jsp";
-</script>
+	<script type="text/javascript">
+		alert("请先登录");
+		location = "index.jsp";
+	</script>
 </c:if>
 
 <script type="text/javascript">
-function showdiv(targetid,objN){  
-      var target=document.getElementById(targetid);
-      var clicktext=document.getElementById(objN)
-            if (target.style.display=="block"){
-                target.style.display="none";
-                clicktext.innerText="登录";
-            } else {
-                target.style.display="block";
-                clicktext.innerText='登录';
-            } 
-}
- 
+	function showdiv(targetid, objN) {
+		var target = document.getElementById(targetid);
+		var clicktext = document.getElementById(objN)
+		if (target.style.display == "block") {
+			target.style.display = "none";
+			clicktext.innerText = "登录";
+		} else {
+			target.style.display = "block";
+			clicktext.innerText = '登录';
+		}
+	}
 </script>
 <style>
 body {
-
+	
 }
+
 #showtext {
 	cursor: hand;
 	cursor: pointer;
 }
+
 #contentid {
 	background: #FFFFFF;
 	position: absolute;
@@ -82,6 +87,7 @@ body {
 	z-index: 999;
 	padding: 5px;
 }
+
 #contentid2 {
 	background: #FFFFFF;
 	position: absolute;
@@ -94,10 +100,12 @@ body {
 	z-index: 999;
 	padding: 5px;
 }
+
 .none {
 	display: none;
 	　background: #FFFFFF;
 }
+
 .bootstrap-frm1 {
 	margin-left: auto;
 	margin-right: auto;
@@ -113,6 +121,7 @@ body {
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 }
+
 .bootstrap-frm2 {
 	margin-left: 110px;
 	margin-top: 20px;
@@ -128,159 +137,195 @@ body {
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 }
+
 input {
 	width: 200px;
 	height: 30px;
 	padding: 5px;
 	font-size: 15px;
 }
+
 input>submit {
 	height: 40px;
 }
- input::-webkit-input-placeholder { /* WebKit browsers */
- 　　color:#999;
- 　　
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+	　　color: #999;
+	　　
 }
- 　input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
- 　　color:#999;
- 　　
+
+　input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	　　color: #999;
+	　　
 }
- 　　input::-moz-placeholder { /* Mozilla Firefox 19+ */
- 　　color:#999;
- 　　
+
+　　input::-moz-placeholder { /* Mozilla Firefox 19+ */
+	　　color: #999;
+	　　
 }
- 　　input:-ms-input-placeholder { /* Internet Explorer 10+ */
- 　　color:#999;
- 　　
+
+　　input:-ms-input-placeholder { /* Internet Explorer 10+ */
+	　　color: #999;
+	　　
 }
+
 .login {
 	z-index: 9999;
 }
-.blogs{
-position:absolute;
+
+.blogs {
+	position: absolute;
 	background: #fff;
 	height: 100%;
 	width: 65%;
 	margin-top: 0px;
 	margin-left: 300px;
-	padding:50px;
-	padding-left:90px;
+	padding: 50px;
+	padding-left: 90px;
 	border: 1px solid #d1d1d1;
 	border-radius: 13px;
 	text-align: left;
 }
-.blogs-title{
+
+.blogs-title {
 	text-align: left;
 }
-.blogs-info{
-margin-left:40px;
-margin-top:50px;
-margin-right:40px;
-	word-wrap:break-word;  
-    word-break:break-all;  
-    overflow: hidden;  
+
+.blogs-info {
+	margin-left: 40px;
+	margin-top: 50px;
+	margin-right: 40px;
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow: hidden;
 }
-.read{
+
+.read {
 	margin-right: 20px;
 }
-	</style>
+</style>
 </head>
 <body>
 
 
-<div class="wrap-body">
-<div style="position:fixed ;width: 100%" id='cssmenu' class="align-center">
-  <ul>
-    <li class="active"><a href='index.jsp'><span>主页</span></a></li>
-     <li class='last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
-    <li class='last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
-    <li class='last'><a href="Musc.html"><span>音乐</span></a></li>
-    <li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
-    <c:if test="${!empty user }">
-       <li class='last'  style="margin-right: 10px;margin-left: 160px;"><a id="showusername" ><span>${user.username }</span></a></li>
-        <li class='last' style="margin-right: 50px;"><a id="shownetname" ><span>${user.netname }</span></a></li>
-        <li class='last' style="margin-right: 50px;"><a href="UserController?flag=exit" id="exit" ><span>登出</span></a></li>
-      </c:if>
-  </ul>
-</div>
+	<div class="wrap-body">
+		<div style="position: fixed; width: 100%" id='cssmenu'
+			class="align-center">
+			<ul>
+				<li class="active"><a href='index.jsp'><span>主页</span></a></li>
+				<li class='last'><a href='FilesController?flag=photo'><span>相册</span></a></li>
+				<li class='last'><a href='FilesController?flag=all'><span>文件柜</span></a></li>
+				<li class='last'><a href="Musc.html"><span>音乐</span></a></li>
+				<li class='last'><a href='UserController?flag=single'><span>个人资料</span></a></li>
+				<c:if test="${!empty user }">
+					<li class='last' style="margin-right: 10px; margin-left: 160px;"><a
+						id="showusername"><span>${user.username }</span></a></li>
+					<li class='last' style="margin-right: 50px;"><a
+						id="shownetname"><span>${user.netname }</span></a></li>
+					<li class='last' style="margin-right: 50px;"><a
+						href="UserController?flag=exit" id="exit"><span>登出</span></a></li>
+				</c:if>
+			</ul>
+		</div>
 
 
-<section id="container">
-<div class="wrap-container">
-<div id="main-content">
-<div>
-<form action="LogController" method="post">
-		标题：<input name="ltitle" placeholder="请输入标题">
-		<textarea name="lcontent" class="ckeditor" cols="80" id="lcontent"
-			rows="10"> 
+		<section id="container">
+			<div class="wrap-container">
+				<div id="main-content">
+					<div>
+						<form action="LogController" method="post">
+							标题：<input name="ltitle" placeholder="请输入标题">
+							<textarea name="lcontent" class="ckeditor" cols="80"
+								id="lcontent" rows="10"> 
 </textarea>
 
-<input type="hidden" name="flag" value="insert"/>
-		<input type="submit" value="提交" />
-	</form>
-</div>
+							<input type="hidden" name="flag" value="insert" /> <input
+								type="submit" value="提交" />
+						</form>
+					</div>
 
 
-<script src="owl-carousel/owl.carousel.js"></script> 
-  <script>
-		$(document).ready(function() {
-		  $("#owl-slide").owlCarousel({
-			autoPlay: 3000,
-			items : 1,
-			itemsDesktop : [1199,1],
-			itemsDesktopSmall : [979,1],
-			itemsTablet : [768, 1],
-			itemsMobile : [479, 1],
-			navigation: true,
-			navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
-			pagination: false
-		  });
-		});
-		</script> 
-  <script src="js/classie.js"></script> 
-  <script>
-			(function() {
-				
-				if (!String.prototype.trim) {
-					(function() {
-						
-						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-						String.prototype.trim = function() {
-							return this.replace(rtrim, '');
-						};
-					})();
-				}
+					<script src="owl-carousel/owl.carousel.js"></script>
+					<script>
+						$(document)
+								.ready(
+										function() {
+											$("#owl-slide")
+													.owlCarousel(
+															{
+																autoPlay : 3000,
+																items : 1,
+																itemsDesktop : [
+																		1199, 1 ],
+																itemsDesktopSmall : [
+																		979, 1 ],
+																itemsTablet : [
+																		768, 1 ],
+																itemsMobile : [
+																		479, 1 ],
+																navigation : true,
+																navigationText : [
+																		'<i class="fa fa-chevron-left fa-5x"></i>',
+																		'<i class="fa fa-chevron-right fa-5x"></i>' ],
+																pagination : false
+															});
+										});
+					</script>
+					<script src="js/classie.js"></script>
+					<script>
+						(function() {
 
-				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-					
-					if( inputEl.value.trim() !== '' ) {
-						classie.add( inputEl.parentNode, 'input--filled' );
-					}
-					
-					inputEl.addEventListener( 'focus', onInputFocus );
-					inputEl.addEventListener( 'blur', onInputBlur );
-				} );
+							if (!String.prototype.trim) {
+								(function() {
 
-				function onInputFocus( ev ) {
-					classie.add( ev.target.parentNode, 'input--filled' );
-				}
+									var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+									String.prototype.trim = function() {
+										return this.replace(rtrim, '');
+									};
+								})();
+							}
 
-				function onInputBlur( ev ) {
-					if( ev.target.value.trim() === '' ) {
-						classie.remove( ev.target.parentNode, 'input--filled' );
-					}
-				}
-			})();
-		</script> 
-<script src="js/jquery.min.js"></script> 
-<script src="js/jquery.waypoints.min.js"></script> 
-<script src="js/jquery.magnific-popup.min.js"></script> 
-<script src="js/salvattore.min.js"></script> 
-<script src="js/photomain.js"></script>
-<script type="text/javascript">
-		CKEDITOR.replace('lcontent', {
-			toolbar : 'Full',
-			skin : 'kama'
-		});
-	</script>
+							[].slice
+									.call(
+											document
+													.querySelectorAll('input.input__field'))
+									.forEach(
+											function(inputEl) {
+
+												if (inputEl.value.trim() !== '') {
+													classie.add(
+															inputEl.parentNode,
+															'input--filled');
+												}
+
+												inputEl.addEventListener(
+														'focus', onInputFocus);
+												inputEl.addEventListener(
+														'blur', onInputBlur);
+											});
+
+							function onInputFocus(ev) {
+								classie.add(ev.target.parentNode,
+										'input--filled');
+							}
+
+							function onInputBlur(ev) {
+								if (ev.target.value.trim() === '') {
+									classie.remove(ev.target.parentNode,
+											'input--filled');
+								}
+							}
+						})();
+					</script>
+					<script src="js/jquery.min.js"></script>
+					<script src="js/jquery.waypoints.min.js"></script>
+					<script src="js/jquery.magnific-popup.min.js"></script>
+					<script src="js/salvattore.min.js"></script>
+					<script src="js/photomain.js"></script>
+					<script type="text/javascript">
+						CKEDITOR.replace('lcontent', {
+							toolbar : 'Full',
+							skin : 'kama'
+						});
+					</script>
 </html>

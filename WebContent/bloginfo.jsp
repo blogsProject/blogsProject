@@ -415,8 +415,6 @@ input::-webkit-input-placeholder { /* WebKit browsers */
     </section>
   </form>
 </div>
-		
-		<section id="container">
 			<div class="wrap-container">
 				<div id="main-content">
 					<!-- 日志 -->

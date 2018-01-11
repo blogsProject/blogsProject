@@ -51,9 +51,9 @@ public class CustomerUtil {
 	 * 判断文件是否在数据库里存在 如果存在就加上 (数字) 参照window命名规则
 	 * 
 	 * @param fileold
-	 *            原来的文件名
+	 *            原来的文件名(不带扩展名)
 	 * @param filename
-	 *            更改后的文件名 注:调用这个方法的时候fileold和filename要一样
+	 *            更改后的文件名(不带扩展名) 注:调用这个方法的时候fileold和filename要一样
 	 * @param fileNamelist
 	 *            需要判断的文件字符串集合
 	 * @param count
@@ -65,10 +65,15 @@ public class CustomerUtil {
 		if (count <= 0)
 			count = 1;
 		if (!fileNamelist.contains(filename + "." + externname))
-			return filename;
+			return filename+ "." + externname;
 		return filenameIsExist(fileold, fileold + "(" + count++ + ")", externname, fileNamelist, count);
 	}
 
+	/**
+	 * 判断是音乐还是图片
+	 * @param fileExternName
+	 * @return
+	 */
 	public static int isImageOrMusic(String fileExternName) {
 		for (int i = 0; i < IMGSTR.length; i++) {
 			if (IMGSTR[i].equals(fileExternName))

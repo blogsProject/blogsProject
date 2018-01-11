@@ -79,7 +79,7 @@ public class FileProcess {
 						// start = filename.lastIndexOf("."); // 索引到最后一个点
 						List<String> fileNamelist = filesService.selectFileNameByUid(uid);
 						filename = CustomerUtil.filenameIsExist(filename_no_externn, filename_no_externn, expanded_name,
-								fileNamelist, 1) + "." + expanded_name;
+								fileNamelist, 1);
 						file = new File(path, filename);
 					} while (file.exists());
 					// 写到磁盘上去
