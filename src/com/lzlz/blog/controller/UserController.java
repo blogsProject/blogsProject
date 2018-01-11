@@ -103,6 +103,7 @@ public class UserController extends HttpServlet {
 		}
 		if (!password.equals(user.getPassword())) {
 			request.setAttribute("ret", 2);
+			request.getRequestDispatcher("resultProcess.jsp").forward(request, response);
 			return;
 		}
 		request.getSession().setAttribute("user", user);
